@@ -1,6 +1,7 @@
 import { getTasks, useTasks } from "./TaskDataProvider.js"
 import { TaskHTMLConverter } from "./TaskHTML.js"
 import { getUsers, useUsers } from "../users/usersDataProvider.js";
+import { TaskForm } from "./TaskForm.js";
 
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".tasksCheckList")
@@ -33,7 +34,8 @@ export const TaskList = () => {
         })
 }
 
-eventHub.addEventListener("showTasksClicked", TaskList()) // renders straigt to DOM, later take off paraenthesis and make event work
+eventHub.addEventListener("showTasksClicked", TaskList) // renders straigt to DOM, later take off paraenthesis and make event work
+eventHub.addEventListener("showTasksClicked", TaskForm) // renders straigt to DOM, later take off paraenthesis and make event work
 eventHub.addEventListener("taskStateChanged", () => {
     const newTasks = useTasks()
     render(newTasks)

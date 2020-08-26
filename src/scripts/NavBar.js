@@ -9,7 +9,6 @@ eventHub.addEventListener("click", (clickEvent) => {
   if (clickEvent.target.id === "showTasks") {
     const customEvent = new CustomEvent("showTasksClicked")
     eventHub.dispatchEvent(customEvent)
-    console.log("test")
   }
 })
 
@@ -21,7 +20,7 @@ contentTarget.innerHTML =
     <ul class="list__container">
         <button><li>Home</li></button>
         <button><li>Events</li></button>
-        <button id="showTasks"><li>Tasks</li></button>
+        <button><li id="showTasks">Tasks</li></button>
         <button><li>Friends</li></button>
         <button><li>Logout</li></button>
     </ul>

@@ -64,4 +64,3 @@ export const useTasks = () => {
     )
     return sortedByDate
 }
-console.log(getTasks().then(useTasks))

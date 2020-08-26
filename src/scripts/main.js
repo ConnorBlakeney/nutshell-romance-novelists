@@ -2,7 +2,9 @@ import { LoginForm } from "./auth/LoginForm.js"
 import { RegisterForm } from "./auth/RegisterForm.js"
 import { navList } from "./NavBar.js"
 import { Nutshell } from "./Nutshell.js"
+import { TaskList } from "./tasks/TaskList.js";
 
+console.log(TaskList())
 navList()
 /*
     1. Check if the user is authenticated by looking in session storage for `activeUser`
@@ -11,3 +13,4 @@ navList()
     4. Also, if the user authenticates, and the login form is initially shown
         ensure that the Nutshell component gets rendered
 */
+

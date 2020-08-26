@@ -6,6 +6,8 @@ import { TaskList } from "./tasks/TaskList.js";
 
 console.log(TaskList())
 navList()
+LoginForm()
+
 /*
     1. Check if the user is authenticated by looking in session storage for `activeUser`
     2. If so, render the Nutshell component

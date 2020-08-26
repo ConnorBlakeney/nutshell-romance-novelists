@@ -38,7 +38,7 @@ export const editEvent = (event) => {
     return fetch(`http://localhost:8088/events/${event.id}`, {
         method: "PUT",
         headers: {
-            "Content-Type": "application.json",
+            "Content-Type": "application/json",
         },
         body:JSON.stringify(event)
     })
@@ -46,9 +46,9 @@ export const editEvent = (event) => {
     .then(dispatchEventStateChangeEvent)
 }
 
-export const deleteEvent = (event) => {
-    return fetch(`http://localhost:8088/events/${event.id}`, {
-        method: "DELETE"
+export const deleteEvent = (eventId) => {
+    return fetch(`http://localhost:8088/events/${eventId}`, {
+        method: "DELETE",
     })
     .then(getEvents)
     .then(dispatchEventStateChangeEvent)

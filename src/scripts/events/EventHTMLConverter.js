@@ -31,13 +31,12 @@ export const eventHTML = (eventObj) => {
     <section class="event">
         <div class="event--name"> ${eventObj.name} </div>
         <div class="event--date"> ${eventObj.date} </div>
-        <div class="event--time> ${eventObj.time} </div>
-
-        <button id="weatherButton">Show Weather</button>
-
+        <div class="event--time"> ${eventObj.time} </div>
+        <div class="event--location">${eventObj.location}</div>
+        <button class="button" id="weatherButton--${eventObj.id}"> Show Weather </button>
         <button class="button" id="showEventDetailsButton"> Event Details </button>
         <button class="button" id="editEventButton--${eventObj.id}"> Edit </button>
-        <button class="button" id="deleteEventButton--${eventObj.id}"> Delete </button?
+        <button class="button" id="deleteEventButton--${eventObj.id}"> Delete </button>
     </section>
     `
 }

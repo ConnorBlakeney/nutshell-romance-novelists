@@ -1,7 +1,28 @@
 import { useEvents, saveEvent, editEvent } from "./EventsDataProvider.js"
 
 const contentTarget = document.querySelector(".eventFormContainer")
-const eventHub = document.querySelector("container")
+const eventHub = document.querySelector(".container")
+
+//eventListener that is listening for the Edit Event Button to be clicked and then it is displaying the information from that event in the form for updating. 
+eventHub.addEventListener("editEventButtonClicked", customEvent => {
+    const allEvents= useEvents()
+    const eventId = event.detail.eventId
+    const eventObj = allEvents.find(event => event.id === eventId)
+
+    const eventName = document.querySelector("#event--name")
+    const eventDate = document.querySelector("#event--date")
+    const eventTime = document.querySelector("#event--time")
+    const eventLocation = document.querySelector("#event--location")
+    const eventDescription = document.querySelector("#event--description")
+    const id = document.querySelector("#eventId")
+
+    eventName.value = eventObj.name
+    eventDate.value = eventObj.date
+    eventTime.value  = eventObj.time
+    eventLocation.value = eventObj.location
+    eventDescription.value = eventObj.description
+    id.value = eventId
+})
 
 //This function renders the HTML representation of the form to the DOM
 export const newEventForm = () => {
@@ -18,7 +39,7 @@ const render = () => {
         <textarea id="event--description" placeholder="Event Description"></textarea>
 
         <button id="saveEventButton"> Save Event </button>
-        <input typer="hidden" name="eventId" id="eventId" value="">
+        <input type="hidden" name="eventId" id="eventId" value="">
     </section>
     `
 }
@@ -32,7 +53,7 @@ eventHub.addEventListener("click", clickEvent => {
         const eventTime = document.querySelector("#event--time")
         const eventLocation = document.querySelector("#event--location")
         const eventDescription = document.querySelector("#event--description")
-        const eventId = document.querySelector("#eventId")
+        
 
         if (eventName.value && eventDate.value && eventTime.value && eventLocation.value && eventDescription.value) {
             const eventId = document.querySelector("#eventId")
@@ -62,23 +83,4 @@ eventHub.addEventListener("click", clickEvent => {
     }
 })
 
-//eventListener that is listening for the Edit Event Button to be clicked and then it is displaying the information from that event in the form for updating. 
-eventHub.addEventListener("editEventButtonClicked", customeEvent => {
-    const allEvents= useEvents()
-    const eventId = event.detail.event.id
-    const eventObj = allEvents.find(event => event.id === eventId)
 
-    const eventName = document.querySelector("#event--name")
-    const eventDate = document.querySelector("#event--date")
-    const eventTime = document.querySelector("#event--time")
-    const eventLocation = document.querySelector("#event--location")
-    const eventDescription = document.querySelector("#event--description")
-    const eventId = document.querySelector("#eventId")
-
-    eventName = eventObj.name
-    eventDate= eventObj.date
-    eventTime = eventObj.time
-    eventLocation = eventObj.location
-    eventDescription = eventObj.description
-    eventId = eventId
-})

@@ -1,8 +1,15 @@
 import {useEvents, getEvents} from "./EventsDataProvider.js"
 import {eventHTML} from "./EventHTMLConverter.js"
+import {newEventForm} from "./NewEventForm.js"
 
-const contentTarget = document.querySelector(".eventsContainer")
-const eventHub = document.querySelector("container")
+const contentTarget = document.querySelector(".eventListContainer")
+const eventHub = document.querySelector(".container")
+
+eventHub.addEventListener("eventStateChanged", customEvent => {
+    const allEvents = useEvents()
+    render(allEvents)
+    newEventForm()
+})
 
 export const eventsList = () => {
     getEvents()

@@ -14,10 +14,15 @@ eventHub.addEventListener("click", clickEvent => {
 })
 
 eventHub.addEventListener("click", clickEvent => {
-    if (clickEvent.target.id.startsWith("editBtn--")) {
-        const [ prompt, taskIdString ] = clickEvent.target.id.split("--")  // "3"
+    if(clickEvent.target.id.startsWith("editBtn--")){
+        const [prompt, id] = clickEvent.target.id.split("--")
 
-        editTasks(taskIdString)
+        const customEvent = new CustomEvent("editButtonClicked", {
+            detail: {
+                taskId: parseInt(id)
+            }
+        })
+        eventHub.dispatchEvent(customEvent)
     }
 })
 

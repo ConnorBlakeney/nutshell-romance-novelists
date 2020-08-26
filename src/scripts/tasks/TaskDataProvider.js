@@ -3,7 +3,7 @@
 
 let tasks = []
 
-const eventHub = document.querySelector(".content")
+const eventHub = document.querySelector(".container")
 
 //function to dispatch change event that app state changed
 const dispatchStateChangeEvent = () => {

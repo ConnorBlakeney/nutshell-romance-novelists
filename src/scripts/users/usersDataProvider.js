@@ -60,7 +60,7 @@ const dispatchUsersStateChangeEvent = () => {
     eventHub.dispatchEvent(userstateChangedEvent)
 }
 
-let usersFriends = []
+let userFriends = []
 
 export const useUserFriends = () => {
     return userFriends.slice()

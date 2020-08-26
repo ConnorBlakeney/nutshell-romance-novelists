@@ -55,7 +55,7 @@ export const editUser = (user) => {
 }
 
 const dispatchUsersStateChangeEvent = () => {
-    const userstateChangedEvent = new CustomEvent("userstateChanged")
+    const userstateChangedEvent = new CustomEvent("usersStateChanged")
 
     eventHub.dispatchEvent(userstateChangedEvent)
 }

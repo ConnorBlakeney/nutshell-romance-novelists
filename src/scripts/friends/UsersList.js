@@ -21,11 +21,17 @@ eventHub.addEventListener("friendsButtonClicked", () => {
 })
 
 eventHub.addEventListener("usersStateChanged", () => {
+    let newUsers = useUsers()
+    users = newUsers.filter(user => users.find(u => u === user))
+    userFriends = useUserFriends()
     findFriends()
     render()
 })
 
 eventHub.addEventListener("userFriendsStateChanged", () => {
+    userFriends = useUserFriends()
+    let newUsers = useUsers()
+    users = newUsers.filter(user => users.find(u => u === user))
     findFriends()
     render()
     
@@ -35,8 +41,18 @@ eventHub.addEventListener("click", event => {
     if (event.target.id === "searchFriendsButton"){
         const searchTarget = document.querySelector("#searchFriends")
         const searchValue = searchTarget.value.toLowerCase()
-        
-        users = users.filter(user => user.username.toLowerCase().includes(searchValue))
+        if(searchValue){
+
+            users = useUsers()
+            users = users.filter(user => user.username.toLowerCase().includes(searchValue))
+            findFriends()
+            render()
+        }else{
+            users = useUsers()
+            findFriends()
+            render()
+        }
+
 
     }
 })

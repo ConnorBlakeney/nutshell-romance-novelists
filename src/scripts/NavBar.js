@@ -5,6 +5,14 @@ const eventHub = document.querySelector(".container")
 eventHub.addEventListener("click", clickEvent => {
 })
 
+eventHub.addEventListener("click", (clickEvent) => {
+  if (clickEvent.target.id === "showTasks") {
+    const customEvent = new CustomEvent("showTasksClicked")
+    eventHub.dispatchEvent(customEvent)
+    console.log("test")
+  }
+})
+
 export const navList = () => {
 contentTarget.innerHTML =
 `<header>
@@ -13,7 +21,7 @@ contentTarget.innerHTML =
     <ul class="list__container">
         <button><li>Home</li></button>
         <button><li>Events</li></button>
-        <button><li>Tasks</li></button>
+        <button id="showTasks"><li>Tasks</li></button>
         <button><li>Friends</li></button>
         <button><li>Logout</li></button>
     </ul>

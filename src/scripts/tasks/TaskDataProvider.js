@@ -31,7 +31,7 @@ export const deleteTasks = (taskId) => {
 }
 
 //function to save entry after entered into form
-export const saveTask = (taskObj) => {
+export const saveTasks = (taskObj) => {
     const jsonTask = JSON.stringify(taskObj) //turn object into string/strings
     return fetch("http://localhost:8088/tasks", {
         method: "POST",
@@ -64,3 +64,4 @@ export const useTasks = () => {
     )
     return sortedByDate
 }
+console.log(getTasks().then(useTasks))

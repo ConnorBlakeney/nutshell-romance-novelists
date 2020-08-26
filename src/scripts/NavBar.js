@@ -18,11 +18,11 @@ contentTarget.innerHTML =
 <nav class="nav__container">
 
     <ul class="list__container">
-        <button><li>Home</li></button>
-        <button><li>Events</li></button>
-        <button><li id="showTasks">Tasks</li></button>
-        <button><li>Friends</li></button>
-        <button><li>Logout</li></button>
+        <button>Home</button>
+        <button>Events</button>
+        <button id="showTasks">Tasks</button>
+        <button>Friends</button>
+        <button>Logout</button>
     </ul>
 </nav>
 </header>`

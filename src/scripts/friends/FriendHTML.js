@@ -7,7 +7,7 @@ import { deleteUserFriends, useUserFriends, saveUserFriends } from "../users/use
 
 const eventHub = document.querySelector(".container")
 
-const currentUserId = parseInt(sessionStorage.getItem("activeUser"))
+
 
 export const friendHTML = (user) => {
     if (user.friend){
@@ -29,6 +29,8 @@ export const friendHTML = (user) => {
 }
 
 eventHub.addEventListener("click", event => {
+    let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
+    
     if (event.target.id === "deleteFriend"){
         const friendId = parseInt(event.target.value)
         const userFriends = useUserFriends()
@@ -44,6 +46,7 @@ eventHub.addEventListener("click", event => {
         deleteUserFriends(relationshipObj.id)
     }
     if (event.target.id === "addFriend"){
+
         const newObj = {
             userId: currentUserId,
             friendId: parseInt(event.target.value)

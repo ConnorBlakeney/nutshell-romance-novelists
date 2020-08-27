@@ -34,8 +34,6 @@ export const TaskList = () => {
         })
 }
 
-eventHub.addEventListener("showTasksClicked", TaskList) // renders straigt to DOM, later take off paraenthesis and make event work
-eventHub.addEventListener("showTasksClicked", TaskForm) // renders straigt to DOM, later take off paraenthesis and make event work
 eventHub.addEventListener("taskStateChanged", () => {
     const newTasks = useTasks()
     render(newTasks)

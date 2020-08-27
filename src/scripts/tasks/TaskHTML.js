@@ -31,9 +31,7 @@ export const TaskHTMLConverter = (task) => {
     <section class="individualTask">
         <input type="checkbox" id="task--${task.id}" name="task--${task.id}" value="Task ${task.id}">
         <label for="task--${task.id}">${task.content}</label><br>
-        <div id= "deadline--${task.id}" class="task--deadline">Task Deadline: ${new Date(
-              task.deadline
-            ).toLocaleDateString("en-US")}</div>
+        <div id= "deadline--${task.id}" class="task--deadline">Task Deadline: ${task.deadline}</div>
         <button id="deleteBtn--${task.id}">Delete</button>
         <button id="editBtn--${task.id}">Edit</button>
     </section>

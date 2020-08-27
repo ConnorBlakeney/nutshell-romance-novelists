@@ -1,14 +1,8 @@
 import { LoginForm } from "./auth/LoginForm.js"
 import { RegisterForm } from "./auth/RegisterForm.js"
 import { Nutshell } from "./Nutshell.js"
-import { TaskForm } from "./tasks/TaskForm.js"
-import { TaskList } from "./tasks/TaskList.js"
-import { friendList } from "./friends/UsersList.js"
 
 LoginForm()
-TaskForm()
-TaskList()
-friendList()
 RegisterForm()
 Nutshell()
 

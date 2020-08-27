@@ -1,15 +1,15 @@
 import { LoginForm } from "./auth/LoginForm.js"
 import { RegisterForm } from "./auth/RegisterForm.js"
 import { Nutshell } from "./Nutshell.js"
+import messageEventListener from "./messages/messageEventListeners.js"
 
-LoginForm()
-RegisterForm()
+
+sessionStorage.setItem("activeUser", 1)
+sessionStorage.setItem("activeUserUsername", "bd")
+// LoginForm()
+// RegisterForm()
 Nutshell()
-
-
-
-
-
+messageEventListener()
 /*
     1. Check if the user is authenticated by looking in session storage for `activeUser`
     2. If so, render the Nutshell component

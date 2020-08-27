@@ -1,3 +1,6 @@
+//author: Rebecca Parker
+//purpose: to provide and manage data for users and usersFriends
+
 const eventHub = document.querySelector('.container')
 
 let users = []
@@ -52,52 +55,52 @@ export const editUser = (user) => {
 }
 
 const dispatchUsersStateChangeEvent = () => {
-    const userstateChangedEvent = new CustomEvent("userstateChanged")
+    const userstateChangedEvent = new CustomEvent("usersStateChanged")
 
     eventHub.dispatchEvent(userstateChangedEvent)
 }
 
-let usersFriends = []
+let userFriends = []
 
-export const useUsersFriends = () => {
-    return usersFriends.slice()
+export const useUserFriends = () => {
+    return userFriends.slice()
 }
 
-export const getUsersFriends = () => {
-    return fetch("http://localhost:8088/usersFriends")
+export const getUserFriends = () => {
+    return fetch("http://localhost:8088/userFriends")
         .then(response => response.json())
         .then(
-            parsedUsersFriends => {
-                usersFriends = parsedUsersFriends
+            parsedUserFriends => {
+                userFriends = parsedUserFriends
             }
         )
 }
 
-export const saveUsersFriends = userFriend => {
-    return fetch('http://localhost:8088/usersFriends', {
+export const saveUserFriends = userFriend => {
+    return fetch('http://localhost:8088/userFriends', {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(userFriend)
     })
-    .then(getUsersFriends)
-    .then(dispatchUsersFriendsStateChangeEvent)
+    .then(getUserFriends)
+    .then(dispatchUserFriendsStateChangeEvent)
 }
 
-export const deleteUsersFriends = userFriendId => {
-    return fetch(`http://localhost:8088/users/${userFriendId}`, {
+export const deleteUserFriends = userFriendId => {
+    return fetch(`http://localhost:8088/userFriends/${userFriendId}`, {
         method: "DELETE"
     })
-        .then(getUsersFriends)
-        .then(dispatchUsersFriendsStateChangeEvent)
+        .then(getUserFriends)
+        .then(dispatchUserFriendsStateChangeEvent)
         .catch ((error) => {
             console.log(error)
         })
 }
 
-const dispatchUsersFriendsStateChangeEvent = () => {
-    const usersFriendsStateChangedEvent = new CustomEvent("usersFriendsStateChanged")
+const dispatchUserFriendsStateChangeEvent = () => {
+    const userFriendsStateChangedEvent = new CustomEvent("userFriendsStateChanged")
 
-    eventHub.dispatchEvent(usersFriendsStateChangedEvent)
+    eventHub.dispatchEvent(userFriendsStateChangedEvent)
 }

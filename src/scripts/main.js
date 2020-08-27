@@ -5,6 +5,14 @@ import {eventsList} from "./events/EventsList.js"
 import {newEventForm} from "./events/NewEventForm.js"
 
 
+LoginForm()
+RegisterForm()
+Nutshell()
+
+
+
+
+
 /*
     1. Check if the user is authenticated by looking in session storage for `activeUser`
     2. If so, render the Nutshell component

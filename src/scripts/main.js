@@ -1,6 +1,7 @@
 import { LoginForm } from "./auth/LoginForm.js"
 import { RegisterForm } from "./auth/RegisterForm.js"
 import { Nutshell } from "./Nutshell.js"
+import messageEventListener from "./messages/messageEventListeners.js"
 
 
 const contentTarget = document.querySelector(".auth")
@@ -17,6 +18,7 @@ const eventHub = document.querySelector(".container")
 if ("activeUser" in sessionStorage){
     contentTarget.innerHTML = ""
     Nutshell()
+    messageEventListener()
 }else{
     LoginForm()
     RegisterForm()
@@ -24,4 +26,5 @@ if ("activeUser" in sessionStorage){
 
 eventHub.addEventListener("userAuthenticated", () => {
     Nutshell()   
+    messageEventListener()
 })

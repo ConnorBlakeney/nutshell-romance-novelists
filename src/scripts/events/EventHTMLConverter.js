@@ -25,27 +25,21 @@ eventHub.addEventListener("click", clickEvent => {
     }
 })
 
-eventHub.addEventListener("click", clickEvent => {
-    if(clickEvent.target.id.startsWith("showEventDetailsButton--")){
-        const [prompt, eventId] = clickEvent.target.id.split("--")
-
-        return description = eventId.description
-
-    }
-})
 
 export const eventHTML = (eventObj) => {
     return `
     <section class="event">
         <div class="event--name"> ${eventObj.name} </div>
-        <div class="event--date"> ${eventObj.date} </div>
+        <div id="event--date"> ${eventObj.date} </div>
         <div class="event--time"> ${eventObj.time} </div>
-        <div class="event--location">${eventObj.location}</div>
+        <div class="event--location">Location: ${eventObj.location}</div>
+        <div class="eventDescription">Description: ${eventObj.description}</div>
+
         <button class="button" id="weatherButton--${eventObj.id}"> Show Weather </button>
-        <button class="button" id="showEventDetailsButton--${eventObj.id}"> Event Details </button>
         <button class="button" id="editEventButton--${eventObj.id}"> Edit </button>
         <button class="button" id="deleteEventButton--${eventObj.id}"> Delete </button>
-        <div class="event--description"> ${description} </div>
+       
     </section>
     `
 }
+

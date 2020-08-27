@@ -55,6 +55,7 @@ eventHub.addEventListener("click", clickEvent => {
                 }
                 editTasks(updatedTask)
                 taskId.value = ""
+                render()
             }
         }
     }

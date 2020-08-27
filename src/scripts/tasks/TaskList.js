@@ -1,3 +1,6 @@
+// author: Connor Blakeney
+// purpose: render tasks to the DOM and notify of task state changes
+
 import { getTasks, useTasks } from "./TaskDataProvider.js"
 import { TaskHTMLConverter } from "./TaskHTML.js"
 import { getUsers, useUsers } from "../users/usersDataProvider.js";

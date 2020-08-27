@@ -1,7 +1,7 @@
 // author: Connor Blakeney
 // purpose: module converts tasks into HTML format and creates click
 // events for delete and edit
-import { deleteTasks, editTasks } from "./TaskDataProvider.js";
+import { deleteTasks, editTasks, getTasks, useTasks } from "./TaskDataProvider.js";
 
 const eventHub = document.querySelector(".container")
 
@@ -45,12 +45,24 @@ eventHub.addEventListener("checkButtonClicked", customEvent => {
     if (customEvent.detail.checkState) {
         const contentTarget = document.querySelector(".task--deadline")
         contentTarget.innerHTML = `<div>Completed!</div>`
+    } else {
+        debugger
     }
-    if (customEvent.detail.checkState === false) {
-        render()
-    }
-    debugger
 })
+
+// const myFunction = (task) => {
+//   // Get the checkbox
+//   var checkBox = document.getElementById(`taskCheck--${task.id}`);
+//   // Get the output text
+//   var text = document.querySelector(".task--deadline");
+
+//   // If the checkbox is checked, display the output text
+//   if (checkBox.checked == true){
+//     text.style.display = "Completed!";
+//   } else {
+//     text.style.display = "none";
+//   }
+// }
 
 export const TaskHTMLConverter = (task) => {
     return `

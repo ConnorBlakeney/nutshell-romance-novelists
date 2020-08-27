@@ -67,6 +67,7 @@ eventHub.addEventListener("click", clickEvent => {
         } else {
             meridian = `PM`
         }
+        
         const parsedTime = hours + ":" + minutes + ' ' + meridian
         const eventLocation = document.querySelector("#event--location")
         const eventDescription = document.querySelector("#event--description")

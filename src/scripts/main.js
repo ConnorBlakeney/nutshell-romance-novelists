@@ -3,11 +3,11 @@ import { RegisterForm } from "./auth/RegisterForm.js"
 
 import { Nutshell } from "./Nutshell.js"
 
-import { friendList } from "./friends/UsersList.js"
+
 
 
 LoginForm()
-friendList()
+Nutshell()
 
 
 /*

@@ -42,7 +42,7 @@ eventHub.addEventListener("change", changeEvent => {
 })
 
 eventHub.addEventListener("checkButtonClicked", customEvent => {
-    if (customEvent.detail.checkState === true) {
+    if (customEvent.detail.checkState) {
         const contentTarget = document.querySelector(".task--deadline")
         contentTarget.innerHTML = `<div>Completed!</div>`
     }

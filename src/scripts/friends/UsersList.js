@@ -1,3 +1,8 @@
+// author: Rebecca Parker
+// purpose: To filter and list users based on if they are friends with the current user 
+//          and allow current user to search all users
+
+
 import { getUsers, getUserFriends, useUsers, useUserFriends } from "../users/usersDataProvider.js"
 import { friendHTML } from "./FriendHTML.js"
 
@@ -102,8 +107,10 @@ const render = () => {
     
     contentTarget.innerHTML =
         `
-        <input type="text" id="searchFriends" placeholder="Search All Users">
-        <button id="searchFriendsButton">Search</button>
+        <div class="searchform">
+            <input type="text" id="searchFriends" placeholder="Search All Users">
+            <button id="searchFriendsButton">Search</button>
+        </div>
         ${html}
         `
 }

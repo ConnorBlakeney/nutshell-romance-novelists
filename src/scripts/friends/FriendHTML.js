@@ -1,3 +1,7 @@
+//author: Rebecca Parker
+//purpose: to render html for users and handle click events that either add user as a friend or delete a current friend
+
+
 import { deleteUserFriends, useUserFriends, saveUserFriends } from "../users/usersDataProvider.js"
 
 

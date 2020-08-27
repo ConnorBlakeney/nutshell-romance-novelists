@@ -1,6 +1,6 @@
-import messagesComponent from "./messagesComponent.js"
-import messagesAPI from "./messagesData.js"
-import messageList from "./messagesList.js"
+import messagesComponent from "./messageComponent.js"
+import messagesAPI from "./messageData.js"
+import messageList from "./messageRenderHTML.js"
 
 
 
@@ -15,6 +15,7 @@ const messageEventListener = () => {
 
     messageEventLocation.addEventListener("click", clickEvent => {
         // message--SubmitButton
+        console.log("clicked")
         if (clickEvent.target.className == "newMessageButton" && !document.querySelector("#hiddenIdValue")) {
             messageInputLocation.innerHTML = messagesComponent.messageInputComponent()
         }

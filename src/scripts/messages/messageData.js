@@ -1,5 +1,5 @@
 // functions to create the HTML for a POSTed message and render it to the DOM
-const messageAPI = {
+const messagesAPI = {
     messagesDataArray: [],
     messageUrl: "http://localhost:8088/messages",
     messagesGetData: () => {
@@ -23,7 +23,7 @@ const messageAPI = {
         }
         ).then(response => response.json())
     },
-    updateEditMessage: (userId, editObject) => {
+    updateEditMessage: (id, editObject) => {
         return fetch(`${messagesAPI.messageUrl}/${id}`, {
             method: "PUT",
             headers: {
@@ -32,11 +32,11 @@ const messageAPI = {
             body: JSON.stringify(editObject)
         })
     },
-    getUserMessageEntry: (userId) => {
+    getUserMessageEntry: (id) => {
         return fetch(`${messagesAPI.messageUrl}/${id}`)
             .then(response => response.json());
     },
-    deletePostData: (userId) => {
+    deletePostData: (id) => {
         return fetch(`${messagesAPI.messageUrl}/${id}`, {
             method: "DELETE"
         }).then(response => response.json());

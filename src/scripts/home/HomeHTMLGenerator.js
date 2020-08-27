@@ -1,6 +1,6 @@
 export const NewsHTMLConverter = (newsObject) => {
     return `
-        <section class="newsCard">
+        <section class="newsCard--${newsObject.id}">
         <div class="news--title">Title: ${ newsObject.title }</div>
         <div class="news--synopsis">Synopsis: ${ newsObject.synopsis }</div>
         <div class="news--URL"><a href="${ newsObject.url }">View Article</a></div>

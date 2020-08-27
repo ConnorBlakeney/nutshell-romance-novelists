@@ -1,7 +1,7 @@
 import { useNews, getNews, editNews } from "./HomeProvider.js"
 
 const eventHub = document.querySelector(".container")
-const contentTarget = document.querySelector(".editNewsContainer")
+
 
 let capturedId = 0
 
@@ -9,13 +9,14 @@ eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id.startsWith("editNews--")) {
         const [prefix, id] = clickEvent.target.id.split("--")
         capturedId = id
-    render()
+    render(id)
     }
 })   
 
-const render = () => {
+const render = (id) => {
+    const contentTarget = document.querySelector(`.newsCard--${id}`)
     contentTarget.innerHTML = `
-        <span class=editContainer>
+        <span class="editContainer--${id}">
         <input type="text" class="news--title" placeholder ="Enter a New Title for the Story" />
         <textarea class="news--synopsis" placeholder="Enter a New Synopsis"></textarea>
         <textarea class="news--URL" placeholder="Enter a New URL"></textarea>
@@ -44,7 +45,6 @@ const render = () => {
             foundNews.url = editedURL.value
             foundNews.date = editedDate.value
             editNews(foundNews)
-            render()
         })  
     }
     else{window.alert("One or more of your entry fields is blank.")}

@@ -1,11 +1,13 @@
 import { LoginForm } from "./auth/LoginForm.js"
 import { RegisterForm } from "./auth/RegisterForm.js"
-import { navList } from "./NavBar.js"
-import { Nutshell } from "./Nutshell.js"
-import "./friends/UsersList.js"
 
-navList()
+import { Nutshell } from "./Nutshell.js"
+
+import { friendList } from "./friends/UsersList.js"
+
+
 LoginForm()
+friendList()
 
 
 /*

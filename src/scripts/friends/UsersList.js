@@ -12,8 +12,9 @@ const currentUserId = parseInt(sessionStorage.getItem("activeUser"))
 
 let users = []
 let userFriends =[]
+let friends = []
 
-eventHub.addEventListener("friendsButtonClicked", () => {
+export const friendList = () => {
     getUsers()
     .then(getUserFriends)
     .then(() => {
@@ -23,7 +24,7 @@ eventHub.addEventListener("friendsButtonClicked", () => {
         render()
     })
     
-})
+}
 
 eventHub.addEventListener("usersStateChanged", () => {
     let newUsers = useUsers()
@@ -46,25 +47,36 @@ eventHub.addEventListener("click", event => {
     if (event.target.id === "searchFriendsButton"){
         const searchTarget = document.querySelector("#searchFriends")
         const searchValue = searchTarget.value.toLowerCase()
-        if(searchValue){
+        if(searchTarget.value){
 
             users = useUsers()
             users = users.filter(user => user.username.toLowerCase().includes(searchValue))
             findFriends()
-            render()
-        }else{
-            users = useUsers()
-            findFriends()
-            render()
+            render()  
         }
+    }
+})
 
+eventHub.addEventListener("click", event => {
+    if (event.target.id === "showAll"){
+        users = useUsers()
+        findFriends()
+        render()
 
+    }
+})
+
+eventHub.addEventListener("click", event => {
+    if (event.target.id === "showCurrent"){
+        users = useUsers()
+        findFriends()
+        users = friends
+        render()
     }
 })
 
 
 const findFriends = () => {
-    let friends = []
 
     let currentRelationships = userFriends.filter(f => {
         if(currentUserId === f.userId || currentUserId === f.friendId ){
@@ -110,6 +122,10 @@ const render = () => {
         <div class="searchform">
             <input type="text" id="searchFriends" placeholder="Search All Users">
             <button id="searchFriendsButton">Search</button>
+            <div>
+                <button id="showAll">Show All Users</button>
+                <button id="showCurrent">Show Current Friends</button>
+            </div>
         </div>
         ${html}
         `

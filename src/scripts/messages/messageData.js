@@ -1,4 +1,4 @@
-// functions to create the HTML for a POSTed message and render it to the DOM
+// API calls for messages
 const messagesAPI = {
     messagesDataArray: [],
     messageUrl: "http://localhost:8088/messages",

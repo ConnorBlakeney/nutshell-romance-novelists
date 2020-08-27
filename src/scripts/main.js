@@ -3,8 +3,10 @@ import { RegisterForm } from "./auth/RegisterForm.js"
 import { Nutshell } from "./Nutshell.js"
 import messageEventListener from "./messages/messageEventListeners.js"
 
-LoginForm()
-RegisterForm()
+sessionStorage.setItem("activeUser", 1)
+sessionStorage.setItem("activeUserUsername", "bd")
+// LoginForm()
+// RegisterForm()
 Nutshell()
 messageEventListener()
 /*
@@ -14,5 +16,3 @@ messageEventListener()
     4. Also, if the user authenticates, and the login form is initially shown
         ensure that the Nutshell component gets rendered
 */
-// sessionStorage.setItem("activeUser", 1)
-// sessionStorage.setItem("activeUserUsername", "bd")

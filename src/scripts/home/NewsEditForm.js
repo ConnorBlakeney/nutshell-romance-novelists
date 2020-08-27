@@ -1,4 +1,4 @@
-import { useNews, getNews, editNews, getWeatherData, useWeatherData } from "./HomeProvider.js"
+import { useNews, getNews, editNews } from "./HomeProvider.js"
 
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".editNewsContainer")
@@ -16,19 +16,37 @@ eventHub.addEventListener("click", clickEvent => {
 const render = () => {
     contentTarget.innerHTML = `
         <span class=editContainer>
-        <textarea class="edit--content" placeholder="Edit Your Text Here"></textarea>
+        <input type="text" class="news--title" placeholder ="Enter a New Title for the Story" />
+        <textarea class="news--synopsis" placeholder="Enter a New Synopsis"></textarea>
+        <textarea class="news--URL" placeholder="Enter a New URL"></textarea>
+        <input type="date" class="news--date">
         <button class="buttonSpace" id="saveEditedArticle">Save Changes</button>
         </span>`
 }
 
     eventHub.addEventListener("click", clickEvent => {
-        if (clickEvent.target.id === ("saveEditedArticle")) {
-            const editedText = document.querySelector(".edit--content")
+            const editedTitle = document.querySelector(".news--title")
+            const editedSynopsis = document.querySelector(".news--synopsis")
+            const editedURL = document.querySelector(".news--URL")
+            const editedDate = document.querySelector(".news--date")
+            if (clickEvent.target.id === ("saveEditedArticle")) {
+                if (editedTitle.value != "" 
+                && editedSynopsis.value != "" 
+                && editedDate.value != ""
+                && editedURL.value != ""
+                ){
             getNews()
             .then(() => {
             const allNews = useNews()
             const foundNews = allNews.find(findNews => findNews.id === parseInt(capturedId))
-            foundNews.synopsis = editedText.value
+            foundNews.title = editedTitle.value
+            foundNews.synopsis = editedSynopsis.value
+            foundNews.url = editedURL.value
+            foundNews.date = editedDate.value
             editNews(foundNews)
-        })
-    }})
+            render()
+        })  
+    }
+    else{window.alert("One or more of your entry fields is blank.")}
+}
+})

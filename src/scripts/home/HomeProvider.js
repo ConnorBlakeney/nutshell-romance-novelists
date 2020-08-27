@@ -1,16 +1,10 @@
 const eventHub = document.querySelector(".container")
 
 let news = []
-let forecast = []
 
 const dispatchStateChangeEvent = () => {
     const newsStateChangedEvent = new CustomEvent("newsStateChanged")
     eventHub.dispatchEvent(newsStateChangedEvent)
-}
-
-const dispatchForecastCaptured = () => {
-    const forecastCaptured = new CustomEvent("forecastHasBeenCaptured")
-    eventHub.dispatchEvent(forecastCaptured)
 }
 
 export const useNews = () => {
@@ -56,17 +50,4 @@ export const editNews = (news) => {
         body: JSON.stringify(news)
     }).then(getNews)
     .then(dispatchStateChangeEvent)
-}
-
-export const getWeatherData = () => {
-    return fetch(`http://api.openweathermap.org/data/2.5/forecast/?zip=37216&units=imperial&appid=ff3c6bcca7fa13fd3098a1ab51d93dd9`)
-         .then(response => response.json())
-        .then(parsedWeather => {
-            forecast = parsedWeather.list
-        })
-        .then(useWeatherData)
-        .then(dispatchForecastCaptured)
-}
-export const useWeatherData = () => {
-      return forecast.slice()
 }

@@ -26,7 +26,7 @@ const messageEventListener = () => {
             const inputLocation = document.querySelector(".message--Input")
             const messageInputValue = { "message": inputLocation.value, "userID": userId, "userName": userName }
             //=========================================================================================================================
-            //WILL NEED TO IMPORT A USER ID TO MATCH AND SAVE TO EACH ENTRY    
+            //will need to make sure when testing that each message has a user id to match it to    
             console.log(messageInputValue)
             messagesAPI.messagePostData(messageInputValue)
                 .then(() => {

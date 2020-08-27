@@ -1,4 +1,4 @@
-import {getWeatherData, useWeatherData } from "./HomeProvider.js"
+import {useWeatherData } from "../weather/WeatherProvider.js"
 
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".weatherContainer")

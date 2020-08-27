@@ -44,10 +44,6 @@ const messagesComponent = {
         const inputValue = messageObject.message
         const inputLocation = document.querySelector(".message--Input")
         inputLocation.value = inputValue
-    },
-
-    messageAddFreind: () => {
-
     }
 }
 

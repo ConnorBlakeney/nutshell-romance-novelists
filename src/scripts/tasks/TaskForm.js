@@ -16,8 +16,8 @@ eventHub.addEventListener("click", (clickEvent) => {
 
     // const criminalId = parseInt(noteCriminal.value)
 
-    if (criminalId !== 0) {
-        const newTask = {
+    if (taskId !== 0) {
+      const newTask = {
       content: taskContent.value,
       deadline: taskDeadline.value,
       timestamp: Date.now(),

@@ -27,7 +27,16 @@ const render = (tasksArray) => {
         // `${userTask.username}'s Tasks:` + 
     }
 
-
+eventHub.addEventListener("checkButtonClicked", customEvent => {
+    const contentTarget = document.querySelector(".task--deadline")
+    const checkedValue = document.querySelector(".checkbox").checked
+    if (checkedValue) {
+        contentTarget.innerHTML = `<div class"complete">Completed!</div>`
+    } else {
+    //   const completeDiv = document.querySelector(".complete")
+      contentTarget.innerHTML = TaskList()
+    }
+})
 
 export const TaskList = () => {
     getTasks()

@@ -1,17 +1,9 @@
 import { LoginForm } from "./auth/LoginForm.js"
-import { RegisterForm } from "./auth/RegisterForm.js"
 import { Nutshell } from "./Nutshell.js"
-import {eventsList} from "./events/EventsList.js"
-import {newEventForm} from "./events/NewEventForm.js"
 
 
-LoginForm()
-RegisterForm()
-Nutshell()
-
-
-
-
+const contentTarget = document.querySelector(".auth")
+const eventHub = document.querySelector(".container")
 
 /*
     1. Check if the user is authenticated by looking in session storage for `activeUser`
@@ -21,5 +13,15 @@ Nutshell()
         ensure that the Nutshell component gets rendered
 */
 
-eventsList()
-newEventForm()
+if ("activeUser" in sessionStorage){
+    contentTarget.innerHTML = ""
+    Nutshell()
+    messageEventListener()
+}else{
+    LoginForm()
+}
+
+eventHub.addEventListener("userAuthenticated", () => {
+    Nutshell()   
+    messageEventListener()
+})

@@ -14,7 +14,7 @@ import messageEventListener from "./messages/messageEventListeners.js"
     4. Also, if the user authenticates, and the login form is initially shown
         ensure that the Nutshell component gets rendered
 */
-// sessionStorage.setItem("activeUser", user.id)
-// sessionStorage.setItem("activeUserUsername", user.username)
+sessionStorage.setItem("activeUser", 1)
+sessionStorage.setItem("activeUserUsername", "bd")
 Nutshell()
 messageEventListener()

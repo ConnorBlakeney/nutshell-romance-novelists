@@ -1,7 +1,7 @@
 import { getNews, useNews, deleteNews} from "./NewsProvider.js"
 import {getWeatherData } from "../weather/WeatherProvider.js"
 import { NewsHTMLConverter } from "./NewsHTMLGenerator.js"
-import { getUserFriends, useUserFriends} from "../users/usersDataProvider.js"
+import { getUserFriends, useUserFriends, getUsers} from "../users/usersDataProvider.js"
 
 
 const contentTarget = document.querySelector(".newsContainer")
@@ -28,6 +28,8 @@ export const NewsList = () => {
     .then(() => {
     getNews()
     .then(() => {
+        getUsers()
+        .then(() => {
     getUserFriends()
         .then(() => {
         const allNews = useNews()
@@ -62,6 +64,7 @@ export const NewsList = () => {
         render(friendNews, userNews)
         })
 
+    })
     })
     })
     }     

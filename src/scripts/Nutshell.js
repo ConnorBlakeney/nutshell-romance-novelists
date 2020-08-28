@@ -7,11 +7,9 @@ import { TaskList } from "./tasks/TaskList.js"
 import { friendList } from "./friends/UsersList.js"
 import {eventsList} from"./events/EventsList.js"
 import{newEventForm} from "./events/NewEventForm.js"
-import { friendList } from "./friends/UsersList.js"
 import messagesAPI from "./messages/messageData.js"
 import messageList from "./messages/messageRenderHTML.js"
-import { TaskForm } from "./tasks/TaskForm.js"
-import { TaskList } from "./tasks/TaskList.js"
+
 
 
 export const Nutshell = () => {

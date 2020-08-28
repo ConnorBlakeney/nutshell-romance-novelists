@@ -65,8 +65,8 @@ const render = () => {
     }).join("")
 
     contentTarget.innerHTML = `
-    <h2> Events </h2>
         <article class="eventsList">
+        <h3> Events </h3>
             ${allEventsTurnedIntoHTML}
         </article>
     `

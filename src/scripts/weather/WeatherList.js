@@ -34,26 +34,27 @@ export const getDayOfTheWeek = (weather) => {
 }
 
 export const showForecast = (fiveDayForecast) => {
-    contentTarget.innerHTML = fiveDayForecast.map((thisDay) => {
+    contentTarget.innerHTML = `
+    <h3 class="weatherTitle">Current Weather</h3>
+    ${
+    fiveDayForecast.map((thisDay) => {
           return `
                 <div class="forecast--card">
                       <div class="heading heading--forecast-card">
                             ${getDayOfTheWeek(thisDay)}
                       </div>
                       <div class="forecast-card--details">
-                            <span class="forecast-card--image">
-                                  <img class="image forecast-image" src="http://openweathermap.org/img/wn/${thisDay.weather[0].icon}@2x.png">
-                            </span>
-                            <span class="temp--high">
-                                  ${Math.round(thisDay.main.temp_max)}&deg; F
-                            </span>
-                            <span class="temp--low">
-                                  ${Math.round(thisDay.main.temp_min)}&deg; F
-                            </span>
+                            <div class="forecast-card--image">
+                              <img class="image forecast-image" src="http://openweathermap.org/img/wn/${thisDay.weather[0].icon}@2x.png">
+                            </div>
+                            <div class="temp--high">
+                              ${Math.round(thisDay.main.temp_max)}&deg; F
+                            </div>
                       </div>
                 </div>
           `
     }).join("")
+      }`
     eventHub.addEventListener("forecastHasBeenCaptured", customEvent => {
     FilterWeather()
     })

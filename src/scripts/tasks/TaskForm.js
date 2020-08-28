@@ -78,8 +78,9 @@ eventHub.addEventListener("editButtonClicked", customEvent => {
 const render = () => {
   contentTarget.innerHTML = `
         <section class="taskForm">
-            <label for="task--content">Content</label>
-            <textarea id="task--content" placeholder="Note text here"></textarea>
+            <h3> Create a new task </h3>
+            <label for="task--content">Task</label>
+            <textarea id="task--content" placeholder="Task text here"></textarea>
             <label for="task--deadline">Deadline</label>
             <input type="date" id="task--deadline" />
             <button id="newTask">Save Task</button>

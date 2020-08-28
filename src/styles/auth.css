@@ -5,6 +5,16 @@
     flex-wrap: wrap;
 }
 
+.headerBackground {
+    background-image: url("../images/pageHeader.png");
+    height: 50vh;
+    min-height: 100px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 1.5;
+}
+
 .auth--login{
     display: flex;
     flex-wrap: wrap;
@@ -34,7 +44,12 @@
 
 
 .siteName{
-    color: #e4c2c1;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #b6666f;
+    text-shadow: -1px 0 #d1a080, 0 1px #d1a080, 1px 0 #d1a080, 0 -1px #d1a080;
     font-family: 'Times New Roman', Times, serif;
     font-size: 5em;
     overflow: hidden; /* Ensures the content is not revealed until the animation */
@@ -50,7 +65,7 @@
 /* The typing effect */
 @keyframes typing {
     from { width: 0 }
-    to { width: 100% }
+    to { width: 58rem}
 }
   
 /* The typewriter cursor effect */

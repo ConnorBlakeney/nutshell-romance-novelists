@@ -11,11 +11,16 @@ const contentTarget = document.querySelector(".tasksCheckList")
 
 const render = (tasksArray) => {
         //loop through entries array returning each entry as passed through converter function
-        contentTarget.innerHTML = tasksArray.map(
+        contentTarget.innerHTML = 
+        `<h3> Tasks </h3>
+        ${tasksArray.map(
             (currentTaskObj) => {
                 return TaskHTMLConverter(currentTaskObj) 
                 }
-        ).join("") //remove commas
+            ).join("") 
+        }    
+        `
+        //remove commas
         // inserted function to find specific user, not sure what to do with it yet
         // const userTask = currentTaskObj.find(
         //             (user) => {
@@ -25,7 +30,7 @@ const render = (tasksArray) => {
         
         // DOM reference to where all tasks will be rendered
         // `${userTask.username}'s Tasks:` + 
-    }
+}
 
 
 

@@ -1,2 +1,60 @@
+@import "./events.css";
+@import "./friends.css";
+@import "./news.css";
 @import "./task.css";
-@import "./home.css";
+@import "./weather.css";
+@import "./auth.css";
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap");
+
+
+
+body,
+button,
+input,
+select,
+textarea {
+     color: #b6666f;
+     font-family: 'Lora', serif;
+     font-size: 1rem;
+     line-height: 1.5;
+ }
+
+ .dashboard--left {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border: 0.5em solid #e4c2c1;
+    width: 13rem;
+    float: left;
+    height: 50rem;
+    
+}
+
+.dashboard--center{
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    border: 0.5em solid #e4c2c1;
+    width: 13rem;
+    float: left;
+    height: 50rem;
+    width: fit-content;
+    
+}
+
+.dashboard--right{
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    border: 0.5em solid #e4c2c1;
+    width: 13rem;
+    float: left;
+    height: 50rem;
+    
+}
+
+footer{
+    border: 0.5em solid #e4c2c1;
+    margin-bottom: 0;
+}
+

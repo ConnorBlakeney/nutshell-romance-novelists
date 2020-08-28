@@ -1,4 +1,4 @@
-import { useNews, getNews, editNews } from "./HomeProvider.js"
+import { useNews, getNews, editNews } from "./NewsProvider.js"
 
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".editNewsContainer")

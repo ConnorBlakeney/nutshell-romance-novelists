@@ -2,51 +2,55 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./styles/main.css">
-    <title>Document</title>
-
+    <title>Writers for Romance</title>
 </head>
 
 <body>
-    <article class="container">
-        <div class="navBarContainer"></div>
+    <main class="container">
+        <header class="header">
+            <div class="siteName">Writers for Romance</div>
+        </header>
         <article class="auth">
             <section class="auth--login"></section>
             <section class="auth--register"></section>
         </article>
 
-        <article class="dashboard">
-
-            <div class="editFields">
-            <span class="newsFormContainer"></span>
-            <span class="editNewsContainer"></span>
-            </div>
-
-            <span class="homeMain">
-                <span class="weatherContainer"></span>
-                <span class="newsContainer"></span>
-            </span>
-
-                <div class="eventsContainer"></div>
-                <div class="tasksContainer"></div>
-                <div class="tasksCheckList"></div>
-                <div class="friendsContainer">
-                    <div class="friendsLeftContainer">
-                        <section class="messages">Messages
-                            <section class="messageObject--section"></section>
-                            <button class="newMessageButton">New</button>
-                            <section class="messageInput--section"></section>
-                        </section>
-                    </div>
-                    <div class="friendsRightContainer"></div>
-                        <div class="allUserSearch"></div>
-                        <div class="currentFriends"></div>
-                </div>
+        <article class="dashboard--left">
+            <h3 class="weatherTitle">Current Weather</h3>
+            <br></br>
+            <div class="weatherContainer"></div>
         </article>
+        <article class="dashboard--center">
+            <div class="tasksContainer"></div>
+            <div class="tasksCheckList"></div>
+            <div class="newsFormContainer"></div>
+            <div class="editNewsContainer"></div>
+            <div class="newsContainer"></div>
+        </article>
+
+        <article class="dashboard--right">
+            <div class="friendsContainer">
+                <div class="friendsLeftContainer">
+                    <section class="messages">Messages
+                        <section class="messageObject--section"></section>
+                        <button class="newMessageButton">New</button>
+                        <section class="messageInput--section"></section>
+                    </section>
+                </div>
+                <div class="friendsRightContainer"></div>
+                    <div class="allUserSearch"></div>
+                    <div class="currentFriends"></div>
+        </article>
+        <footer class="dashboard--bottom">
+                <div class="eventFormContainer"></div>
+                <div class="eventListContainer"></div>
+        </footer>
+            
+    </main>
 
     <script src="./scripts/main.js" type="module"></script>
 

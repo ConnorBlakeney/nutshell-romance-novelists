@@ -1,5 +1,4 @@
 import { LoginForm } from "./auth/LoginForm.js"
-import { RegisterForm } from "./auth/RegisterForm.js"
 import { Nutshell } from "./Nutshell.js"
 import messageEventListener from "./messages/messageEventListeners.js"
 
@@ -21,7 +20,6 @@ if ("activeUser" in sessionStorage){
     messageEventListener()
 }else{
     LoginForm()
-    RegisterForm()
 }
 
 eventHub.addEventListener("userAuthenticated", () => {

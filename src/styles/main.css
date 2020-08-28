@@ -17,6 +17,12 @@ textarea,
      font-size: 1rem;
      line-height: 1.5;
 }
+
+.underHeader {
+    display: flex;
+     justify-content: center;
+}
+
 body{
      color: #d1a080;
      font-family: 'Lora', serif;
@@ -26,6 +32,7 @@ body{
 
  .dashboard--left {
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
     /* border: 0.5em solid #e4c2c1; */
     width: 10%;
@@ -33,10 +40,12 @@ body{
     height: 53rem;
     margin-left: 2rem;
     
+    
 }
 
 .dashboard--center{
     display: flex;
+    
     position: relative;
     flex-direction: column;
     /* border: 0.5em solid #e4c2c1; */
@@ -52,6 +61,7 @@ body{
 
 .dashboard--right{
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
     /* border: 0.5em solid #e4c2c1; */
     width: 15%;

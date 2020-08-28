@@ -10,6 +10,10 @@ eventHub.addEventListener("newsStateChanged", customEvent => {
     NewsList()
 })
 
+eventHub.addEventListener("userFriendsStateChanged", customEvent => {
+    NewsList()
+})
+
 eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id.startsWith("deleteNews--")) {
         const [prefix, id] = clickEvent.target.id.split("--")
@@ -32,13 +36,8 @@ export const NewsList = () => {
                 return f
             }
         })
-        let currentRelationships = userFriends.filter(friend => {
-            if (currentUserId === friend.userId || currentUserId === friend.friendId) {
-                return friend
-            }
-        })
 
-        const foundNews = currentRelationships.map(relationship => {
+        const foundNews = userFriends.map(relationship => {
             return allNews.find(news => {
                 if (news.userId === relationship.friendId || news.userId === relationship.userId){
                     if (news.userId != currentUserId){
@@ -47,6 +46,7 @@ export const NewsList = () => {
                 }
             })
         })
+
         const friendNews = foundNews.filter(stories => {
             if (stories != undefined){
                 return stories
@@ -75,18 +75,3 @@ export const NewsList = () => {
     })
         contentTarget.innerHTML = itemHTML
     }
-
-    // 
-    // 
-
-
-    // const filteredNews = userFriends.map(f => {
-    //     console.log(f.userId)
-    //     return allNews.find(story => {
-    //         if(story.userId === f.userId) {
-    //             return story
-    //         }
-    //     })
-    // })
-    // console.log(filteredNews)
-    // render(filteredNews)

@@ -1,10 +1,11 @@
 import { LoginForm } from "./auth/LoginForm.js"
-import { RegisterForm } from "./auth/RegisterForm.js"
 import { Nutshell } from "./Nutshell.js"
 import messageEventListener from "./messages/messageEventListeners.js"
+import { provideContent } from "./auth/contentHTML.js"
 
 
-const contentTarget = document.querySelector(".auth")
+const contentTarget = document.querySelector(".auth--login")
+const contentRegister = document.querySelector(".auth--login")
 const eventHub = document.querySelector(".container")
 
 /*
@@ -15,16 +16,25 @@ const eventHub = document.querySelector(".container")
         ensure that the Nutshell component gets rendered
 */
 
+    
 if ("activeUser" in sessionStorage){
     contentTarget.innerHTML = ""
+    contentRegister.innerHTML = ""
     Nutshell()
     messageEventListener()
 }else{
     LoginForm()
-    RegisterForm()
 }
+    
 
 eventHub.addEventListener("userAuthenticated", () => {
     Nutshell()   
     messageEventListener()
+})
+
+eventHub.addEventListener("click", event => {
+    if(event.target.id === "logoutButton"){
+        sessionStorage.clear()
+        location.reload()
+    }
 })

@@ -1,26 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./styles/main.css">
-    <title>Writers for Romance</title>
-</head>
-
-<body>
-    <main class="container">
-        <header class="header">
-            <div class="siteName">Writers for Romance</div>
-            <div class="logout">
-        </header>
-        <article class="auth">
-            <section class="auth--login"></section>
-            <section class="auth--register"></section>
-        </article>
-
-        <article class="dashboard--left">
+export const provideContent = () => {
+    return `
+    <article class="dashboard--left">
             <h3 class="weatherTitle">Current Weather</h3>
             <br></br>
             <div class="weatherContainer"></div>
@@ -49,11 +29,5 @@
         <footer class="dashboard--bottom">
                 <div class="eventFormContainer"></div>
                 <div class="eventListContainer"></div>
-        </footer>
-            
-    </main>
-
-    <script src="./scripts/main.js" type="module"></script>
-
-</body>
-</html>
+        </footer>`
+}

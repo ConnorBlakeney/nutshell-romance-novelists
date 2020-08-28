@@ -31,6 +31,8 @@ let contentTarget = document.querySelector(".tasksContainer")
 // })
 
 eventHub.addEventListener("click", clickEvent => {
+    let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
+
     if (clickEvent.target.id === "newTask") {
         const taskContent = document.querySelector("#task--content")
         const taskDeadline = document.querySelector("#task--deadline")
@@ -42,6 +44,7 @@ eventHub.addEventListener("click", clickEvent => {
                 const newTask = {
                     content: taskContent.value,
                     deadline: taskDeadline.value,
+                    userId: currentUserId,
                     timestamp: Date.now(),
                 }
                 saveTasks(newTask)
@@ -50,6 +53,7 @@ eventHub.addEventListener("click", clickEvent => {
                 const updatedTask = {
                     content: taskContent.value,
                     deadline: taskDeadline.value,
+                    userId: currentUserId,
                     timestamp: Date.now(),
                     id: parseInt(taskId.value)
                 }
@@ -81,7 +85,7 @@ const render = () => {
     
 //     for (let i = 0; i < task.length; i++) {
 //         if (task[i] === true) {
-        contentTarget.innerHTML = `
+        contentTarget.innerHTML += `
         <section class="taskForm">
             <label for="task--content">Content</label>
             <div id="userTasks">Your Tasks</div>
@@ -95,7 +99,7 @@ const render = () => {
     } 
 //  else {
         let contentFriendTarget = document.querySelector(".friendsTasksContainer")
-        contentFriendTarget.innerHTML = `
+        contentFriendTarget.innerHTML += `
         <section class="taskForm">
             <div id="userFriendTasks">Your Friend's Tasks</div>
             <label for="task--content">Content</label>

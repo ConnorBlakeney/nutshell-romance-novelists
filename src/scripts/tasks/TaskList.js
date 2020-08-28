@@ -17,7 +17,6 @@ eventHub.addEventListener("taskStateChanged", customEvent => {
     tasks = useTasks()
     findFriends()
     render()
-    newTaskForm()
 })
 eventHub.addEventListener("userFriendsStateChanged", () => {
     userFriends = useUserFriends()

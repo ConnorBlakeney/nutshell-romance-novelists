@@ -3,6 +3,7 @@ import {getWeatherData } from "../weather/WeatherProvider.js"
 import { NewsHTMLConverter } from "./NewsHTMLGenerator.js"
 import { getUserFriends, useUserFriends} from "../users/usersDataProvider.js"
 
+
 const contentTarget = document.querySelector(".newsContainer")
 const eventHub = document.querySelector(".container")
 

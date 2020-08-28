@@ -28,11 +28,8 @@ eventHub.addEventListener("userFriendsStateChanged", () => {
 
 const render = () => {
         //loop through entries array returning each entry as passed through converter function
-        // let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
+        let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
 
-        // const taskFilteredMatch = tasksArray.filter(task => task.userId === currentUserId)
-        // const taskFilteredNoMatch = tasksArray.filter(task => task.userId !== currentUserId)
-        
         // contentTarget.innerHTML = taskFilteredMatch.map(
         //     (currentTaskObj) => {
         //         return TaskHTMLConverter(currentTaskObj) 
@@ -45,11 +42,22 @@ const render = () => {
         //     return TaskHTMLConverter(currentTaskObj) 
         //         }
         // ).join("")
-        const allTasksTurnedIntoHTML = friendsTasks.map(task => {
+
+        const taskFilteredMatch = tasks.filter(task => task.userId === currentUserId)
+        const taskFilteredNoMatch = tasks.filter(task => task.userId !== currentUserId)
+        
+        const allTasksTurnedIntoHTML = taskFilteredMatch.map(task => {
+        return TaskHTMLConverter(task)
+        }).join("")
+
+        const allFriendTasksTurnedIntoHTML = taskFilteredNoMatch.map(task => {
         return TaskHTMLConverter(task)
         }).join("")
 
         contentTarget.innerHTML = allTasksTurnedIntoHTML
+
+        let contentFriendTarget = document.querySelector(".friendsTasksCheckList")
+        contentFriendTarget.innerHTML = allFriendTasksTurnedIntoHTML
          
         }        
 

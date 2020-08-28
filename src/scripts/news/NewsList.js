@@ -1,6 +1,6 @@
 import { getNews, useNews, deleteNews} from "./NewsProvider.js"
 import {getWeatherData } from "../weather/WeatherProvider.js"
-import { NewsHTMLConverter } from "./HomeHTMLGenerator.js"
+import { NewsHTMLConverter } from "./NewsHTMLGenerator.js"
 import { getUserFriends, useUserFriends} from "../users/usersDataProvider.js"
 
 const contentTarget = document.querySelector(".newsContainer")

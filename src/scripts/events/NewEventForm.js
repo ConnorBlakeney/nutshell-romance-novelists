@@ -33,8 +33,12 @@ export const newEventForm = () => {
 const render = () => {
     contentTarget.innerHTML = `
     <section class="newEventForm">
+        <h3> Create a new event </h3>
+        
         <input type="text" id="event--name" placeholder="Enter event name"/>
+        <label for="event--date">Event Date</label>
         <input type="date" name="eventDate" id="event--date"/>
+        <label for="event--time">Event Time</label>
         <input type="time" name="eventTime" id="event--time"/>
         <input type="text" id="event--location" placeholder="Enter event location"/>
         <textarea id="event--description" placeholder="Event Description"></textarea>
@@ -48,6 +52,7 @@ const render = () => {
 //eventListener that listens for the "Save Button" and updates the database with the new event information
 //this eventListener also updates an event in the database if it is being edited
 eventHub.addEventListener("click", clickEvent => {
+    let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
     if (clickEvent.target.id === "saveEventButton") {
         const eventName = document.querySelector("#event--name")
         const eventTime = document.querySelector("#event--time")
@@ -75,28 +80,35 @@ eventHub.addEventListener("click", clickEvent => {
         const newEventDate = eventDate.value.split("-")
         const parsedDate = `${newEventDate[1]}-${newEventDate[2]}-${newEventDate[0]}`
         const eventId = document.querySelector("#eventId")
+        if(eventTime.value && eventLocation.value && eventDate.value && eventName.value && eventDate.value){
 
-        if (eventId.value === "") {
-            const newEvent = {
-                name: eventName.value,
-                date: parsedDate,
-                time: parsedTime,
-                location: eventLocation.value,
-                description: eventDescription.value
+            if (eventId.value === "") {
+                const newEvent = {
+                    name: eventName.value,
+                    date: parsedDate,
+                    time: parsedTime,
+                    location: eventLocation.value,
+                    description: eventDescription.value,
+                    userId: currentUserId
+                }
+                saveEvent(newEvent)
+                render()
+            } else {
+                const updatedEvent = {
+                    name: eventName.value,
+                    date: parsedDate,
+                    time: parsedTime,
+                    location: eventLocation.value,
+                    description: eventDescription.value,
+                    id: parseInt(eventId.value),
+                    userId: currentUserId
+                }
+                editEvent(updatedEvent)
+                eventId.value = ""
             }
-            saveEvent(newEvent)
-            render()
-        } else {
-            const updatedEvent = {
-                name: eventName.value,
-                date: parsedDate,
-                time: parsedTime,
-                location: eventLocation.value,
-                description: eventDescription.value,
-                id: parseInt(eventId.value)
-            }
-            editEvent(updatedEvent)
-            eventId.value = ""
+
+        }else{
+            window.alert("Please fill in all fields")
         }
 
     }

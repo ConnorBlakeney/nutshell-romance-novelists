@@ -29,19 +29,6 @@ const render = () => {
         //loop through entries array returning each entry as passed through converter function
         let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
 
-        // contentTarget.innerHTML = taskFilteredMatch.map(
-        //     (currentTaskObj) => {
-        //         return TaskHTMLConverter(currentTaskObj) 
-        //         }
-        // ).join("") 
-       
-        // let contentNoMatchTarget = document.querySelector(".friendsTasksCheckList")
-        // contentNoMatchTarget.innerHTML = taskFilteredNoMatch.map(
-        // (currentTaskObj) => {
-        //     return TaskHTMLConverter(currentTaskObj) 
-        //         }
-        // ).join("")
-
         const taskFilteredMatch = tasks.filter(task => task.userId === currentUserId)
         const taskFilteredNoMatch = tasks.filter(task => task.userId !== currentUserId)
         

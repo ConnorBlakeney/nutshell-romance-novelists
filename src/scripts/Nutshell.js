@@ -9,6 +9,8 @@ import {eventsList} from"./events/EventsList.js"
 import{newEventForm} from "./events/NewEventForm.js"
 import messagesAPI from "./messages/messageData.js"
 import messageList from "./messages/messageRenderHTML.js"
+import { logout } from "./auth/LogoutButton.js"
+import { ChatForm } from "./messages/messageEventListeners.js"
 
 
 export const Nutshell = () => {
@@ -19,8 +21,10 @@ export const Nutshell = () => {
     friendList()
     newEventForm()
     eventsList()
+    ChatForm()
+    messagesAPI.messagesGetData().then(() => {messageList()})
+    logout()
 
 }
-    messagesAPI.messagesGetData().then(() => {messageList()})
 
 

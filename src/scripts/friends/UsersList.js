@@ -121,6 +121,7 @@ const render = () => {
     contentTarget.innerHTML =
         `
         <div class="searchform">
+            <h3> Friends </h3>
             <input type="text" id="searchFriends" placeholder="Search All Users">
             <button id="searchFriendsButton">Search</button>
             <div>

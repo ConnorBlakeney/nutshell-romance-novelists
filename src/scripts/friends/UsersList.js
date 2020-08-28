@@ -8,7 +8,7 @@ import { friendHTML } from "./FriendHTML.js"
 
 const contentTarget = document.querySelector(".allUserSearch")
 const eventHub = document.querySelector(".container")
-const currentUserId = parseInt(sessionStorage.getItem("activeUser"))
+
 
 let users = []
 let userFriends =[]
@@ -77,12 +77,20 @@ eventHub.addEventListener("click", event => {
 
 
 const findFriends = () => {
+    let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
 
     let currentRelationships = userFriends.filter(f => {
         if(currentUserId === f.userId || currentUserId === f.friendId ){
             return f
         }
     })
+    for (let i = 0; i < users.length; i ++) {
+        
+        if(users[i].id === currentUserId){
+                users.splice(i, 1)
+
+        }
+    }
     
     friends = currentRelationships.map(r => {
         return users.find(user => {
@@ -94,13 +102,6 @@ const findFriends = () => {
         })
     })
 
-    for (let i = 0; i < users.length; i ++) {
-        
-        if(users[i].id === currentUserId){
-                users.splice(i, 1)
-
-        }
-    }
 
     users = users.map(user => {
         if (friends.includes(user)){

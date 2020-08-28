@@ -21,9 +21,9 @@ export const Nutshell = () => {
     friendList()
     newEventForm()
     eventsList()
+    messagesAPI.messagesGetData().then(() => {messageList()})
     logout()
 
 }
-    messagesAPI.messagesGetData().then(() => {messageList()})
 
 

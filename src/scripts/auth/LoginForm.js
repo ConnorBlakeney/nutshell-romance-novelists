@@ -21,7 +21,6 @@ eventHub.addEventListener("click", e => {
                     if (user.password === password) {
                         sessionStorage.setItem("activeUser", user.id)
                         sessionStorage.setItem("activeUserUsername", user.username)
-                        console.log(user)
                         
                         eventHub.dispatchEvent(new CustomEvent("userAuthenticated"))
                     }

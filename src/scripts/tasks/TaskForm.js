@@ -7,28 +7,28 @@ import { editTasks, saveTasks, deleteTasks, getTasks, useTasks } from "./TaskDat
 const eventHub = document.querySelector(".container")
 let contentTarget = document.querySelector(".tasksContainer")
 
-eventHub.addEventListener("click", (clickEvent) => {
-  if (clickEvent.target.id === "saveNote") {
-    // Make a new object representation of a note
+// eventHub.addEventListener("click", (clickEvent) => {
+//   if (clickEvent.target.id === "saveNote") {
+//     // Make a new object representation of a note
 
-    const taskContent = document.querySelector("#task--content")
-    const taskDeadline = document.querySelector("#task--deadline")
+//     const taskContent = document.querySelector("#task--content")
+//     const taskDeadline = document.querySelector("#task--deadline")
 
-    // const criminalId = parseInt(noteCriminal.value)
+//     // const criminalId = parseInt(noteCriminal.value)
 
-    if (taskId !== 0) {
-      const newTask = {
-      content: taskContent.value,
-      deadline: taskDeadline.value,
-      timestamp: Date.now(),
-    //   userId: parseInt(noteCriminal.value)
-    }
+//     if (taskId !== 0) {
+//       const newTask = {
+//       content: taskContent.value,
+//       deadline: taskDeadline.value,
+//       timestamp: Date.now(),
+//     //   userId: parseInt(noteCriminal.value)
+//     }
 
-    // Change API state and application state
-    saveTasks(newTask)
-    } 
-}
-})
+//     // Change API state and application state
+//     saveTasks(newTask)
+//     } 
+// }
+// })
 
 eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "newTask") {
@@ -75,12 +75,12 @@ eventHub.addEventListener("editButtonClicked", customEvent => {
     id.value = parseInt(taskId)
 })
 
-const render = (tasks) => {
-  let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
-    const task = tasks.map(task => task.userId === currentUserId)
+const render = () => {
+//   let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
+//     const task = tasks.map(task => task.userId === currentUserId)
     
-    for (let i = 0; i < task.length; i++) {
-        if (task[i] === true) {
+//     for (let i = 0; i < task.length; i++) {
+//         if (task[i] === true) {
         contentTarget.innerHTML = `
         <section class="taskForm">
             <label for="task--content">Content</label>
@@ -92,9 +92,10 @@ const render = (tasks) => {
             <input type="hidden" name="taskId" id="taskId" value="">
         </section>
     `
-    } else {
-        contentTarget = document.querySelector(".friendsTasksContainer")
-        contentTarget.innerHTML = `
+    } 
+//  else {
+        let contentFriendTarget = document.querySelector(".friendsTasksContainer")
+        contentFriendTarget.innerHTML = `
         <section class="taskForm">
             <div id="userFriendTasks">Your Friend's Tasks</div>
             <label for="task--content">Content</label>
@@ -105,20 +106,15 @@ const render = (tasks) => {
             <input type="hidden" name="taskId" id="taskId" value="">
         </section>
     `
-    }
+//     }
 
-    }
-    console.log(task)
-}
+//     }
+//     console.log(task)
+// }
 
 export const TaskForm = () => {
-   getTasks()
-    .then(() => {
-        const tasks = useTasks()
-        render(tasks)
-        debugger
-    })
-};
+   render()
+}
 
 // export const TaskForm = () => {
     

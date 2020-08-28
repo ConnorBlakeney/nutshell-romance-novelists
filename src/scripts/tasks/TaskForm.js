@@ -150,15 +150,9 @@ const render = () => {
 //         if (task[i] === true) {
         contentTarget.innerHTML = `
         <section class="taskForm">
-<<<<<<< HEAD
-            <div id="userTasks">Your Tasks</div>
-            <label for="task--content">Content</label>
-            <textarea id="task--content" placeholder="Note text here"></textarea>
-=======
             <h3> Create a new task </h3>
             <label for="task--content">Task</label>
             <textarea id="task--content" placeholder="Task text here"></textarea>
->>>>>>> 30b2013e12cd066c89d773651d2b9ccd05eb13c9
             <label for="task--deadline">Deadline</label>
             <input type="date" id="task--deadline" />
             <button id="newTask1">Save Task</button>

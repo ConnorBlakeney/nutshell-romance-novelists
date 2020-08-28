@@ -26,6 +26,11 @@ export const friendList = () => {
     
 }
 
+ window.addEventListener("storage", () => {
+     friendList()
+    
+})
+
 eventHub.addEventListener("usersStateChanged", () => {
     let newUsers = useUsers()
     users = newUsers.filter(user => users.find(u => u === user))
@@ -42,6 +47,7 @@ eventHub.addEventListener("userFriendsStateChanged", () => {
     render()
     
 })
+
 
 eventHub.addEventListener("click", event => {
     if (event.target.id === "searchFriendsButton"){

@@ -58,7 +58,11 @@ const dispatchUsersStateChangeEvent = () => {
     const userstateChangedEvent = new CustomEvent("usersStateChanged")
 
     eventHub.dispatchEvent(userstateChangedEvent)
+    eventHub.dispatchEvent(userFriendsStateChangedEvent)
+    localStorage.setItem("event", true)
+    localStorage.clear()
 }
+
 
 let userFriends = []
 
@@ -103,4 +107,6 @@ const dispatchUserFriendsStateChangeEvent = () => {
     const userFriendsStateChangedEvent = new CustomEvent("userFriendsStateChanged")
 
     eventHub.dispatchEvent(userFriendsStateChangedEvent)
+    localStorage.setItem("event", true)
+    localStorage.clear()
 }

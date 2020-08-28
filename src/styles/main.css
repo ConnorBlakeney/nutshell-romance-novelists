@@ -26,6 +26,7 @@ textarea {
     width: 10%;
     float: left;
     height: 53rem;
+    margin-left: 2rem;
     
 }
 
@@ -39,8 +40,8 @@ textarea {
     height: 53rem;
     width: fit-content;
     overflow: scroll;
-    margin-right: 20rem;
-    margin-left: 20rem;
+    margin-right: 5rem;
+    margin-left: 5rem;
     
 }
 
@@ -51,6 +52,6 @@ textarea {
     width: 15%;
     float: left;
     height: 53rem;
-    margin-left: 5rem;
+    margin-right: 2rem;
 }
 

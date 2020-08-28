@@ -2,8 +2,6 @@
     /* display: flex; */
     justify-content: center;
     flex: 1;
-    margin-right: 10rem;
-    margin-left: 5rem;
 }
 
 .weatherTitle{

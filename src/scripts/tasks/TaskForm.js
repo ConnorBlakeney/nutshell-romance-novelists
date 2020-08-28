@@ -7,6 +7,8 @@ import { editTasks, saveTasks, deleteTasks, getTasks, useTasks } from "./TaskDat
 const eventHub = document.querySelector(".container")
 let contentTarget = document.querySelector(".tasksContainer")
 
+let tasks = []
+
 // eventHub.addEventListener("click", (clickEvent) => {
 //   if (clickEvent.target.id === "saveNote") {
 //     // Make a new object representation of a note
@@ -33,10 +35,9 @@ let contentTarget = document.querySelector(".tasksContainer")
 eventHub.addEventListener("click", clickEvent => {
     let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
 
-    if (clickEvent.target.id === "newTask") {
+    if (clickEvent.target.id === "newTask1") {
         const taskContent = document.querySelector("#task--content")
         const taskDeadline = document.querySelector("#task--deadline")
-        const taskId = document.querySelector("#taskId")
 
         if (taskContent.value && taskDeadline.value) {
             const taskId = document.querySelector("#taskId")
@@ -62,8 +63,70 @@ eventHub.addEventListener("click", clickEvent => {
                 render()
             }
         }
+    } else if (clickEvent.target.id === "newTask2") {
+        const taskContent = document.querySelector("#task--content2")
+        const taskDeadline = document.querySelector("#task--deadline2")
+
+        if (taskContent.value && taskDeadline.value) {
+            const taskId = document.querySelector("#taskId")
+            if (taskId.value === "") {
+                const newTask = {
+                    content: taskContent.value,
+                    deadline: taskDeadline.value,
+                    userId: tasks.userId,
+                    timestamp: Date.now(),
+                }
+                saveTasks(newTask)
+                render()
+            } else {
+                const updatedTask = {
+                    content: taskContent.value,
+                    deadline: taskDeadline.value,
+                    userId: tasks.userId,
+                    timestamp: Date.now(),
+                    id: parseInt(taskId.value)
+                }
+                editTasks(updatedTask)
+                taskId.value = ""
+                render()
+            }
+        }
     }
 })
+
+// eventHub.addEventListener("click", clickEvent => {
+//     let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
+
+//     if (clickEvent.target.id === "newTask2") {
+//         const taskContent = document.querySelector("#task--content")
+//         const taskDeadline = document.querySelector("#task--deadline")
+
+//         if (taskContent.value && taskDeadline.value) {
+//             const taskId = document.querySelector("#taskId")
+//             if (taskId.value === "") {
+//                 const newTask = {
+//                     content: taskContent.value,
+//                     deadline: taskDeadline.value,
+//                     userId: currentUserId,
+//                     timestamp: Date.now(),
+//                 }
+//                 saveTasks(newTask)
+//                 render()
+//             } else {
+//                 const updatedTask = {
+//                     content: taskContent.value,
+//                     deadline: taskDeadline.value,
+//                     userId: currentUserId,
+//                     timestamp: Date.now(),
+//                     id: parseInt(taskId.value)
+//                 }
+//                 editTasks(updatedTask)
+//                 taskId.value = ""
+//                 render()
+//             }
+//         }
+//     } 
+// })
 
 eventHub.addEventListener("editButtonClicked", customEvent => {
     const allTasks = useTasks()
@@ -85,28 +148,28 @@ const render = () => {
     
 //     for (let i = 0; i < task.length; i++) {
 //         if (task[i] === true) {
-        contentTarget.innerHTML += `
+        contentTarget.innerHTML = `
         <section class="taskForm">
-            <label for="task--content">Content</label>
             <div id="userTasks">Your Tasks</div>
+            <label for="task--content">Content</label>
             <textarea id="task--content" placeholder="Note text here"></textarea>
             <label for="task--deadline">Deadline</label>
             <input type="date" id="task--deadline" />
-            <button id="newTask">Save Task</button>
+            <button id="newTask1">Save Task</button>
             <input type="hidden" name="taskId" id="taskId" value="">
         </section>
     `
     } 
 //  else {
         let contentFriendTarget = document.querySelector(".friendsTasksContainer")
-        contentFriendTarget.innerHTML += `
+        contentFriendTarget.innerHTML = `
         <section class="taskForm">
             <div id="userFriendTasks">Your Friend's Tasks</div>
-            <label for="task--content">Content</label>
-            <textarea id="task--content" placeholder="Note text here"></textarea>
-            <label for="task--deadline">Deadline</label>
-            <input type="date" id="task--deadline" />
-            <button id="newTask">Save Task</button>
+            <label for="task--content2">Content</label>
+            <textarea id="task--content2" placeholder="Note text here"></textarea>
+            <label for="task--deadline2">Deadline</label>
+            <input type="date" id="task--deadline2" />
+            <button id="newTask2">Save Task</button>
             <input type="hidden" name="taskId" id="taskId" value="">
         </section>
     `

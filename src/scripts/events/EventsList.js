@@ -11,9 +11,16 @@ let userFriends = []
 let friendsEvents = []
 
 eventHub.addEventListener("eventStateChanged", customEvent => {
-    const allEvents = useEvents()
-    render(allEvents)
+    events = useEvents()
+    findFriends()
+    render()
     newEventForm()
+})
+eventHub.addEventListener("userFriendsStateChanged", () => {
+    userFriends = useUserFriends()
+    findFriends()
+    render()
+    
 })
 
 export const eventsList = () => {
@@ -37,13 +44,18 @@ const findFriends = () => {
         }
     })
 
-    friendsEvents = currentRelationships.map(r => {
-        return events.find(event => {
-            if(event.userId === r.userId || event.userId === r.friendId){
-                return event
-            }
-        })
+    let friendIds = currentRelationships.map(r => {
+        if(r.userId === currentUserId){
+            return r.friendId
+        }else{
+            return r.userId
+        }
     })
+    
+    friendIds.push(currentUserId)
+    
+
+    friendsEvents = events.filter(event => friendIds.find(id => event.userId === id))
 
 }
 

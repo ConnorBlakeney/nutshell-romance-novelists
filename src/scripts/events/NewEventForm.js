@@ -76,30 +76,35 @@ eventHub.addEventListener("click", clickEvent => {
         const newEventDate = eventDate.value.split("-")
         const parsedDate = `${newEventDate[1]}-${newEventDate[2]}-${newEventDate[0]}`
         const eventId = document.querySelector("#eventId")
+        if(eventTime.value && eventLocation.value && eventDate.value && eventName.value && eventDate.value){
 
-        if (eventId.value === "") {
-            const newEvent = {
-                name: eventName.value,
-                date: parsedDate,
-                time: parsedTime,
-                location: eventLocation.value,
-                description: eventDescription.value,
-                userId: currentUserId
+            if (eventId.value === "") {
+                const newEvent = {
+                    name: eventName.value,
+                    date: parsedDate,
+                    time: parsedTime,
+                    location: eventLocation.value,
+                    description: eventDescription.value,
+                    userId: currentUserId
+                }
+                saveEvent(newEvent)
+                render()
+            } else {
+                const updatedEvent = {
+                    name: eventName.value,
+                    date: parsedDate,
+                    time: parsedTime,
+                    location: eventLocation.value,
+                    description: eventDescription.value,
+                    id: parseInt(eventId.value),
+                    userId: currentUserId
+                }
+                editEvent(updatedEvent)
+                eventId.value = ""
             }
-            saveEvent(newEvent)
-            render()
-        } else {
-            const updatedEvent = {
-                name: eventName.value,
-                date: parsedDate,
-                time: parsedTime,
-                location: eventLocation.value,
-                description: eventDescription.value,
-                id: parseInt(eventId.value),
-                userId: currentUserId
-            }
-            editEvent(updatedEvent)
-            eventId.value = ""
+
+        }else{
+            window.alert("Please fill in all fields")
         }
 
     }

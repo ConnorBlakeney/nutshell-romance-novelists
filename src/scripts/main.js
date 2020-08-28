@@ -1,7 +1,7 @@
 import { LoginForm } from "./auth/LoginForm.js"
 import { Nutshell } from "./Nutshell.js"
 import messageEventListener from "./messages/messageEventListeners.js"
-import { provideContent } from "./auth/contentHTML.js"
+
 
 
 const contentTarget = document.querySelector(".auth--login")

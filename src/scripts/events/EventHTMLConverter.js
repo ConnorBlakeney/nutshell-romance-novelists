@@ -1,4 +1,5 @@
 import {deleteEvent} from "./EventsDataProvider.js"
+import { getUsers, useUsers } from "../users/usersDataProvider.js"
 
 const eventHub = document.querySelector(".container")
 
@@ -29,7 +30,7 @@ eventHub.addEventListener("click", clickEvent => {
 export const eventHTML = (eventObj) => {
     let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
 
-    if (eventObj.id === currentUserId){
+    if (eventObj.userId === currentUserId){
 
         return `
         <section class="event">
@@ -48,6 +49,7 @@ export const eventHTML = (eventObj) => {
     }else{
         return `
         <section class="event friendEvent">
+            <div class="friend--name">${getFriendName(eventObj)}'s event</div>
             <div class="event--name"><i> ${eventObj.name}</i> </div>
             <div id="event--date"><i> ${eventObj.date} </i></div>
             <div class="event--time"> <i>${eventObj.time}</i> </div>
@@ -60,4 +62,14 @@ export const eventHTML = (eventObj) => {
     }
     
 }
+
+const getFriendName = (eventObj) => {
+   
+    const users = useUsers()
+    const friendObj = users.find(u => u.id === eventObj.userId)
+    const name = friendObj.username
+    console.log(name)
+    return name
+ }
+
 

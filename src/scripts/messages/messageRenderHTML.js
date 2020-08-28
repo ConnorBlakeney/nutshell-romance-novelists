@@ -10,7 +10,8 @@ const messageList = () => {
         //iterate the data
         const convertedMessageObject = messagesComponent.HTMLComponent(messageObject)
 
-        messageLocation.innerHTML += convertedMessageObject
+        messageLocation.innerHTML += 
+        convertedMessageObject
     }
 
     // friendsEventListener()

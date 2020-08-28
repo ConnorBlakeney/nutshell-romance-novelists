@@ -48,6 +48,7 @@ const render = () => {
 //eventListener that listens for the "Save Button" and updates the database with the new event information
 //this eventListener also updates an event in the database if it is being edited
 eventHub.addEventListener("click", clickEvent => {
+    let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
     if (clickEvent.target.id === "saveEventButton") {
         const eventName = document.querySelector("#event--name")
         const eventTime = document.querySelector("#event--time")
@@ -82,7 +83,8 @@ eventHub.addEventListener("click", clickEvent => {
                 date: parsedDate,
                 time: parsedTime,
                 location: eventLocation.value,
-                description: eventDescription.value
+                description: eventDescription.value,
+                userId: currentUserId
             }
             saveEvent(newEvent)
             render()
@@ -93,7 +95,8 @@ eventHub.addEventListener("click", clickEvent => {
                 time: parsedTime,
                 location: eventLocation.value,
                 description: eventDescription.value,
-                id: parseInt(eventId.value)
+                id: parseInt(eventId.value),
+                userId: currentUserId
             }
             editEvent(updatedEvent)
             eventId.value = ""

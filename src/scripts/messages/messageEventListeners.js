@@ -15,7 +15,6 @@ const messageEventListener = () => {
 
     messageEventLocation.addEventListener("click", clickEvent => {
         // message--SubmitButton
-        console.log("clicked")
         if (clickEvent.target.className == "newMessageButton" && !document.querySelector("#hiddenIdValue")) {
             messageInputLocation.innerHTML = messagesComponent.messageInputComponent()
         }
@@ -27,7 +26,6 @@ const messageEventListener = () => {
             const messageInputValue = { "message": inputLocation.value, "userID": userId, "username": username }
             //=========================================================================================================================
             //will need to make sure when testing that each message has a user id to match it to    
-            console.log(messageInputValue)
             messagesAPI.messagePostData(messageInputValue)
                 .then(() => {
                     messagesAPI.messagesGetData().then(() => {
@@ -58,8 +56,6 @@ const messageEventListener = () => {
             const cardEdit = cardEditIDandUser.split("--")[0];
             const cardUserId = cardEditIDandUser.split("--")[1];
             if (cardUserId == userId) {
-                console.log(cardEdit)
-                console.log(cardUserId)
                 messagesAPI.getUserMessageEntry(cardEdit).then((messageObject) => {
                     messagesComponent.messageFactoryInputFunction(messageObject)
                 })

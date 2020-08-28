@@ -44,7 +44,7 @@ body{
     float: left;
     height: 53rem;
     width: fit-content;
-    overflow: scroll;
+    /* overflow: scroll; */
     margin-right: 5rem;
     margin-left: 5rem;
     

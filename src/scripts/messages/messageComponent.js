@@ -1,8 +1,8 @@
 
-const userID = sessionStorage.getItem("activeUser")
-
 const messagesComponent = {
     HTMLComponent: (messageObject) => {
+        const userID = sessionStorage.getItem("activeUser")
+        
         if (messageObject.userID == userID) {
             const messageHtmlString = `<section class="messageObject">
        

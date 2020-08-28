@@ -40,16 +40,21 @@ eventHub.addEventListener("checkButtonClicked", customEvent => {
     if (checkedValue) {
         contentTarget.innerHTML = `<div class"complete">Completed!</div>`
         taskObj.complete = true
-        if (taskObj.complete === true) {
-            checkedValue = true
-        }
+
+        // if (taskObj.complete === true) {
+        //     checkedValue = true
+        // }
+        // maybe use put method to update boolean?
     } else if (checkedValue === false) {
     //   const completeDiv = document.querySelector(".complete")
       contentTarget.innerHTML = TaskList()
       taskObj.complete = false
-      if (taskObj.complete === false) {
-            checkedValue = false
-        }
+
+    //   if (taskObj.complete === false) {
+    //         checkedValue = false
+    //     }
+            // maybe use put method to update boolean?
+
     }
 })
 

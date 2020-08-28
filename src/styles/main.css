@@ -7,13 +7,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap");
 
 
-
-body,
 button,
 input,
 select,
-textarea {
-     color: #b6666f;
+textarea,
+::placeholder{
+    color: #b6666f;
+     font-family: 'Lora', serif;
+     font-size: 1rem;
+     line-height: 1.5;
+}
+body{
+     color: #d1a080;
      font-family: 'Lora', serif;
      font-size: 1rem;
      line-height: 1.5;
@@ -22,39 +27,36 @@ textarea {
  .dashboard--left {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    border: 0.5em solid #e4c2c1;
-    width: 13rem;
+    /* border: 0.5em solid #e4c2c1; */
+    width: 10%;
     float: left;
-    height: 50rem;
+    height: 53rem;
+    margin-left: 2rem;
     
 }
 
 .dashboard--center{
     display: flex;
+    position: relative;
     flex-direction: column;
-    flex: 2;
-    border: 0.5em solid #e4c2c1;
-    width: 13rem;
+    /* border: 0.5em solid #e4c2c1; */
+    width: 75%;
     float: left;
-    height: 50rem;
+    height: 53rem;
     width: fit-content;
+    /* overflow: scroll; */
+    margin-right: 5rem;
+    margin-left: 5rem;
     
 }
 
 .dashboard--right{
     display: flex;
     flex-direction: column;
-    flex: 2;
-    border: 0.5em solid #e4c2c1;
-    width: 13rem;
+    /* border: 0.5em solid #e4c2c1; */
+    width: 15%;
     float: left;
-    height: 50rem;
-    
-}
-
-footer{
-    border: 0.5em solid #e4c2c1;
-    margin-bottom: 0;
+    height: 53rem;
+    margin-right: 2rem;
 }
 

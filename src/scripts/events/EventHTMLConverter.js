@@ -1,3 +1,6 @@
+//author: Samantha Maas
+//purpose: To create the HTML reprsentation for each invididual event. This module also listens for the events attached to the Edit and Delete buttons and updates
+
 import {deleteEvent} from "./EventsDataProvider.js"
 import { getUsers, useUsers } from "../users/usersDataProvider.js"
 

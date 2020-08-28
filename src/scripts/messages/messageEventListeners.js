@@ -91,7 +91,9 @@ const messageEventListener = () => {
 
 const contentTarget = document.querySelector(".messages")
 const render = () => {
-    contentTarget.innerHTML = `Chat<section class="messageObject--section"></section>
+    contentTarget.innerHTML = `
+    <h3> Chat </h3>
+    <section class="messageObject--section"></section>
     <button class="newMessageButton">New</button>
     <section class="messageInput--section"></section>`
   }

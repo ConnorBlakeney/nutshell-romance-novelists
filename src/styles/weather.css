@@ -1,1 +1,19 @@
+.weatherContainer{
+    /* display: flex; */
+    justify-content: center;
+    flex: 1;
+}
 
+.weatherTitle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.forecast--card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

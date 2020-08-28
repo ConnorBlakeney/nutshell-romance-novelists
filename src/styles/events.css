@@ -1,4 +1,18 @@
 textarea {
-    width: 30rem;
+    width: 45rem;
     height: 7rem;
+}
+
+.newEventForm{
+    margin: 0 auto;
+    max-width: 45rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.eventsList{
+    margin: 0 auto;
+    max-width: 45rem;
+    display: flex;
+    flex-direction: column;
 }

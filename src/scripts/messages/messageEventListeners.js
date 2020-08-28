@@ -12,6 +12,7 @@ const messageEventListener = () => {
 
     const messageEventLocation = document.querySelector(".messages")
     const messageInputLocation = document.querySelector(".messageInput--section")
+    // const messageChatEventLocation = document.querySelector(".messageObject--section")
 
     messageEventLocation.addEventListener("click", clickEvent => {
         // message--SubmitButton
@@ -82,6 +83,21 @@ const messageEventListener = () => {
 
     })
 
+    // messageChatEventLocation.addEventListener("messageStateChanged", () => {
+    //     messagesAPI.messagesGetData().then(() => {messageList()})
+    // })
+
 }
 
+const contentTarget = document.querySelector(".messages")
+const render = () => {
+    contentTarget.innerHTML = `Chat<section class="messageObject--section"></section>
+    <button class="newMessageButton">New</button>
+    <section class="messageInput--section"></section>`
+  }
+
 export default messageEventListener
+
+export const ChatForm = () => {
+    render()
+ }

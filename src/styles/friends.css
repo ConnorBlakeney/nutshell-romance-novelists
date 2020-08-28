@@ -1,4 +1,11 @@
-.tasksCheckList{
+.tasksCheckList {
+    margin: 0 auto;
+    max-width: 45rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.friendsTasksCheckList {
     margin: 0 auto;
     max-width: 45rem;
     display: flex;

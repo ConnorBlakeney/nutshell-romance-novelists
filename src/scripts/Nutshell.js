@@ -20,8 +20,9 @@ export const Nutshell = () => {
     friendList()
     newEventForm()
     eventsList()
+    messagesAPI.messagesGetData().then(() => {messageList()})
 
 }
-    messagesAPI.messagesGetData().then(() => {messageList()})
+    
 
 

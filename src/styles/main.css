@@ -22,39 +22,36 @@ textarea {
  .dashboard--left {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    border: 0.5em solid #e4c2c1;
-    width: 13rem;
+    /* border: 0.5em solid #e4c2c1; */
+    width: 10%;
     float: left;
-    height: 50rem;
+    height: 53rem;
     
 }
 
 .dashboard--center{
     display: flex;
+    position: relative;
     flex-direction: column;
-    flex: 2;
-    border: 0.5em solid #e4c2c1;
-    width: 13rem;
+    /* border: 0.5em solid #e4c2c1; */
+    width: 75%;
     float: left;
-    height: 50rem;
+    height: 53rem;
     width: fit-content;
+    overflow: scroll;
+    margin-right: 10rem;
+    margin-left: 5rem;
     
 }
 
 .dashboard--right{
     display: flex;
     flex-direction: column;
-    flex: 2;
-    border: 0.5em solid #e4c2c1;
-    width: 13rem;
+    /* border: 0.5em solid #e4c2c1; */
+    width: 15%;
     float: left;
-    height: 50rem;
-    
-}
-
-footer{
-    border: 0.5em solid #e4c2c1;
-    margin-bottom: 0;
+    height: 53rem;
+    margin-right: 5rem;
+    margin-left: 5rem;
 }
 

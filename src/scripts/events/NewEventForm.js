@@ -33,6 +33,7 @@ export const newEventForm = () => {
 const render = () => {
     contentTarget.innerHTML = `
     <section class="newEventForm">
+        <h3> Create a new event </h3>
         <input type="text" id="event--name" placeholder="Enter event name"/>
         <input type="date" name="eventDate" id="event--date"/>
         <input type="time" name="eventTime" id="event--time"/>

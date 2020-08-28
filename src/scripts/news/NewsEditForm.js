@@ -32,7 +32,7 @@ const render = (id) => {
             const editedDate = document.querySelector(".news--date")
             let newsUserId = parseInt(sessionStorage.getItem("activeUser"))
             if (clickEvent.target.id === ("saveEditedArticle")) {
-                if (editedTitle.value != "" 
+                if (editedTitle.value != ""
                 && editedSynopsis.value != "" 
                 && editedDate.value != ""
                 && editedURL.value != ""

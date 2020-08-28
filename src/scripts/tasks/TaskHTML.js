@@ -27,11 +27,9 @@ eventHub.addEventListener("click", clickEvent => {
 })
 
 eventHub.addEventListener("click", clickEvent => {
-    // const taskDeadline = document.querySelector("#task--content")
 
     if(clickEvent.target.id.startsWith("taskCheck--")){
         const [prompt, id] = clickEvent.target.id.split("--")
-        // const taskComplete = clickEvent.target.id
 
         const customEvent = new CustomEvent("checkButtonClicked", {
             detail: {
@@ -39,27 +37,13 @@ eventHub.addEventListener("click", clickEvent => {
             }
         })
         eventHub.dispatchEvent(customEvent)
-        // console.log(taskComplete)
     }
 })
 
-// const myFunction = (task) => {
-//   // Get the checkbox
-//   var checkBox = document.getElementById(`taskCheck--${task.id}`).checked;
-//   // Get the output text
-//   var text = document.querySelector(".task--deadline").value;
-
-//   // If the checkbox is checked, display the output text
-//   if (checkBox == true){
-//     text.style.display = "Completed!";
-//   } else {
-//     text.style.display = "none";
-//   }
-//     console.log(checkBox)
-// }
-
 export const TaskHTMLConverter = (task) => {
-    if (task.complete) {
+    let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
+    // console.log(currentUserId === task.userId)
+    if (task.complete && currentUserId === task.userId) {
         return `
         <section class="individualTask">
             <input class="checkbox" checked type="checkbox" id="taskCheck--${task.id}" name="task--${task.id}" value="${task.complete}">
@@ -69,7 +53,7 @@ export const TaskHTMLConverter = (task) => {
             <button id="editBtn--${task.id}">Edit</button>
         </section>
         `
-    } else {
+    } else if (!task.complete && currentUserId === task.userId) {
         return `
         <section class="individualTask">
             <input class="checkbox" type="checkbox" id="taskCheck--${task.id}" name="task--${task.id}" value="${task.complete}">
@@ -80,20 +64,29 @@ export const TaskHTMLConverter = (task) => {
         </section>
         `
     }
+     else if (task.complete && !(currentUserId === task.userId)) {
+        return `
+        <section class="individualTask">
+            <input class="checkbox" type="checkbox" checked id="taskCheck--${task.id}" name="task--${task.id}" value="${task.complete}">
+            <label for="task--${task.id}">${task.content}</label><br>
+            <div id= "deadline--${task.id}" class="task--deadline">Completed!</div>
+            <button id="deleteBtn--${task.id}">Delete</button>
+            <button id="editBtn--${task.id}">Edit</button>
+        </section>
+        `
+    } 
+    else {
+        return `
+        <section class="individualTask">
+            <input class="checkbox" type="checkbox" id="taskCheck--${task.id}" name="task--${task.id}" value="${task.complete}">
+            <label for="task--${task.id}">${task.content}</label><br>
+            <div id= "deadline--${task.id}" class="task--deadline">Task Deadline: ${task.deadline}</div>
+            <button id="deleteBtn--${task.id}">Delete</button>
+            <button id="editBtn--${task.id}">Edit</button>
+        </section>
+        `
+    } 
 }
-
-// export const TaskHTMLConverterComplete = (task) => {
-//     return `
-//     <section class="individualTask">
-//         <div class="complete">Complete</div>
-//         <input type="checkbox" id="taskCheck--${task.id}" name="task--${task.id}" value="Task ${task.id}">
-//         <label for="task--${task.id}">${task.content}</label><br>
-//         <div id= "deadline--${task.id}" class="task--deadline">Task Deadline: ${task.deadline}</div>
-//         <button id="deleteBtn--${task.id}">Delete</button>
-//         <button id="editBtn--${task.id}">Edit</button>
-//     </section>
-// `
-// }
 
 // find a way to grab boolean value from checkbox
 // assign that value to complete in tasks database

@@ -3,29 +3,56 @@
 
 import { getTasks, useTasks } from "./TaskDataProvider.js"
 import { TaskHTMLConverter } from "./TaskHTML.js"
-import { getUsers, useUsers } from "../users/usersDataProvider.js";
 import { TaskForm } from "./TaskForm.js";
+import { getUserFriends, getUsers, useUsers, useUserFriends } from "../users/usersDataProvider.js";
 
 const eventHub = document.querySelector(".container")
-const contentTarget = document.querySelector(".tasksCheckList")
+let contentTarget = document.querySelector(".tasksCheckList")
 
-const render = (tasksArray) => {
+let tasks = []
+let userFriends = []
+let friendsTasks = []
+
+eventHub.addEventListener("taskStateChanged", customEvent => {
+    tasks = useTasks()
+    findFriends()
+    render()
+    newTaskForm()
+})
+eventHub.addEventListener("userFriendsStateChanged", () => {
+    userFriends = useUserFriends()
+    findFriends()
+    render()
+    
+})
+
+const render = () => {
         //loop through entries array returning each entry as passed through converter function
-        contentTarget.innerHTML = tasksArray.map(
-            (currentTaskObj) => {
-                return TaskHTMLConverter(currentTaskObj) 
-                }
-        ).join("") //remove commas
-        // inserted function to find specific user, not sure what to do with it yet
-        // const userTask = currentTaskObj.find(
-        //             (user) => {
-        //                 return user.id === currentTaskObject.userId  
-        //             }
-        //         )
+        // let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
+
+        // const taskFilteredMatch = tasksArray.filter(task => task.userId === currentUserId)
+        // const taskFilteredNoMatch = tasksArray.filter(task => task.userId !== currentUserId)
         
-        // DOM reference to where all tasks will be rendered
-        // `${userTask.username}'s Tasks:` + 
-    }
+        // contentTarget.innerHTML = taskFilteredMatch.map(
+        //     (currentTaskObj) => {
+        //         return TaskHTMLConverter(currentTaskObj) 
+        //         }
+        // ).join("") 
+       
+        // let contentNoMatchTarget = document.querySelector(".friendsTasksCheckList")
+        // contentNoMatchTarget.innerHTML = taskFilteredNoMatch.map(
+        // (currentTaskObj) => {
+        //     return TaskHTMLConverter(currentTaskObj) 
+        //         }
+        // ).join("")
+        const allTasksTurnedIntoHTML = friendsTasks.map(task => {
+        return TaskHTMLConverter(task)
+        }).join("")
+
+        contentTarget.innerHTML = allTasksTurnedIntoHTML
+         
+        }        
+
 
 eventHub.addEventListener("checkButtonClicked", customEvent => {
 
@@ -60,10 +87,38 @@ eventHub.addEventListener("checkButtonClicked", customEvent => {
 
 export const TaskList = () => {
     getTasks()
-        .then(() => {
-            const tasks = useTasks()
-            render(tasks)
+    getUsers()
+    getUserFriends()
+        .then (() => {
+            tasks = useTasks()
+            userFriends = useUserFriends()
+            findFriends()
+            render()
         })
+}
+
+const findFriends = () => {
+    let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
+
+    let currentRelationships = userFriends.filter(f => {
+        if(currentUserId === f.userId || currentUserId === f.friendId ){
+            return f
+        }
+    })
+
+    let friendIds = currentRelationships.map(r => {
+        if(r.userId === currentUserId){
+            return r.friendId
+        }else{
+            return r.userId
+        }
+    })
+    
+    friendIds.push(currentUserId)
+    
+
+    friendsTasks = tasks.filter(task => friendIds.find(id => task.userId === id))
+
 }
 
 eventHub.addEventListener("taskStateChanged", () => {

@@ -7,13 +7,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap");
 
 
-
-body,
 button,
 input,
 select,
-textarea {
-     color: #b6666f;
+textarea,
+::placeholder{
+    color: #b6666f;
+     font-family: 'Lora', serif;
+     font-size: 1rem;
+     line-height: 1.5;
+}
+body{
+     color: #d1a080;
      font-family: 'Lora', serif;
      font-size: 1rem;
      line-height: 1.5;

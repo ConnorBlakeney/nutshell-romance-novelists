@@ -34,8 +34,11 @@ const render = () => {
     contentTarget.innerHTML = `
     <section class="newEventForm">
         <h3> Create a new event </h3>
+        
         <input type="text" id="event--name" placeholder="Enter event name"/>
+        <label for="event--date">Event Date</label>
         <input type="date" name="eventDate" id="event--date"/>
+        <label for="event--time">Event Time</label>
         <input type="time" name="eventTime" id="event--time"/>
         <input type="text" id="event--location" placeholder="Enter event location"/>
         <textarea id="event--description" placeholder="Event Description"></textarea>

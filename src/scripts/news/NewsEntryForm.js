@@ -33,9 +33,12 @@ const render = () => {
     contentTarget.innerHTML = `
         <div class="newArticleForm">
             <h3> Save a new Article </h3>
-            <input type="text" id="news--title" placeholder ="Enter a Title for the Story" />
+            <label for="news--title">Article Title</label>
+            <input type="text" id="news--title" placeholder ="" />
             <textarea id="news--synopsis" placeholder="Enter a Brief Synopsis"></textarea>
             <input id="news--URL" placeholder="Enter a URL"></input>
+            news--title
+            <label for="news--date">Today's Date</label>
             <input type="date" id="news--date">
             <button id="saveNews">Save News</button>
         </div>`

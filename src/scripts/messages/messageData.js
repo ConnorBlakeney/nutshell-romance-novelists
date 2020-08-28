@@ -22,6 +22,7 @@ const messagesAPI = {
             body: JSON.stringify(messageObject)
         }
         ).then(response => response.json())
+        // .then(messageStateChangeEvent)
     },
     updateEditMessage: (id, editObject) => {
         return fetch(`${messagesAPI.messageUrl}/${id}`, {
@@ -31,16 +32,25 @@ const messagesAPI = {
             },
             body: JSON.stringify(editObject)
         })
+        // .then(messageStateChangeEvent)
     },
     getUserMessageEntry: (id) => {
         return fetch(`${messagesAPI.messageUrl}/${id}`)
-            .then(response => response.json());
+            .then(response => response.json())
     },
     deletePostData: (id) => {
         return fetch(`${messagesAPI.messageUrl}/${id}`, {
             method: "DELETE"
-        }).then(response => response.json());
+        }).then(response => response.json())
+        // .then(messageStateChangeEvent)
     }
 }
+
+// const eventHub = document.querySelector('.messages')
+// const messageStateChangeEvent = () => {
+//     const messageStateChangedEvent = new CustomEvent("messageStateChanged")
+
+//     eventHub.dispatchEvent(messageStateChangedEvent)
+// }
 
 export default messagesAPI

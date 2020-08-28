@@ -32,17 +32,24 @@ eventHub.addEventListener("checkButtonClicked", customEvent => {
     const allTasks = useTasks()
     const taskId = event.detail.taskId
     const taskObj = allTasks.find(task => task.id === taskId)
+    // console.log(taskId)
 
     const contentTarget = document.querySelector(".task--deadline")
-    const checkedValue = document.querySelector(`.taskCheck--${taskId}`).checked
+    let checkedValue = document.querySelector(`#taskCheck--${taskId}`).checked
 
     if (checkedValue) {
         contentTarget.innerHTML = `<div class"complete">Completed!</div>`
         taskObj.complete = true
-    } else {
+        if (taskObj.complete === true) {
+            checkedValue = true
+        }
+    } else if (checkedValue === false) {
     //   const completeDiv = document.querySelector(".complete")
       contentTarget.innerHTML = TaskList()
       taskObj.complete = false
+      if (taskObj.complete === false) {
+            checkedValue = false
+        }
     }
 })
 

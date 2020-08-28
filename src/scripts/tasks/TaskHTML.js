@@ -39,7 +39,7 @@ eventHub.addEventListener("click", clickEvent => {
             }
         })
         eventHub.dispatchEvent(customEvent)
-        console.log(taskComplete)
+        // console.log(taskComplete)
     }
 })
 

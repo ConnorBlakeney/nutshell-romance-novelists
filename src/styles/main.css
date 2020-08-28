@@ -76,5 +76,28 @@ textarea {
      line-height: 1.5;
  }
 
+ .dashboard--left {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border: 0.5em solid #e4c2c1;
+    width: 13rem;
+    
+}
 
+.dashboard--center{
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    border: 0.5em solid #e4c2c1;
+    width: 13rem;
+    
+}
+
+.dashboard--right{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    
+}
 

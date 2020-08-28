@@ -27,11 +27,11 @@ eventHub.addEventListener("click", clickEvent => {
 })
 
 eventHub.addEventListener("click", clickEvent => {
-    const taskDeadline = document.querySelector("#task--content")
+    // const taskDeadline = document.querySelector("#task--content")
 
     if(clickEvent.target.id.startsWith("taskCheck--")){
         const [prompt, id] = clickEvent.target.id.split("--")
-        const taskComplete = clickEvent.target.id
+        // const taskComplete = clickEvent.target.id
 
         const customEvent = new CustomEvent("checkButtonClicked", {
             detail: {

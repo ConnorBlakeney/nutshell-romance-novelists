@@ -31,14 +31,15 @@ eventHub.addEventListener("click", clickEvent => {
 
     if(clickEvent.target.id.startsWith("taskCheck--")){
         const [prompt, id] = clickEvent.target.id.split("--")
+        const taskComplete = clickEvent.target.id
 
         const customEvent = new CustomEvent("checkButtonClicked", {
             detail: {
                 taskId: parseInt(id),
-                
             }
         })
         eventHub.dispatchEvent(customEvent)
+        console.log(taskComplete)
     }
 })
 
@@ -63,7 +64,7 @@ export const TaskHTMLConverter = (task) => {
         <section class="individualTask">
             <input class="checkbox" checked type="checkbox" id="taskCheck--${task.id}" name="task--${task.id}" value="${task.complete}">
             <label for="task--${task.id}">${task.content}</label><br>
-            <div id= "deadline--${task.id}" class="task--deadline">Task Deadline: ${task.deadline}</div>
+            <div id= "deadline--${task.id}" class="task--deadline">Completed!</div>
             <button id="deleteBtn--${task.id}">Delete</button>
             <button id="editBtn--${task.id}">Edit</button>
         </section>

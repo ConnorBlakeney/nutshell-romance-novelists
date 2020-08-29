@@ -74,5 +74,3 @@ const getFriendName = (eventObj) => {
     console.log(name)
     return name
  }
-
-

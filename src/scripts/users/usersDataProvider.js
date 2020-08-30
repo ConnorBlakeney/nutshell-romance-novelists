@@ -107,6 +107,19 @@ const dispatchUserFriendsStateChangeEvent = () => {
     const userFriendsStateChangedEvent = new CustomEvent("userFriendsStateChanged")
 
     eventHub.dispatchEvent(userFriendsStateChangedEvent)
-    localStorage.setItem("event", true)
-    localStorage.clear()
+    
 }
+
+
+window.addEventListener("storage", () => {
+    const event = localStorage.getItem("event")
+    
+    if (event === "friendUserChanged"){
+        localStorage.clear()
+        getUserFriends()
+        .then(() => {
+    
+            dispatchUserFriendsStateChangeEvent()
+        })
+    }
+})

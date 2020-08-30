@@ -26,10 +26,6 @@ export const friendList = () => {
     
 }
 
- window.addEventListener("storage", () => {
-     friendList()
-    
-})
 
 eventHub.addEventListener("usersStateChanged", () => {
     let newUsers = useUsers()

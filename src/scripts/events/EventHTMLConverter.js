@@ -71,7 +71,6 @@ const getFriendName = (eventObj) => {
     const users = useUsers()
     const friendObj = users.find(u => u.id === eventObj.userId)
     const name = friendObj.username
-    console.log(name)
     return name
  }
 

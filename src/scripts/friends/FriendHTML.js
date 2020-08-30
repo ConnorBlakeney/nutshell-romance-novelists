@@ -44,6 +44,9 @@ eventHub.addEventListener("click", event => {
 
       
         deleteUserFriends(relationshipObj.id)
+        localStorage.setItem("event", "friendUserChanged")
+        
+        
     }
     if (event.target.id === "addFriend"){
 
@@ -52,5 +55,7 @@ eventHub.addEventListener("click", event => {
             friendId: parseInt(event.target.value)
         }
         saveUserFriends(newObj)
+        localStorage.setItem("event", "friendUserChanged")
+
     }
 })

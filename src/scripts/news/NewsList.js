@@ -18,6 +18,8 @@ eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id.startsWith("deleteNews--")) {
         const [prefix, id] = clickEvent.target.id.split("--")
        deleteNews(id)
+       localStorage.setItem("event", "newsChanged")
+
     }
 })
 

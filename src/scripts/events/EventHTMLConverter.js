@@ -12,6 +12,8 @@ eventHub.addEventListener("click", clickEvent => {
         const [prompt, eventId] = clickEvent.target.id.split("--")
 
         deleteEvent(eventId)
+       localStorage.setItem("event", "eventsChanged")
+
     }
 })
 

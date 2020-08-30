@@ -64,6 +64,7 @@ const dispatchUsersStateChangeEvent = () => {
 }
 
 
+
 let userFriends = []
 
 export const useUserFriends = () => {
@@ -120,6 +121,12 @@ window.addEventListener("storage", () => {
         .then(() => {
     
             dispatchUserFriendsStateChangeEvent()
+        })
+    }if(event === "usersChanged"){
+        localStorage.clear()
+        getUsers()
+        .then(() => {
+            dispatchUsersStateChangeEvent()
         })
     }
 })

@@ -19,11 +19,14 @@ eventHub.addEventListener("click", clickEvent => {
             title: newsTitle.value,
             synopsis: newsSynopsis.value,
             url: newsURL.value,
-            date: newsDate.value
+            date: newsDate.value,
+            userId: parseInt(sessionStorage.getItem("activeUser"))
         }
 
         saveNews(newNews)
         render()
+        localStorage.setItem("event", "newsChanged")
+
 }
 else(window.alert("One or more of your entry fields is blank."))
 }

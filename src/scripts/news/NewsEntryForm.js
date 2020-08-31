@@ -26,6 +26,8 @@ eventHub.addEventListener("click", clickEvent => {
 
         saveNews(newNews)
         render()
+        localStorage.setItem("event", "newsChanged")
+
 }
 else(window.alert("One or more of your entry fields is blank."))
 }

@@ -26,6 +26,8 @@ eventHub.addEventListener("click", (clickEvent) => {
 
     // Change API state and application state
     saveTasks(newTask)
+    localStorage.setItem("event", "tasksChanged")
+
     } 
 }
 })
@@ -46,6 +48,8 @@ eventHub.addEventListener("click", clickEvent => {
                 }
                 saveTasks(newTask)
                 render()
+                localStorage.setItem("event", "tasksChanged")
+
             } else {
                 const updatedTask = {
                     content: taskContent.value,
@@ -56,6 +60,8 @@ eventHub.addEventListener("click", clickEvent => {
                 editTasks(updatedTask)
                 taskId.value = ""
                 render()
+                localStorage.setItem("event", "tasksChanged")
+
             }
         }
     }

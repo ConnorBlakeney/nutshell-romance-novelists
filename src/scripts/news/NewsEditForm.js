@@ -49,6 +49,8 @@ const render = (id) => {
             foundNews.date = editedDate.value
             foundNews.userId = newsUser
             editNews(foundNews)
+            localStorage.setItem("event", "newsChanged")
+
         })  
     }
     else{window.alert("One or more of your entry fields is blank.")}

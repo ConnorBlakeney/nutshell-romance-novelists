@@ -25,14 +25,6 @@ eventHub.addEventListener("userFriendsStateChanged", () => {
     
 })
 
-eventHub.addEventListener("click", clickEvent => {
-    if (clickEvent.target.id.startsWith("complete--")) {
-        const [promt, id] = clickEvent.target.id.split("--")
-        patchTask(parseInt(id))
-    }
-
-})
-
 const render = () => {
         //loop through entries array returning each entry as passed through converter function
         let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
@@ -60,16 +52,16 @@ const render = () => {
 eventHub.addEventListener("checkButtonClicked", customEvent => {
 
     const allTasks = useTasks()
-    const taskId = event.detail.taskId
+    const taskId = customEvent.detail.taskId
     const taskObj = allTasks.find(task => task.id === taskId)
     // console.log(taskId)
 
-    const contentTarget = document.querySelector(".task--deadline")
+    const contentTarget = document.querySelector(`#deadline--${taskId}`)
     let checkedValue = document.querySelector(`#taskCheck--${taskId}`).checked
 
     if (checkedValue) {
         contentTarget.innerHTML = `<div class"complete" id="complete--"${taskId}>Completed!</div>`
-        taskObj.complete = true
+        patchTask(taskId)
 
         // if (taskObj.complete === true) {
         //     checkedValue = true
@@ -78,7 +70,7 @@ eventHub.addEventListener("checkButtonClicked", customEvent => {
     } else if (checkedValue === false) {
     //   const completeDiv = document.querySelector(".complete")
       contentTarget.innerHTML = TaskList()
-      taskObj.complete = false
+      restoreTask(taskId)
 
     //   if (taskObj.complete === false) {
     //         checkedValue = false
@@ -87,6 +79,22 @@ eventHub.addEventListener("checkButtonClicked", customEvent => {
 
     }
 })
+
+// eventHub.addEventListener("checkButtonClick", customEvent => {
+//     if (customEvent.target.querySelector(`#taskCheck--${taskId}`)) {
+
+//         const allTasks = useTasks()
+//         const taskId = event.detail.taskId
+//         const taskObj = allTasks.find(task => task.id === taskId)
+
+//        if (taskObj.complete === false) {
+//          patchTask(taskId)
+//     } else {
+//         restoreTask(taskId)
+//     }
+//     }
+
+// })
 
 export const TaskList = () => {
     getTasks()

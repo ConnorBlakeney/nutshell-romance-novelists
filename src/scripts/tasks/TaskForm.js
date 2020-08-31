@@ -2,7 +2,7 @@
 // purpose: this module is used to establish the Task HTML form and to 
 // maintain and alter its state with create, edit, and delete functionality
 
-import { editTasks, saveTasks, deleteTasks, getTasks, useTasks } from "./TaskDataProvider.js";
+import { editTasks, saveTasks, getTasks, useTasks } from "./TaskDataProvider.js";
 
 const eventHub = document.querySelector(".container")
 let contentTarget = document.querySelector(".tasksContainer")
@@ -126,7 +126,7 @@ const render = () => {
             <input type="hidden" name="taskId" id="taskId" value="">
         </section>
     `
-    } 
+    
 //  else {
         let contentFriendTarget = document.querySelector(".friendsTasksContainer")
         contentFriendTarget.innerHTML = `
@@ -136,11 +136,10 @@ const render = () => {
             <input type="hidden" name="taskId" id="taskId" value="">
         </section>
     `
-//     }
+}
 
-//     }
-//     console.log(task)
-// }
+    
+
 
 export const TaskForm = () => {
    render()

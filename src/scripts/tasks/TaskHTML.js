@@ -1,7 +1,9 @@
 // author: Connor Blakeney
 // purpose: module converts tasks into HTML format and creates click
 // events for delete and edit
-import { deleteTasks, editTasks, getTasks, useTasks } from "./TaskDataProvider.js";
+import { deleteTasks, restoreTask } from "./TaskDataProvider.js";
+
+let tasks = []
 
 const eventHub = document.querySelector(".container")
 
@@ -26,6 +28,16 @@ eventHub.addEventListener("click", clickEvent => {
     }
 })
 
+// eventHub.addEventListener("click", clickEvent => {
+//     if (clickEvent.target.id.startsWith("taskCheck--")) {
+//         const [promt, id] = clickEvent.target.id.split("--")
+//         patchTask(parseInt(id))
+
+
+//     }
+
+// })
+
 eventHub.addEventListener("click", clickEvent => {
 
     if(clickEvent.target.id.startsWith("taskCheck--")){
@@ -39,6 +51,16 @@ eventHub.addEventListener("click", clickEvent => {
         eventHub.dispatchEvent(customEvent)
     }
 })
+
+// eventHub.addEventListener("click", clickEvent => {
+//     if (clickEvent.target.id.startsWith("complete--")) {
+//         const [promt, id] = clickEvent.target.id.split("--")
+
+        
+//         patchTask(parseInt(id))
+//     }
+
+// })
 
 export const TaskHTMLConverter = (task) => {
     let currentUserId = parseInt(sessionStorage.getItem("activeUser"))

@@ -82,7 +82,7 @@ export const patchTask = (task) => {
     const completedTask = {
         complete: true
     }
-    return fetch(`http://localhost:8088/tasks/${task.id}`, {
+    return fetch(`http://localhost:8088/tasks/${task.id}}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"

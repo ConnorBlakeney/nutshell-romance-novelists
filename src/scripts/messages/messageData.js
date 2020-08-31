@@ -1,3 +1,5 @@
+// Created by Brett Derrington
+
 // API calls for messages
 const messagesAPI = {
     messagesDataArray: [],

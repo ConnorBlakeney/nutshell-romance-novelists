@@ -1,3 +1,4 @@
+// Created by Brett Derrington
 
 const messagesComponent = {
     HTMLComponent: (messageObject) => {

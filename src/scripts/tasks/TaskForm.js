@@ -110,7 +110,7 @@ const render = () => {
 
         contentFriendTarget.innerHTML = `
         <section class="taskForm">
-            
+            <div id"friendsTaskForm">Your Friend's Tasks</div>
             
             <input type="hidden" name="taskId" id="taskId" value="">
         </section>

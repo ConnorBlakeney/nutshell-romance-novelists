@@ -2,6 +2,7 @@
 // purpose: module converts tasks into HTML format and creates click
 // events for delete and edit
 import { deleteTasks } from "./TaskDataProvider.js";
+import { useUsers } from "../users/usersDataProvider.js";
 
 const eventHub = document.querySelector(".container")
 
@@ -53,6 +54,7 @@ export const TaskHTMLConverter = (task) => {
      else if (task.complete && !(currentUserId === task.userId)) {
         return `
         <section class="individualTask">
+            <div id="taskFriend--${task.id}">${getFriendName(task)}'s Tasks</div>
             <div id="task--${task.id}">${task.content}</div><br>
             <div id= "deadline--${task.id}" class="task--deadline">Completed!</div>
         </section>
@@ -61,9 +63,19 @@ export const TaskHTMLConverter = (task) => {
     else {
         return `
         <section class="individualTask">
+            <div id="taskFriend--${task.id}">${getFriendName(task)}'s Tasks</div>
             <div id="task--${task.id}">${task.content}</div>
             <div id= "deadline--${task.id}" class="task--deadline">Task Deadline: ${task.deadline}</div>
         </section>
         `
     } 
+}
+
+const getFriendName = (taskObj) => {
+
+    
+    const users = useUsers()
+    const friendObj = users.find(u => u.id === taskObj.userId)
+    const name = friendObj.username
+    return name
 }

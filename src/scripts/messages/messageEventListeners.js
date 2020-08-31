@@ -1,6 +1,7 @@
 import messagesComponent from "./messageComponent.js"
 import messagesAPI from "./messageData.js"
 import messageList from "./messageRenderHTML.js"
+import { useUsers } from "../users/usersDataProvider.js"
 
 
 
@@ -24,7 +25,28 @@ const messageEventListener = () => {
         //must have the hidden value not be on the page in order to not have conflicts
         else if (clickEvent.target.className == "message--SubmitButton" && !document.querySelector("#hiddenIdValue")) {
             const inputLocation = document.querySelector(".message--Input")
-            const messageInputValue = { "message": inputLocation.value, "userID": userId, "username": username }
+            const i = inputLocation.value.search("@")
+            let found = false
+            let privateUserId = 0
+            let username=""
+          
+            if(i >= 0){
+                for(i++; !found; i++){
+                    if(inputLocation.value[i] != " "){
+                        username.concat(inputLocation.vlaue[i])
+                    }else{
+                        found = true
+                    }
+                }
+            }
+            const users = useUsers()
+            users.forEach(u => {
+                if (username === u.username){
+                    privateUserId = u.id
+                }
+            })
+
+            const messageInputValue = { "message": inputLocation.value, "userID": userId, "username": username, "privatUserId": privateUserId }
             //=========================================================================================================================
             //will need to make sure when testing that each message has a user id to match it to    
             messagesAPI.messagePostData(messageInputValue)

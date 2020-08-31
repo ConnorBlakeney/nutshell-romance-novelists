@@ -96,6 +96,8 @@ eventHub.addEventListener("click", clickEvent => {
                 }
                 saveEvent(newEvent)
                 render()
+                localStorage.setItem("event", "eventsChanged")
+
             } else {
                 const updatedEvent = {
                     name: eventName.value,
@@ -108,6 +110,8 @@ eventHub.addEventListener("click", clickEvent => {
                 }
                 editEvent(updatedEvent)
                 eventId.value = ""
+                localStorage.setItem("event", "eventsChanged")
+
             }
 
         }else{

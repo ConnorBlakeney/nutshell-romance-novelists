@@ -64,3 +64,46 @@ export const useTasks = () => {
     )
     return sortedByDate
 }
+
+window.addEventListener("storage", () => {
+    const event = localStorage.getItem("event")
+    
+    if (event === "tasksChanged"){
+        localStorage.clear()
+        getTasks()
+        .then(() => {
+            dispatchStateChangeEvent()
+        })
+
+    }
+})
+
+export const patchTask = (taskId) => {
+    const completedTask = {
+        complete: true
+    }
+    return fetch(`http://localhost:8088/tasks/${taskId}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(completedTask)
+    })
+    .then(getTasks)
+    .then(dispatchStateChangeEvent)
+}
+
+export const restoreTask = (taskId) => {
+    const restoredTask = {
+        complete: false
+    }
+    return fetch(`http://localhost:8088/tasks/${taskId}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(restoredTask)
+    })
+    .then(getTasks)
+    .then(dispatchStateChangeEvent)
+}

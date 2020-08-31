@@ -1,16 +1,15 @@
 /* author: Samantha Maas
 purpose: styling for the user task component */
 
-.taskForm{
+/* .taskForm{
     margin: 0 auto;
     max-width: 45rem;
     display: flex;
     flex-direction: column;
-}
+} */
 
 .tasksCheckList{
     margin: 0 auto;
     max-width: 45rem;
-    display: flex;
     flex-direction: column;
 }

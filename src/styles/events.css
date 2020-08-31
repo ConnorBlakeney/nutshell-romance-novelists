@@ -11,6 +11,7 @@ textarea {
     max-width: 45rem;
     display: flex;
     flex-direction: column;
+    border-top: double #fef2f2 1rem
 }
 
 .eventsList{
@@ -23,4 +24,5 @@ textarea {
 .nextEvent{
     background-color: #fef2f2;
     font-size: x-large;
+    font: italic;
 }

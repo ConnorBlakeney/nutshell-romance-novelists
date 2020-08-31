@@ -12,11 +12,12 @@ const messagesComponent = {
        <button id="message--DeleteButton--${messageObject.id}--${messageObject.userID}">Delete</button>
        </section>
       
-       </section>`
+       </section>
+       <br>`
 
             return messageHtmlString
         }
-        else {
+        else if (messageObject.privateUserId === parseInt(userID) || messageObject.privateUserId === 0) {
             return `<section class="messageObject">
        
           <section id="messageObject--${messageObject.id}" class="messageObject">
@@ -24,6 +25,8 @@ const messagesComponent = {
           </section>
          
           </section>`
+        }else{
+            return ''
         }
     },
     //populates a text box to submit a message

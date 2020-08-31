@@ -15,6 +15,8 @@ eventHub.addEventListener("click", clickEvent => {
         const [prompt, eventId] = clickEvent.target.id.split("--")
 
         deleteEvent(eventId)
+       localStorage.setItem("event", "eventsChanged")
+
     }
 })
 
@@ -52,6 +54,7 @@ export const eventHTML = (eventObj ) => {
                 <button class="button" id="weatherButton--${eventObj.id}"> Show Weather </button>
                 <button class="button" id="editEventButton--${eventObj.id}"> Edit </button>
                 <button class="button" id="deleteEventButton--${eventObj.id}"> Delete </button>
+                <br><br/>
                
             </section>`
         } else {
@@ -66,6 +69,7 @@ export const eventHTML = (eventObj ) => {
                 <button class="button" id="weatherButton--${eventObj.id}"> Show Weather </button>
                 <button class="button" id="editEventButton--${eventObj.id}"> Edit </button>
                 <button class="button" id="deleteEventButton--${eventObj.id}"> Delete </button>
+                <br><br/>
                
             </section>`
         }
@@ -82,6 +86,7 @@ export const eventHTML = (eventObj ) => {
             <div class="eventDescription"><i>Description: ${eventObj.description}</i></div>
     
             <button class="button" id="weatherButton--${eventObj.id}"> Show Weather </button>
+            <br><br/>
            
         </section>`
     }
@@ -93,7 +98,6 @@ const getFriendName = (eventObj) => {
     const users = useUsers()
     const friendObj = users.find(u => u.id === eventObj.userId)
     const name = friendObj.username
-    console.log(name)
     return name
 }
 

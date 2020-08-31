@@ -37,7 +37,6 @@ body{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    /* border: 0.5em solid #e4c2c1; */
     width: 10%;
     float: left;
     height: 53rem;
@@ -47,16 +46,12 @@ body{
 }
 
 .dashboard--center{
-    display: flex;
-    
     position: relative;
     flex-direction: column;
-    /* border: 0.5em solid #e4c2c1; */
     width: 75%;
     float: left;
     height: 53rem;
     width: fit-content;
-    /* overflow: scroll; */
     margin-right: 5rem;
     margin-left: 5rem;
     
@@ -66,7 +61,6 @@ body{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    /* border: 0.5em solid #e4c2c1; */
     width: 15%;
     float: left;
     height: 53rem;

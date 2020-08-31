@@ -1,6 +1,7 @@
 import messagesComponent from "./messageComponent.js"
 import messagesAPI from "./messageData.js"
 import messageList from "./messageRenderHTML.js"
+import { useUsers } from "../users/usersDataProvider.js"
 
 
 
@@ -24,11 +25,35 @@ const messageEventListener = () => {
         //must have the hidden value not be on the page in order to not have conflicts
         else if (clickEvent.target.className == "message--SubmitButton" && !document.querySelector("#hiddenIdValue")) {
             const inputLocation = document.querySelector(".message--Input")
-            const messageInputValue = { "message": inputLocation.value, "userID": userId, "username": username }
+            let i = inputLocation.value.search("@")
+            let found = false
+            let privateUserId = 0
+            let privateUser = ""
+          
+            if(i >= 0){
+                for(i++; found != true; i++){
+                    if(inputLocation.value[i] != " " && inputLocation.value[i] != undefined){
+                        privateUser = privateUser.concat(inputLocation.value[i])
+                    }else{
+                        found = true
+                    }
+                }
+            }
+
+            const users = useUsers()
+            users.forEach(u => {
+                if (privateUser === u.username){
+                    privateUserId = u.id
+                }
+            })
+
+            const messageInputValue = { "message": inputLocation.value, "userID": userId, "username": username, "privateUserId": privateUserId }
             //=========================================================================================================================
             //will need to make sure when testing that each message has a user id to match it to    
             messagesAPI.messagePostData(messageInputValue)
                 .then(() => {
+                    localStorage.setItem("event", "messageChanged")
+
                     messagesAPI.messagesGetData().then(() => {
                         messageList()
                         messageInputLocation.innerHTML = ""
@@ -44,6 +69,8 @@ const messageEventListener = () => {
             const cardUserID = cardDeleteIdAndUserId.split("--")[1]
             if (userId == cardUserID) {
                 messagesAPI.deletePostData(cardDelete).then(() => {
+                    localStorage.setItem("event", "messageChanged")
+
                     messagesAPI.messagesGetData().then(() => {
                         messageList()
 
@@ -59,6 +86,8 @@ const messageEventListener = () => {
             if (cardUserId == userId) {
                 messagesAPI.getUserMessageEntry(cardEdit).then((messageObject) => {
                     messagesComponent.messageFactoryInputFunction(messageObject)
+                    localStorage.setItem("event", "messageChanged")
+
                 })
             }
         }
@@ -70,6 +99,7 @@ const messageEventListener = () => {
                 const messageObjectID = document.querySelector("#hiddenIdValue").value
                 messagesAPI.updateEditMessage(messageObjectID, { "message": editCheck.value, "userID": userId, "username": username })
                     .then(() => {
+                        localStorage.setItem("event", "messageChanged")
                         messagesAPI.messagesGetData().then(() => {
                             messageList()
 
@@ -92,10 +122,13 @@ const messageEventListener = () => {
 const contentTarget = document.querySelector(".messages")
 const render = () => {
     contentTarget.innerHTML = `
+    <section class="chatBorder">
     <h3> Chat </h3>
     <section class="messageObject--section"></section>
     <button class="newMessageButton">New</button>
-    <section class="messageInput--section"></section>`
+    <section class="messageInput--section"></section>
+    </section>`
+    
   }
 
 export default messageEventListener
@@ -103,3 +136,15 @@ export default messageEventListener
 export const ChatForm = () => {
     render()
  }
+
+ window.addEventListener("storage", () => {
+    const event = localStorage.getItem("event")
+    
+    if (event === "messageChanged"){
+        localStorage.clear()
+        messagesAPI.messagesGetData().then(() => {
+            messageList()
+
+        })
+    }
+})

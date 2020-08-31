@@ -9,8 +9,7 @@ eventHub.addEventListener("click", clickEvent => {
         const newsSynopsis = document.querySelector("#news--synopsis")
         const newsURL = document.querySelector("#news--URL")
         const newsDate = new Date().toLocaleDateString()
-        
-
+        const newsUser = parseInt(sessionStorage.getItem("activeUser"))
         if (newsTitle.value != "" 
         && newsSynopsis.value != "" 
         && newsDate.value != ""
@@ -21,11 +20,15 @@ eventHub.addEventListener("click", clickEvent => {
             title: newsTitle.value,
             synopsis: newsSynopsis.value,
             url: newsURL.value,
-            date: newsDate
+            date: newsDate,
+            userId: newsUser
+
         }
 
         saveNews(newNews)
         render()
+        localStorage.setItem("event", "newsChanged")
+
 }
 else(window.alert("One or more of your entry fields is blank."))
 }

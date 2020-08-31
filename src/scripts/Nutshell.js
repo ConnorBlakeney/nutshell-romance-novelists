@@ -13,7 +13,6 @@ import { logout } from "./auth/LogoutButton.js"
 import { ChatForm } from "./messages/messageEventListeners.js"
 
 
-
 export const Nutshell = () => {
     NewsList()
     NewsForm()

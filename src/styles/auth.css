@@ -6,6 +6,7 @@ purpose: styling for the authentication section (login and user register) */
 .header {
     display: flex;
     flex-wrap: wrap;
+    
 }
 
 .headerBackground {
@@ -18,6 +19,12 @@ purpose: styling for the authentication section (login and user register) */
     opacity: 1.5;
 }
 
+.auth{
+    display: flex;
+    justify-content: center;
+    
+}
+
 .logout{
     position: fixed;
 }
@@ -26,18 +33,23 @@ purpose: styling for the authentication section (login and user register) */
 .auth--login{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+}
+.auth--register{
+
+    justify-content: center;
 }
 
 .login{
     border: solid #e4c2c1;
-    height: 12em;
-    width: 15em;
-    padding: 0.5em;
+    height: 15em;
+    width: 20em;
+    padding: 1em;
     text-align: center;
     text-align-last: center;
     margin-left: auto;
     margin-right: auto;
-    justify-content: center;
+
 }
 
 .register {
@@ -49,7 +61,6 @@ purpose: styling for the authentication section (login and user register) */
    text-align-last: center;
    margin-left: auto;
    margin-right: auto;
-    left: 45%;
 }
 
 

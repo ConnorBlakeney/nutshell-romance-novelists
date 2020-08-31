@@ -63,7 +63,7 @@ const render = () => {
             <input id="register--email" type="text" placeholder="Enter your email address">
             <input id="register--password" type="password" placeholder="Enter your password">
             <input id="register--password-verify" type="password" placeholder="Verify your password">
-
+            <br>
             <button id="register--button">Register</button>
         </section>
     `

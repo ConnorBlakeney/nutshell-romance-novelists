@@ -43,19 +43,13 @@ export const NewsList = () => {
         })
 
         const foundNews = userFriends.map(relationship => {
-            return allNews.find(news => {
+            return allNews.filter(news => {
                 if (news.userId === relationship.friendId || news.userId === relationship.userId){
-                    if (news.userId != currentUserId){
+                    if(news.userId != currentUserId){
                     return news
                     }
                 }
             })
-        })
-
-        const friendNews = foundNews.filter(stories => {
-            if (stories != undefined){
-                return stories
-            }
         })
 
         const userNews = allNews.filter(stories => {
@@ -63,7 +57,15 @@ export const NewsList = () => {
                 return stories
             }
         })
-        render(friendNews, userNews)
+        
+        const flattenedNews = foundNews.flat(1)
+        const toSort = flattenedNews.concat(userNews)
+        const sortedNews = toSort.sort(
+            (currentEntry, nextEntry) =>
+                Date.parse(currentEntry.date) - Date.parse(nextEntry.date)
+        )
+   
+        render(sortedNews)
         })
 
     })
@@ -71,13 +73,15 @@ export const NewsList = () => {
     })
     }     
 
-    const render = (friendNews, userNews) => {
+    const render = (sortedNews) => {
+        let whose = ""
         let itemHTML = ""
-    userNews.map(item => {
-        itemHTML += NewsHTMLConverter("yours", item)
-    })
-    friendNews.map(item => {
-        itemHTML += NewsHTMLConverter("theirs", item)
+    sortedNews.map(item => {
+        if (item.userId === parseInt(sessionStorage.getItem("activeUser"))){
+        whose = "yours"
+        }
+        else{whose = "theirs"}
+        itemHTML += NewsHTMLConverter(whose, item)
     })
         contentTarget.innerHTML = itemHTML
-    }
+    }        

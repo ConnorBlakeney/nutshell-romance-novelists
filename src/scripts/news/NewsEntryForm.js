@@ -21,11 +21,7 @@ eventHub.addEventListener("click", clickEvent => {
             synopsis: newsSynopsis.value,
             url: newsURL.value,
             date: newsDate.value,
-<<<<<<< HEAD
-            userId: parseInt(sessionStorage.getItem("activeUser"))
-=======
             userId: newsUserId
->>>>>>> master
         }
 
         saveNews(newNews)

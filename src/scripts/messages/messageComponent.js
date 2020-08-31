@@ -24,6 +24,8 @@ const messagesComponent = {
           </section>
          
           </section>`
+        }else{
+            return ''
         }
     },
     //populates a text box to submit a message

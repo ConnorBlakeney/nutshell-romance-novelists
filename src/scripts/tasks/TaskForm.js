@@ -6,6 +6,8 @@ import { editTasks, saveTasks, getTasks, useTasks } from "./TaskDataProvider.js"
 
 const eventHub = document.querySelector(".container")
 let contentTarget = document.querySelector(".tasksContainer")
+let contentFriendTarget = document.querySelector(".friendsTasksContainer")
+
 
 let tasks = []
 
@@ -128,7 +130,6 @@ const render = () => {
     `
     
 //  else {
-        let contentFriendTarget = document.querySelector(".friendsTasksContainer")
         contentFriendTarget.innerHTML = `
         <section class="taskForm">
             <div id="userFriendTasks">Your Friend's Tasks</div>

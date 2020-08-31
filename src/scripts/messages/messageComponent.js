@@ -12,7 +12,8 @@ const messagesComponent = {
        <button id="message--DeleteButton--${messageObject.id}--${messageObject.userID}">Delete</button>
        </section>
       
-       </section>`
+       </section>
+       <br>`
 
             return messageHtmlString
         }

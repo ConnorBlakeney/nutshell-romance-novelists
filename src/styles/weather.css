@@ -1,7 +1,11 @@
+/* author: Samantha Maas
+purpose: styling for the current weather component */
+
 .weatherContainer{
     /* display: flex; */
-    justify-content: center;
+    
     flex: 1;
+    justify-content: space-between;
 }
 
 .weatherTitle{

@@ -77,5 +77,5 @@ export const NewsList = () => {
         else{whose = "theirs"}
         itemHTML += NewsHTMLConverter(whose, item)
     })
-        contentTarget.innerHTML = itemHTML
+        contentTarget.innerHTML = ` <h3> Articles </h3> ${itemHTML}`
     }        

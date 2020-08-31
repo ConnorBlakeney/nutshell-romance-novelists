@@ -11,9 +11,11 @@ import messagesAPI from "./messages/messageData.js"
 import messageList from "./messages/messageRenderHTML.js"
 import { logout } from "./auth/LogoutButton.js"
 import { ChatForm } from "./messages/messageEventListeners.js"
+import{welcome} from "./welcome/WelcomeHTML.js"
 
 
 export const Nutshell = () => {
+    welcome()
     NewsList()
     NewsForm()
     TaskForm()

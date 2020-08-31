@@ -8,7 +8,7 @@ export const NewsHTMLConverter = (type, newsObject) => {
     if (type === "yours"){
     return `
         <article class="yours">
-        <div class="friend--name">${getFriendName(newsObject)}'s event</div>
+        <div class="friend--name">${getFriendName(newsObject)}'s Article</div>
         <section class="newsCard--${newsObject.id}">
         <div class="news--title">Title: ${ newsObject.title }</div>
         <div class="news--synopsis">Synopsis: ${ newsObject.synopsis }</div>
@@ -23,7 +23,7 @@ export const NewsHTMLConverter = (type, newsObject) => {
 if (type === "theirs"){
     return `
         <article class="theirs">
-        <div class="friend--name">${getFriendName(newsObject)}'s event</div>
+        <div class="friend--name">${getFriendName(newsObject)}'s Article</div>
         <section class="newsCard--${newsObject.id}">
         <div class="news--title">Title: ${ newsObject.title }</div>
         <div class="news--synopsis">Synopsis: ${ newsObject.synopsis }</div>

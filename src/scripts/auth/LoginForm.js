@@ -47,8 +47,9 @@ const render = () => {
             <h3>Login Here</h3>
             <input id="login--username" type="text" placeholder="Enter your username">
             <input id="login--password" type="password" placeholder="Enter your password">
-
+            <br>
             <button id="login--button">Log In</button>
+            <br>
             <button id="newAccountButton">I don't have an account</button>
         </section>
     `

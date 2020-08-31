@@ -94,40 +94,6 @@ eventHub.addEventListener("click", clickEvent => {
     }
 })
 
-// eventHub.addEventListener("click", clickEvent => {
-//     let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
-
-//     if (clickEvent.target.id === "newTask2") {
-//         const taskContent = document.querySelector("#task--content")
-//         const taskDeadline = document.querySelector("#task--deadline")
-
-//         if (taskContent.value && taskDeadline.value) {
-//             const taskId = document.querySelector("#taskId")
-//             if (taskId.value === "") {
-//                 const newTask = {
-//                     content: taskContent.value,
-//                     deadline: taskDeadline.value,
-//                     userId: currentUserId,
-//                     timestamp: Date.now(),
-//                 }
-//                 saveTasks(newTask)
-//                 render()
-//             } else {
-//                 const updatedTask = {
-//                     content: taskContent.value,
-//                     deadline: taskDeadline.value,
-//                     userId: currentUserId,
-//                     timestamp: Date.now(),
-//                     id: parseInt(taskId.value)
-//                 }
-//                 editTasks(updatedTask)
-//                 taskId.value = ""
-//                 render()
-//             }
-//         }
-//     } 
-// })
-
 eventHub.addEventListener("editButtonClicked", customEvent => {
     const allTasks = useTasks()
     const taskId = event.detail.taskId
@@ -156,6 +122,7 @@ const render = () => {
             <label for="task--deadline">Deadline</label>
             <input type="date" id="task--deadline" />
             <button id="newTask1">Save Task</button>
+            <div id="yourTasks">Your Tasks</div>
             <input type="hidden" name="taskId" id="taskId" value="">
         </section>
     `

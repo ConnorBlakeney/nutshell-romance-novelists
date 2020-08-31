@@ -25,6 +25,14 @@ eventHub.addEventListener("userFriendsStateChanged", () => {
     
 })
 
+eventHub.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id.startsWith("complete--")) {
+        const [promt, id] = clickEvent.target.id.split("--")
+        patchTask(parseInt(id))
+    }
+
+})
+
 const render = () => {
         //loop through entries array returning each entry as passed through converter function
         let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
@@ -60,7 +68,7 @@ eventHub.addEventListener("checkButtonClicked", customEvent => {
     let checkedValue = document.querySelector(`#taskCheck--${taskId}`).checked
 
     if (checkedValue) {
-        contentTarget.innerHTML = `<div class"complete">Completed!</div>`
+        contentTarget.innerHTML = `<div class"complete" id="complete--"${taskId}>Completed!</div>`
         taskObj.complete = true
 
         // if (taskObj.complete === true) {

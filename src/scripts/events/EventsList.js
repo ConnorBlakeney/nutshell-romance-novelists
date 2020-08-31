@@ -1,6 +1,7 @@
 import {useEvents, getEvents} from "./EventsDataProvider.js"
 import {eventHTML} from "./EventHTMLConverter.js"
 import {newEventForm} from "./NewEventForm.js"
+import {getOneDayWeatherData, useOneDayWeatherData} from "../weather/WeatherProvider.js"
 import { getUsers, getUserFriends, useUserFriends } from "../users/usersDataProvider.js"
 
 const contentTarget = document.querySelector(".eventListContainer")

@@ -9,28 +9,6 @@ let contentTarget = document.querySelector(".tasksContainer")
 
 let tasks = []
 
-// eventHub.addEventListener("click", (clickEvent) => {
-//   if (clickEvent.target.id === "saveNote") {
-//     // Make a new object representation of a note
-
-//     const taskContent = document.querySelector("#task--content")
-//     const taskDeadline = document.querySelector("#task--deadline")
-
-//     // const criminalId = parseInt(noteCriminal.value)
-
-//     if (taskId !== 0) {
-//       const newTask = {
-//       content: taskContent.value,
-//       deadline: taskDeadline.value,
-//       timestamp: Date.now(),
-//     //   userId: parseInt(noteCriminal.value)
-//     }
-
-//     // Change API state and application state
-//     saveTasks(newTask)
-//     } 
-// }
-// })
 
 eventHub.addEventListener("click", clickEvent => {
     let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
@@ -50,6 +28,8 @@ eventHub.addEventListener("click", clickEvent => {
                 }
                 saveTasks(newTask)
                 render()
+                localStorage.setItem("event", "tasksChanged")
+
             } else {
                 const updatedTask = {
                     content: taskContent.value,
@@ -89,44 +69,13 @@ eventHub.addEventListener("click", clickEvent => {
                 editTasks(updatedTask)
                 taskId.value = ""
                 render()
+                localStorage.setItem("event", "tasksChanged")
+
             }
         }
     }
 })
 
-// eventHub.addEventListener("click", clickEvent => {
-//     let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
-
-//     if (clickEvent.target.id === "newTask2") {
-//         const taskContent = document.querySelector("#task--content")
-//         const taskDeadline = document.querySelector("#task--deadline")
-
-//         if (taskContent.value && taskDeadline.value) {
-//             const taskId = document.querySelector("#taskId")
-//             if (taskId.value === "") {
-//                 const newTask = {
-//                     content: taskContent.value,
-//                     deadline: taskDeadline.value,
-//                     userId: currentUserId,
-//                     timestamp: Date.now(),
-//                 }
-//                 saveTasks(newTask)
-//                 render()
-//             } else {
-//                 const updatedTask = {
-//                     content: taskContent.value,
-//                     deadline: taskDeadline.value,
-//                     userId: currentUserId,
-//                     timestamp: Date.now(),
-//                     id: parseInt(taskId.value)
-//                 }
-//                 editTasks(updatedTask)
-//                 taskId.value = ""
-//                 render()
-//             }
-//         }
-//     } 
-// })
 
 eventHub.addEventListener("editButtonClicked", customEvent => {
     const allTasks = useTasks()
@@ -143,11 +92,6 @@ eventHub.addEventListener("editButtonClicked", customEvent => {
 })
 
 const render = () => {
-//   let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
-//     const task = tasks.map(task => task.userId === currentUserId)
-    
-//     for (let i = 0; i < task.length; i++) {
-//         if (task[i] === true) {
         contentTarget.innerHTML = `
         <section class="taskForm">
             <h3> Create a new task </h3>
@@ -160,7 +104,6 @@ const render = () => {
         </section>
     `
     } 
-//  else {
         let contentFriendTarget = document.querySelector(".friendsTasksContainer")
         contentFriendTarget.innerHTML = `
         <section class="taskForm">
@@ -169,11 +112,7 @@ const render = () => {
             <input type="hidden" name="taskId" id="taskId" value="">
         </section>
     `
-//     }
 
-//     }
-//     console.log(task)
-// }
 
 export const TaskForm = () => {
    render()

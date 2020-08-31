@@ -12,6 +12,8 @@ eventHub.addEventListener("click", clickEvent => {
         const [prompt, eventId] = clickEvent.target.id.split("--")
 
         deleteEvent(eventId)
+       localStorage.setItem("event", "eventsChanged")
+
     }
 })
 
@@ -71,7 +73,6 @@ const getFriendName = (eventObj) => {
     const users = useUsers()
     const friendObj = users.find(u => u.id === eventObj.userId)
     const name = friendObj.username
-    console.log(name)
     return name
  }
 

@@ -51,3 +51,16 @@ export const editNews = (news) => {
     }).then(getNews)
     .then(dispatchStateChangeEvent)
 }
+
+window.addEventListener("storage", () => {
+    const event = localStorage.getItem("event")
+    
+    if (event === "newsChanged"){
+        localStorage.clear()
+        getNews()
+        .then(() => {
+            dispatchStateChangeEvent()
+        })
+
+    }
+})

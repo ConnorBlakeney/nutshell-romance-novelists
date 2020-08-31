@@ -21,7 +21,11 @@ eventHub.addEventListener("click", clickEvent => {
             synopsis: newsSynopsis.value,
             url: newsURL.value,
             date: newsDate.value,
+<<<<<<< HEAD
+            userId: newsUserId
+=======
             userId: newsUser
+>>>>>>> aa43a8dda7ed4482ac0131f70e08a34bb8e9c616
         }
 
         saveNews(newNews)

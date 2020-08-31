@@ -21,6 +21,11 @@ textarea,
      line-height: 1.5;
 }
 
+.welcomeName{
+    font-size: xx-large;
+    border-bottom: double #fef2f2 1rem
+
+}
 .underHeader {
     display: flex;
     justify-content: center;

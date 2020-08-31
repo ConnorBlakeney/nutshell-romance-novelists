@@ -70,8 +70,6 @@ export const TaskHTMLConverter = (task) => {
             <input class="checkbox" type="checkbox" checked id="taskCheck--${task.id}" name="task--${task.id}" value="${task.complete}">
             <label for="task--${task.id}">${task.content}</label><br>
             <div id= "deadline--${task.id}" class="task--deadline">Completed!</div>
-            <button id="deleteBtn--${task.id}">Delete</button>
-            <button id="editBtn--${task.id}">Edit</button>
         </section>
         `
     } 
@@ -81,8 +79,6 @@ export const TaskHTMLConverter = (task) => {
             <input class="checkbox" type="checkbox" id="taskCheck--${task.id}" name="task--${task.id}" value="${task.complete}">
             <label for="task--${task.id}">${task.content}</label><br>
             <div id= "deadline--${task.id}" class="task--deadline">Task Deadline: ${task.deadline}</div>
-            <button id="deleteBtn--${task.id}">Delete</button>
-            <button id="editBtn--${task.id}">Edit</button>
         </section>
         `
     } 

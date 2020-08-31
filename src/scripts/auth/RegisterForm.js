@@ -13,7 +13,15 @@ eventHub.addEventListener("click", e => {
         const password = document.querySelector("#register--password").value
         const passwordVerify = document.querySelector("#register--password-verify").value
 
+        let validUsername = true
+        for(let i=0; i < username.length; i++){
+            if(username[i] === " "){
+                validUsername = false
+            }
+        }
+
         if (username !== ""
+            && validUsername 
             && email !== ""
             && password !== ""
             && passwordVerify !== ""
@@ -44,13 +52,15 @@ eventHub.addEventListener("click", e => {
                             localStorage.setItem("event", "usersChanged")
                         })
 
+                        contentTarget.innerHTML = ""
                 }
                 else {
                     window.alert("Username already exists!  😭")
                 }
             })
+        }else{
+            window.alert("Username cannot contain spaces and all fields must be filled in")
         } 
-        contentTarget.innerHTML = ""
     }
 })
 

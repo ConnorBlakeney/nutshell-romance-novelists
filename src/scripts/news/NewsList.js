@@ -1,8 +1,7 @@
 import { getNews, useNews, deleteNews} from "./NewsProvider.js"
 import {getWeatherData } from "../weather/WeatherProvider.js"
 import { NewsHTMLConverter } from "./NewsHTMLGenerator.js"
-import { getUserFriends, useUserFriends, getUsers} from "../users/usersDataProvider.js"
-
+import { getUserFriends, useUserFriends} from "../users/usersDataProvider.js"
 
 const contentTarget = document.querySelector(".newsContainer")
 const eventHub = document.querySelector(".container")
@@ -19,8 +18,6 @@ eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id.startsWith("deleteNews--")) {
         const [prefix, id] = clickEvent.target.id.split("--")
        deleteNews(id)
-       localStorage.setItem("event", "newsChanged")
-
     }
 })
 
@@ -30,8 +27,6 @@ export const NewsList = () => {
     .then(() => {
     getNews()
     .then(() => {
-        getUsers()
-        .then(() => {
     getUserFriends()
         .then(() => {
         const allNews = useNews()
@@ -43,19 +38,13 @@ export const NewsList = () => {
         })
 
         const foundNews = userFriends.map(relationship => {
-            return allNews.find(news => {
+            return allNews.filter(news => {
                 if (news.userId === relationship.friendId || news.userId === relationship.userId){
-                    if (news.userId != currentUserId){
+                    if(news.userId != currentUserId){
                     return news
                     }
                 }
             })
-        })
-
-        const friendNews = foundNews.filter(stories => {
-            if (stories != undefined){
-                return stories
-            }
         })
 
         const userNews = allNews.filter(stories => {
@@ -63,21 +52,30 @@ export const NewsList = () => {
                 return stories
             }
         })
-        render(friendNews, userNews)
+        
+        const flattenedNews = foundNews.flat(1)
+        const toSort = flattenedNews.concat(userNews)
+        const sortedNews = toSort.sort(
+            (currentEntry, nextEntry) =>
+                Date.parse(currentEntry.date) - Date.parse(nextEntry.date)
+        )
+   
+        render(sortedNews)
         })
 
     })
     })
-    })
     }     
 
-    const render = (friendNews, userNews) => {
+    const render = (sortedNews) => {
+        let whose = ""
         let itemHTML = ""
-    userNews.map(item => {
-        itemHTML += NewsHTMLConverter("yours", item)
-    })
-    friendNews.map(item => {
-        itemHTML += NewsHTMLConverter("theirs", item)
+    sortedNews.map(item => {
+        if (item.userId === parseInt(sessionStorage.getItem("activeUser"))){
+        whose = "yours"
+        }
+        else{whose = "theirs"}
+        itemHTML += NewsHTMLConverter(whose, item)
     })
         contentTarget.innerHTML = itemHTML
-    }
+    }        

@@ -165,11 +165,7 @@ const render = () => {
         contentFriendTarget.innerHTML = `
         <section class="taskForm">
             <div id="userFriendTasks">Your Friend's Tasks</div>
-            <label for="task--content2">Content</label>
-            <textarea id="task--content2" placeholder="Note text here"></textarea>
-            <label for="task--deadline2">Deadline</label>
-            <input type="date" id="task--deadline2" />
-            <button id="newTask2">Save Task</button>
+            
             <input type="hidden" name="taskId" id="taskId" value="">
         </section>
     `

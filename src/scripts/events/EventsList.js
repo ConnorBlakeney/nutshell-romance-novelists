@@ -1,3 +1,6 @@
+//author: Samantha Maas
+//purpose: This module takes the data from the data provider and renders the list of Events information to the DOM. T
+
 import {useEvents, getEvents} from "./EventsDataProvider.js"
 import {eventHTML} from "./EventHTMLConverter.js"
 import {newEventForm} from "./NewEventForm.js"
@@ -31,6 +34,7 @@ export const eventsList = () => {
             events = useEvents()
             userFriends = useUserFriends()
             findFriends()
+            console.log(closestDate(events))
             render()
         })
 }
@@ -59,6 +63,8 @@ const findFriends = () => {
 
 }
 
+
+
 const render = () => {
     const allEventsTurnedIntoHTML = friendsEvents.map(event => {
         return eventHTML(event)
@@ -70,4 +76,26 @@ const render = () => {
             ${allEventsTurnedIntoHTML}
         </article>
     `
+}
+
+
+//Finds the next event date from the current date
+export const closestDate = (events) => {
+    
+    const getEventDates = events.map(event => event.date)
+
+    const parseMDY = (s) => {
+        const b = (s || '').split(/\D/)
+        return new Date(b[2], b[0]-1, b[1])
+    }
+
+    const getClosestDateToToday = (arr) => {
+        const now = new Date()
+        now.setHours(23, 59, 59)
+        return arr.reduce((acc, s) => {
+            const d = parseMDY
+            return d <now? acc : (acc && d > parseMDY(acc)? acc : s)
+        }, null) 
+    }
+    return getClosestDateToToday(getEventDates)
 }

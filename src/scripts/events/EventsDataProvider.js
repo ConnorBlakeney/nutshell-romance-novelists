@@ -1,3 +1,6 @@
+//author: Samantha Maas
+//purpose: This module is used to organize the data from the database. Here are the functions to fetch the data and update the data in the database when it changes. 
+
 const eventHub = document.querySelector(".container")
 
 const dispatchEventStateChangeEvent = () => {

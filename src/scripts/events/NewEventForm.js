@@ -1,3 +1,6 @@
+//author: Samantha Maas
+//purpose: This module renders the form to the DOM that a user to can input new information about an event. This module also has an event listener that updates the database with the new event added. You can also see the edit eventlistener in this module as well.
+
 import { useEvents, saveEvent, editEvent } from "./EventsDataProvider.js"
 
 const contentTarget = document.querySelector(".eventFormContainer")

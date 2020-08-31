@@ -19,3 +19,8 @@ textarea {
     display: flex;
     flex-direction: column;
 }
+
+.nextEvent{
+    background-color: #fef2f2;
+    font-size: x-large;
+}

@@ -4,6 +4,7 @@ import messageEventListener from "./messages/messageEventListeners.js"
 
 
 
+
 const contentTarget = document.querySelector(".auth--login")
 const contentRegister = document.querySelector(".auth--login")
 const eventHub = document.querySelector(".container")

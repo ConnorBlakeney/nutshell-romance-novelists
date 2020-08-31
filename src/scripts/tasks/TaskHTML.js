@@ -56,8 +56,7 @@ export const TaskHTMLConverter = (task) => {
      else if (task.complete && !(currentUserId === task.userId)) {
         return `
         <section class="individualTask">
-            <input class="checkbox" type="checkbox" checked id="taskCheck--${task.id}" name="task--${task.id}" value="${task.complete}">
-            <label for="task--${task.id}">${task.content}</label><br>
+            <div id="task--${task.id}">${task.content}</div><br>
             <div id= "deadline--${task.id}" class="task--deadline">Completed!</div>
         </section>
         `
@@ -65,8 +64,7 @@ export const TaskHTMLConverter = (task) => {
     else {
         return `
         <section class="individualTask">
-            <input class="checkbox" type="checkbox" id="taskCheck--${task.id}" name="task--${task.id}" value="${task.complete}">
-            <label for="task--${task.id}">${task.content}</label><br>
+            <div id="task--${task.id}">${task.content}</div>
             <div id= "deadline--${task.id}" class="task--deadline">Task Deadline: ${task.deadline}</div>
         </section>
         `

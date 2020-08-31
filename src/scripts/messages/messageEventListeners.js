@@ -32,7 +32,7 @@ const messageEventListener = () => {
           
             if(i >= 0){
                 for(i++; found != true; i++){
-                    if(inputLocation.value[i] != " "){
+                    if(inputLocation.value[i] != " " && inputLocation.value[i] != undefined){
                         privateUser = privateUser.concat(inputLocation.value[i])
                     }else{
                         found = true

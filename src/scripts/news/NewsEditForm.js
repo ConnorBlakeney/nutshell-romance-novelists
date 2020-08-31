@@ -16,7 +16,7 @@ eventHub.addEventListener("click", clickEvent => {
 const render = (id) => {
     const contentTarget = document.querySelector(`.newsCard--${id}`)
     contentTarget.innerHTML = `
-        <span class="editContainer--${id}">
+        <span class="editContainer--${id} editBox">
         <input type="text" class="news--title--${id}" placeholder ="Enter a New Title for the Story" />
         <textarea class="news--synopsis--${id}" placeholder="Enter a New Synopsis"></textarea>
         <textarea class="news--URL--${id}" placeholder="Enter a New URL"></textarea>

@@ -39,7 +39,7 @@ const render = () => {
         return TaskHTMLConverter(task)
         }).join("")
 
-        contentTarget.innerHTML = allTasksTurnedIntoHTML
+        contentTarget.innerHTML = `<h3> Tasks </h3> ${allTasksTurnedIntoHTML}`
 
         let contentFriendTarget = document.querySelector(".friendsTasksCheckList")
         contentFriendTarget.innerHTML = allFriendTasksTurnedIntoHTML

@@ -98,11 +98,11 @@ const render = () => {
         <section class="taskForm">
             <h3> Create a new task </h3>
             <label for="task--content">Task</label>
-            <textarea id="task--content" placeholder="Task text here"></textarea>
+            <input id="task--content" placeholder="Task text here">
             <label for="task--deadline">Deadline</label>
             <input type="date" id="task--deadline" />
             <button id="newTask1">Save Task</button>
-            <div id="yourTasks">Your Tasks</div>
+            
             <input type="hidden" name="taskId" id="taskId" value="">
         </section>
     `
@@ -110,7 +110,7 @@ const render = () => {
 
         contentFriendTarget.innerHTML = `
         <section class="taskForm">
-            <div id="userFriendTasks">Your Friend's Tasks</div>
+            
             
             <input type="hidden" name="taskId" id="taskId" value="">
         </section>

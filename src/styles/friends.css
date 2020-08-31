@@ -1,3 +1,6 @@
+/* author: Samantha Maas
+purpose: styling for anything to do with the friends list*/
+
 .tasksCheckList {
     margin: 0 auto;
     max-width: 45rem;
@@ -10,4 +13,8 @@
     max-width: 45rem;
     display: flex;
     flex-direction: column;
+}
+
+.chatBorder{
+    border-top: double #fef2f2 1rem
 }

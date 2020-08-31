@@ -43,9 +43,7 @@ const render = () => {
 
         let contentFriendTarget = document.querySelector(".friendsTasksCheckList")
         contentFriendTarget.innerHTML = allFriendTasksTurnedIntoHTML
-         
-        console.log(taskFilteredMatch, taskFilteredNoMatch)
-        }        
+}        
 
 eventHub.addEventListener("click", clickEvent => {
 

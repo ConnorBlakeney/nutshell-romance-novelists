@@ -3,8 +3,6 @@
 // events for delete and edit
 import { deleteTasks } from "./TaskDataProvider.js";
 
-let tasks = []
-
 const eventHub = document.querySelector(".container")
 
 eventHub.addEventListener("click", clickEvent => {
@@ -31,7 +29,6 @@ eventHub.addEventListener("click", clickEvent => {
 
 export const TaskHTMLConverter = (task) => {
     let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
-    // console.log(currentUserId === task.userId)
     if (task.complete && currentUserId === task.userId) {
         return `
         <section class="individualTask">

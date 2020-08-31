@@ -9,6 +9,7 @@ eventHub.addEventListener("click", clickEvent => {
         const newsSynopsis = document.querySelector("#news--synopsis")
         const newsURL = document.querySelector("#news--URL")
         const newsDate = document.querySelector("#news--date")
+        let newsUserId = parseInt(sessionStorage.getItem("activeUser"))
         if (newsTitle.value != "" 
         && newsSynopsis.value != "" 
         && newsDate.value != ""
@@ -20,7 +21,11 @@ eventHub.addEventListener("click", clickEvent => {
             synopsis: newsSynopsis.value,
             url: newsURL.value,
             date: newsDate.value,
+<<<<<<< HEAD
             userId: parseInt(sessionStorage.getItem("activeUser"))
+=======
+            userId: newsUserId
+>>>>>>> master
         }
 
         saveNews(newNews)

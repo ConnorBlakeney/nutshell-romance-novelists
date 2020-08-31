@@ -30,8 +30,9 @@ const render = (id) => {
             const editedSynopsis = document.querySelector(".news--synopsis")
             const editedURL = document.querySelector(".news--URL")
             const editedDate = document.querySelector(".news--date")
+            let newsUserId = parseInt(sessionStorage.getItem("activeUser"))
             if (clickEvent.target.id === ("saveEditedArticle")) {
-                if (editedTitle.value != "" 
+                if (editedTitle.value != ""
                 && editedSynopsis.value != "" 
                 && editedDate.value != ""
                 && editedURL.value != ""
@@ -44,6 +45,8 @@ const render = (id) => {
             foundNews.synopsis = editedSynopsis.value
             foundNews.url = editedURL.value
             foundNews.date = editedDate.value
+            foundNews.userId = newsUserId
+            
             editNews(foundNews)
             localStorage.setItem("event", "newsChanged")
 

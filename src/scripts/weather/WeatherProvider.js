@@ -1,3 +1,7 @@
+//author: Red Tilson
+//purpose: This component communicates with the external openweather.org
+//api to retrieve 5-day and single day forecasts. 
+
 let forecast = []
 let singleForecast = ""
 const eventHub = document.querySelector(".container")

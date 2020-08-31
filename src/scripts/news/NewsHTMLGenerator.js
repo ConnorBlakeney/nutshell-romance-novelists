@@ -1,3 +1,8 @@
+//author: Red Tilson
+//purpose: This component differentiates between user and friend
+//submitted articles and generates the HTML, returning the result
+// to NewsList.js
+
 import {useUsers} from "../users/usersDataProvider.js"
 export const NewsHTMLConverter = (type, newsObject) => {
     if (type === "yours"){

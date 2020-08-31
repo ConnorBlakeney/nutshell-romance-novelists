@@ -1,3 +1,7 @@
+//author: Red Tilson
+//purpose: This component accepts new news article entries by user
+//and then renders them to the DOM
+
 import { saveNews } from "./NewsProvider.js"
 
 const eventHub = document.querySelector(".container")

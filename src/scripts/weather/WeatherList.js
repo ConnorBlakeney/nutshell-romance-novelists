@@ -1,3 +1,7 @@
+//author: Red Tilson
+//purpose: This component accepts weather data from from openweather.org
+//then renders a 5-day forecast to the DOM upon loading 
+
 import {useWeatherData } from "./WeatherProvider.js"
 
 const eventHub = document.querySelector(".container")

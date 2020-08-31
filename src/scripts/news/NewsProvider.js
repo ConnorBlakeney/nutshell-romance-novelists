@@ -1,3 +1,8 @@
+//author: Red Tilson
+//purpose: This component communicates with the API to save, edit
+//or delete submitted news articles. It then tells NewsList.js to update the DOM
+//via a click event
+
 const eventHub = document.querySelector(".container")
 
 let news = []

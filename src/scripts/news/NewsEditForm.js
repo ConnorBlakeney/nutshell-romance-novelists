@@ -1,3 +1,7 @@
+//author: Red Tilson
+//purpose: This component renders an edit field and then sends the 
+//edit info to the DOM for re-render
+
 import { useNews, getNews, editNews } from "./NewsProvider.js"
 
 const eventHub = document.querySelector(".container")

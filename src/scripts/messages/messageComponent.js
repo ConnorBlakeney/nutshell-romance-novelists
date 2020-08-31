@@ -16,7 +16,7 @@ const messagesComponent = {
 
             return messageHtmlString
         }
-        else {
+        else if (messageObject.privateUserId === parseInt(userID) || messageObject.privateUserId === 0) {
             return `<section class="messageObject">
        
           <section id="messageObject--${messageObject.id}" class="messageObject">

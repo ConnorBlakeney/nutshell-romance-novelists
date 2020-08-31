@@ -1,4 +1,5 @@
 import {RegisterForm} from "./RegisterForm.js"
+import { useUsers } from "../users/usersDataProvider.js"
 const contentTarget = document.querySelector(".auth--login")
 const eventHub = document.querySelector(".container")
 
@@ -11,22 +12,31 @@ eventHub.addEventListener("click", e => {
         const username = document.querySelector("#login--username").value
         const password = document.querySelector("#login--password").value
 
-
-        return fetch(`http://localhost:8088/users?username=${username}`)
-            .then(response => response.json())
-            .then(users => {
-                if (users.length > 0) {
-                    const user = users[0]
-
-                    if (user.password === password) {
-                        sessionStorage.setItem("activeUser", user.id)
-                        sessionStorage.setItem("activeUserUsername", user.username)
-                        
-                        eventHub.dispatchEvent(new CustomEvent("userAuthenticated"))
+        if(username && password){
+                
+            return fetch(`http://localhost:8088/users?username=${username}`)
+                .then(response => response.json())
+                .then(users => {
+                    if (users.length > 0) {
+                        const user = users[0]
+    
+                        if (user.password === password) {
+                            sessionStorage.setItem("activeUser", user.id)
+                            sessionStorage.setItem("activeUserUsername", user.username)
+                            
+                            eventHub.dispatchEvent(new CustomEvent("userAuthenticated"))
+                            contentTarget.innerHTML = ""
+                        }else{
+                            window.alert("invalid password")
+                        }
+                    }else{
+                        window.alert("invalid username")
                     }
-                }
-                contentTarget.innerHTML = ""
-            })
+                })
+                
+        }else{
+            window.alert("Please fill in all fields")
+        }
     }
 })
 

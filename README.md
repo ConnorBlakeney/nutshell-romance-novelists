@@ -1,5 +1,6 @@
 # Nutshell: The Information Dashboard
 
+
 ## Setup: Follow these steps exactly
 
 1. Clone this repository
@@ -75,3 +76,12 @@ To start you off, here's an example of what the resources in your API should loo
 We want you to know that the login and registration code we have given you is fake, completely insecure, and would never be implemented in a professional application. It is a simulation authentication using very simplistic tools, because authentication is not a learning objective of students at NSS.
 
 You will be using [session storage](https://javascript.info/localstorage#sessionstorage) to keep track of which user has logged into Nutshell. You need to read the code in the **`LoginForm`** and **`RegisterForm`** components so that you see what is going on, but you do not need to change it. However, you will have to use a custom message that is being dispatched by those components.
+
+## How to download and run this application
+
+1. Clone this repository
+1. cd into the api directory
+1. run ```json-server -p 8088 database.json``` in terminal for Mac or Ubuntu for windows
+1. cd out of the api directory and into the src directory
+1. run ```serve``` in terminal for Mac or Ubuntu for windows
+1. copy and paste the local host into your browser tab. 

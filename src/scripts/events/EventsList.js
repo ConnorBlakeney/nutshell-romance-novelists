@@ -34,7 +34,6 @@ export const eventsList = () => {
             events = useEvents()
             userFriends = useUserFriends()
             findFriends()
-            console.log(closestDate(events))
             render()
         })
 }

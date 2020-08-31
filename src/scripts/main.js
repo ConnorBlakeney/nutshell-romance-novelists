@@ -16,7 +16,7 @@ const eventHub = document.querySelector(".container")
     4. Also, if the user authenticates, and the login form is initially shown
         ensure that the Nutshell component gets rendered
 */
-
+localStorage.clear()
     
 if (sessionStorage.hasOwnProperty("activeUser")){
     contentTarget.innerHTML = ""

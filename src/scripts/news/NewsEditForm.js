@@ -32,7 +32,6 @@ const render = (id) => {
             const editedSynopsis = document.querySelector(`.news--synopsis--${eventId}`)
             const editedURL = document.querySelector(`.news--URL--${eventId}`)
             const editedDate = document.querySelector(`.news--date--${eventId}`)
-            console.log(editedTitle.value)
             const newsUser = parseInt(sessionStorage.getItem("activeUser"))
                 if (editedTitle.value != "" 
                 && editedSynopsis.value != "" 

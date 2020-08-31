@@ -1,6 +1,8 @@
 import { useEvents, saveEvent, editEvent } from "./EventsDataProvider.js"
+import {getOneDayWeatherData, useOneDayWeatherData} from "../weather/WeatherProvider.js"
 
 const contentTarget = document.querySelector(".eventFormContainer")
+const weatherTarget = document.querySelector(".eventWeatherContainer")
 const eventHub = document.querySelector(".container")
 
 //eventListener that is listening for the Edit Event Button to be clicked and then it is displaying the information from that event in the form for updating. 
@@ -13,6 +15,7 @@ eventHub.addEventListener("editEventButtonClicked", customEvent => {
     const eventDate = document.querySelector("#event--date")
     const eventTime = document.querySelector("#event--time")
     const eventLocation = document.querySelector("#event--location")
+    const eventZip= document.querySelector("#event--zip")
     const eventDescription = document.querySelector("#event--description")
     const id = document.querySelector("#eventId")
 
@@ -20,8 +23,22 @@ eventHub.addEventListener("editEventButtonClicked", customEvent => {
     eventDate.value = eventObj.date
     eventTime.value = eventObj.time
     eventLocation.value = eventObj.location
+    eventZip.value = eventObj.zip
     eventDescription.value = eventObj.description
     id.value = eventId
+})
+
+eventHub.addEventListener("showWeatherButtonClicked", customEvent => {
+    const eventId = event.detail.eventId
+    const allEvents = useEvents()
+    const eventObj = allEvents.find(event => event.id === eventId)
+    const eventZip = eventObj.zip
+    getOneDayWeatherData(eventZip).then(() => {
+       const eventWeather = useOneDayWeatherData()
+       renderWeather(eventWeather)
+       console.log(eventWeather)
+    })
+
 })
 
 //This function renders the HTML representation of the form to the DOM
@@ -29,18 +46,27 @@ export const newEventForm = () => {
     render()
 }
 
+const renderWeather = (weather) => {
+    weatherTarget.innerHTML = `
+    <section class="eventWeatherForm">
+        <div>${weather.name}</div>
+        <div>${weather.weather[0].main}</div>
+        <div>${weather.main.temp_max}</div>
+    </section>
+    `
+}
 
 const render = () => {
     contentTarget.innerHTML = `
     <section class="newEventForm">
         <h3> Create a new event </h3>
-        
         <input type="text" id="event--name" placeholder="Enter event name"/>
         <label for="event--date">Event Date</label>
         <input type="date" name="eventDate" id="event--date"/>
         <label for="event--time">Event Time</label>
         <input type="time" name="eventTime" id="event--time"/>
         <input type="text" id="event--location" placeholder="Enter event location"/>
+        <input type="text" id="event--zip" placeholder="Enter zipcode for event"/>
         <textarea id="event--description" placeholder="Event Description"></textarea>
 
         <button id="saveEventButton"> Save Event </button>
@@ -75,6 +101,7 @@ eventHub.addEventListener("click", clickEvent => {
         
         const parsedTime = hours + ":" + minutes + ' ' + meridian
         const eventLocation = document.querySelector("#event--location")
+        const eventZip = document.querySelector("#event--zip")
         const eventDescription = document.querySelector("#event--description")
         const eventDate = document.querySelector("#event--date")
         const newEventDate = eventDate.value.split("-")
@@ -88,6 +115,7 @@ eventHub.addEventListener("click", clickEvent => {
                     date: parsedDate,
                     time: parsedTime,
                     location: eventLocation.value,
+                    zip: eventZip.value,
                     description: eventDescription.value,
                     userId: currentUserId
                 }
@@ -101,6 +129,7 @@ eventHub.addEventListener("click", clickEvent => {
                     date: parsedDate,
                     time: parsedTime,
                     location: eventLocation.value,
+                    zip: eventZip.value,
                     description: eventDescription.value,
                     id: parseInt(eventId.value),
                     userId: currentUserId

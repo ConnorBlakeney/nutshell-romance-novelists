@@ -25,14 +25,10 @@ export const NewsList = () => {
     let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
     getWeatherData()
     .then(getNews)
-    .then(getOneDayWeatherData)
     .then(getUserFriends)
         .then(() => {
         const allNews = useNews()
         const allFriends = useUserFriends()
-        const oneDay = useOneDayWeatherData()
-        console.log(oneDay)
-        
         const userFriends = allFriends.filter(f => {
             if(currentUserId === f.friendId || currentUserId === f.userId) {
                 return f

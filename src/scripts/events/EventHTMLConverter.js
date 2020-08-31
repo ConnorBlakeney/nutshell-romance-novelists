@@ -31,6 +31,17 @@ eventHub.addEventListener("click", clickEvent => {
     }
 })
 
+eventHub.addEventListener("click", clickEvent => {
+    if(clickEvent.target.id.startsWith("weatherButton--")){
+        const [prompt, weatherId] = clickEvent.target.id.split("--")
+        const customEvent = new CustomEvent("showWeatherButtonClicked", {
+            detail: {
+                eventId: parseInt(weatherId)
+            }
+        })
+        eventHub.dispatchEvent(customEvent)
+    }
+})
 
 export const eventHTML = (eventObj) => {
     let currentUserId = parseInt(sessionStorage.getItem("activeUser"))

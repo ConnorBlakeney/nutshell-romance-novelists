@@ -20,12 +20,11 @@ export const useWeatherData = () => {
       return forecast.slice()
 }
 
-export const getOneDayWeatherData = () => {
-    return fetch(`http://api.openweathermap.org/data/2.5/weather?zip=94040,us&appid=ff3c6bcca7fa13fd3098a1ab51d93dd9`)
+export const getOneDayWeatherData = (zip) => {
+    return fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zip},us&units=imperial&appid=ff3c6bcca7fa13fd3098a1ab51d93dd9`)
          .then(response => response.json())
         .then(parsedWeather => {
             singleForecast = parsedWeather
-            console.log(singleForecast)
         })
 }
 

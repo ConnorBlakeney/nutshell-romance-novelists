@@ -53,3 +53,16 @@ export const deleteEvent = (eventId) => {
     .then(getEvents)
     .then(dispatchEventStateChangeEvent)
 }
+
+window.addEventListener("storage", () => {
+    const event = localStorage.getItem("event")
+    
+    if (event === "eventsChanged"){
+        localStorage.clear()
+        getEvents()
+        .then(() => {
+            dispatchEventStateChangeEvent()
+        })
+
+    }
+})

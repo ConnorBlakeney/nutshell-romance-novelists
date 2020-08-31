@@ -39,8 +39,9 @@ eventHub.addEventListener("click", e => {
                         .then((newUser) => {
                             sessionStorage.setItem("activeUser", newUser.id)
                             sessionStorage.setItem("activeUserUsername", newUser.username)
-                            console.log(newUser)
+    
                             eventHub.dispatchEvent(new CustomEvent("userAuthenticated"))
+                            localStorage.setItem("event", "usersChanged")
                         })
 
                 }

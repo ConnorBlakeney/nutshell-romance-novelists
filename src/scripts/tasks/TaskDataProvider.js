@@ -64,3 +64,16 @@ export const useTasks = () => {
     )
     return sortedByDate
 }
+
+window.addEventListener("storage", () => {
+    const event = localStorage.getItem("event")
+    
+    if (event === "tasksChanged"){
+        localStorage.clear()
+        getTasks()
+        .then(() => {
+            dispatchStateChangeEvent()
+        })
+
+    }
+})

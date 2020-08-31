@@ -51,6 +51,8 @@ const messageEventListener = () => {
             //will need to make sure when testing that each message has a user id to match it to    
             messagesAPI.messagePostData(messageInputValue)
                 .then(() => {
+                    localStorage.setItem("event", "messageChanged")
+
                     messagesAPI.messagesGetData().then(() => {
                         messageList()
                         messageInputLocation.innerHTML = ""
@@ -66,6 +68,8 @@ const messageEventListener = () => {
             const cardUserID = cardDeleteIdAndUserId.split("--")[1]
             if (userId == cardUserID) {
                 messagesAPI.deletePostData(cardDelete).then(() => {
+                    localStorage.setItem("event", "messageChanged")
+
                     messagesAPI.messagesGetData().then(() => {
                         messageList()
 
@@ -81,6 +85,8 @@ const messageEventListener = () => {
             if (cardUserId == userId) {
                 messagesAPI.getUserMessageEntry(cardEdit).then((messageObject) => {
                     messagesComponent.messageFactoryInputFunction(messageObject)
+                    localStorage.setItem("event", "messageChanged")
+
                 })
             }
         }
@@ -92,6 +98,7 @@ const messageEventListener = () => {
                 const messageObjectID = document.querySelector("#hiddenIdValue").value
                 messagesAPI.updateEditMessage(messageObjectID, { "message": editCheck.value, "userID": userId, "username": username })
                     .then(() => {
+                        localStorage.setItem("event", "messageChanged")
                         messagesAPI.messagesGetData().then(() => {
                             messageList()
 
@@ -125,3 +132,15 @@ export default messageEventListener
 export const ChatForm = () => {
     render()
  }
+
+ window.addEventListener("storage", () => {
+    const event = localStorage.getItem("event")
+    
+    if (event === "messageChanged"){
+        localStorage.clear()
+        messagesAPI.messagesGetData().then(() => {
+            messageList()
+
+        })
+    }
+})

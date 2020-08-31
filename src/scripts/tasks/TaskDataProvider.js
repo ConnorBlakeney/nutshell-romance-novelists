@@ -78,11 +78,11 @@ window.addEventListener("storage", () => {
     }
 })
 
-export const patchTask = (task) => {
+export const patchTask = (taskId) => {
     const completedTask = {
         complete: true
     }
-    return fetch(`http://localhost:8088/tasks/${task.id}}`, {
+    return fetch(`http://localhost:8088/tasks/${taskId}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"
@@ -93,11 +93,11 @@ export const patchTask = (task) => {
     .then(dispatchStateChangeEvent)
 }
 
-export const restoreTask = (task) => {
+export const restoreTask = (taskId) => {
     const restoredTask = {
         complete: false
     }
-    return fetch(`http://localhost:8088/tasks/${task.id}`, {
+    return fetch(`http://localhost:8088/tasks/${taskId}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"

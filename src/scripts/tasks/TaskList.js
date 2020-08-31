@@ -1,9 +1,8 @@
 // author: Connor Blakeney
 // purpose: render tasks to the DOM and notify of task state changes
 
-import { getTasks, useTasks } from "./TaskDataProvider.js"
+import { getTasks, useTasks, patchTask, restoreTask } from "./TaskDataProvider.js"
 import { TaskHTMLConverter } from "./TaskHTML.js"
-import { TaskForm } from "./TaskForm.js";
 import { getUserFriends, getUsers, useUsers, useUserFriends } from "../users/usersDataProvider.js";
 
 const eventHub = document.querySelector(".container")
@@ -48,13 +47,25 @@ const render = () => {
         console.log(taskFilteredMatch, taskFilteredNoMatch)
         }        
 
+eventHub.addEventListener("click", clickEvent => {
+
+    if(clickEvent.target.id.startsWith("taskCheck--")){
+        const [prompt, id] = clickEvent.target.id.split("--")
+
+        const customEvent = new CustomEvent("checkButtonClicked", {
+            detail: {
+                taskId: parseInt(id),
+            }
+        })
+        eventHub.dispatchEvent(customEvent)
+    }
+})
 
 eventHub.addEventListener("checkButtonClicked", customEvent => {
 
     const allTasks = useTasks()
     const taskId = customEvent.detail.taskId
     const taskObj = allTasks.find(task => task.id === taskId)
-    // console.log(taskId)
 
     const contentTarget = document.querySelector(`#deadline--${taskId}`)
     let checkedValue = document.querySelector(`#taskCheck--${taskId}`).checked
@@ -63,38 +74,13 @@ eventHub.addEventListener("checkButtonClicked", customEvent => {
         contentTarget.innerHTML = `<div class"complete" id="complete--"${taskId}>Completed!</div>`
         patchTask(taskId)
 
-        // if (taskObj.complete === true) {
-        //     checkedValue = true
-        // }
-        // maybe use put method to update boolean?
-    } else if (checkedValue === false) {
-    //   const completeDiv = document.querySelector(".complete")
+    } 
+    else if (checkedValue === false) {
       contentTarget.innerHTML = TaskList()
       restoreTask(taskId)
 
-    //   if (taskObj.complete === false) {
-    //         checkedValue = false
-    //     }
-            // maybe use put method to update boolean?
-
     }
 })
-
-// eventHub.addEventListener("checkButtonClick", customEvent => {
-//     if (customEvent.target.querySelector(`#taskCheck--${taskId}`)) {
-
-//         const allTasks = useTasks()
-//         const taskId = event.detail.taskId
-//         const taskObj = allTasks.find(task => task.id === taskId)
-
-//        if (taskObj.complete === false) {
-//          patchTask(taskId)
-//     } else {
-//         restoreTask(taskId)
-//     }
-//     }
-
-// })
 
 export const TaskList = () => {
     getTasks()

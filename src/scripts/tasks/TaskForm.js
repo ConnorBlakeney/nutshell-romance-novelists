@@ -11,16 +11,6 @@ let contentFriendTarget = document.querySelector(".friendsTasksContainer")
 
 let tasks = []
 
-// eventHub.addEventListener("click", (clickEvent) => {
-//   if (clickEvent.target.id === "saveNote") {
-//     // Make a new object representation of a note
-
-//     const taskContent = document.querySelector("#task--content")
-//     const taskDeadline = document.querySelector("#task--deadline")
-
-    // Change API state and application state
-    
-
 eventHub.addEventListener("click", clickEvent => {
     let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
 
@@ -103,11 +93,7 @@ eventHub.addEventListener("editButtonClicked", customEvent => {
 })
 
 const render = () => {
-//   let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
-//     const task = tasks.map(task => task.userId === currentUserId)
-    
-//     for (let i = 0; i < task.length; i++) {
-//         if (task[i] === true) {
+
         contentTarget.innerHTML = `
         <section class="taskForm">
             <h3> Create a new task </h3>
@@ -121,7 +107,7 @@ const render = () => {
         </section>
     `
     
-//  else {
+
         contentFriendTarget.innerHTML = `
         <section class="taskForm">
             <div id="userFriendTasks">Your Friend's Tasks</div>
@@ -138,46 +124,3 @@ export const TaskForm = () => {
    render()
 }
 
-// export const TaskForm = () => {
-    
-// }
-
-// const render = (tasks) => {
-//   let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
-//     const taskMatch = tasks.filter(task => task.userId === currentUserId)
-//     const taskMatchId = taskMatch.map(task => task.userId === currentUserId)
-
-//     const taskNoMatch = tasks.filter(task => task.userId !== currentUserId)
-//     const taskNoMatchId = taskNoMatch.map(task => task.userId !== currentUserId)
-    
-    
-//         if (taskMatchId) {
-//         contentTarget.innerHTML = `
-//         <section class="taskForm">
-//             <div id="userTasks">Your Tasks</div>
-//             <label for="task--content">Content</label>
-//             <textarea id="task--content" placeholder="Note text here"></textarea>
-//             <label for="task--deadline">Deadline</label>
-//             <input type="date" id="task--deadline" />
-//             <button id="newTask">Save Task</button>
-//             <input type="hidden" name="taskId" id="taskId" value="">
-//         </section>
-//     `
-//     } else if (taskNoMatchId) {
-//         contentTarget = document.querySelector(".friendsTasksContainer")
-//         contentTarget.innerHTML = `
-//         <section class="taskForm">
-//             <div id="userFriendTasks">Your Friend's Tasks</div>
-//             <label for="task--content">Content</label>
-//             <textarea id="task--content" placeholder="Note text here"></textarea>
-//             <label for="task--deadline">Deadline</label>
-//             <input type="date" id="task--deadline" />
-//             <button id="newTask">Save Task</button>
-//             <input type="hidden" name="taskId" id="taskId" value="">
-//         </section>
-//     `
-//     }
-
-    
-//     console.log(taskMatch, taskNoMatch, taskMatchId, taskNoMatchId)
-// }

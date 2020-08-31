@@ -1,6 +1,6 @@
 /* author: Samantha Maas
 purpose: the main page for styling. includes the general fonts, the header and animation for the title */
-
+@import "./messages.css";
 @import "./events.css";
 @import "./friends.css";
 @import "./news.css";
@@ -36,6 +36,7 @@ body{
      font-family: 'Lora', serif;
      font-size: 1rem;
      line-height: 1.5;
+     padding-bottom: 0.5em;
  }
 
  .dashboard--left {

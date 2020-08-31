@@ -1,3 +1,5 @@
+// Created by Brett Derrington
+
 import messagesComponent from "./messageComponent.js"
 import messagesAPI from "./messageData.js"
 import messageList from "./messageRenderHTML.js"

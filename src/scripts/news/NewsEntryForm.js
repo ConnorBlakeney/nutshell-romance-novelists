@@ -8,7 +8,7 @@ eventHub.addEventListener("click", clickEvent => {
         const newsTitle = document.querySelector("#news--title")
         const newsSynopsis = document.querySelector("#news--synopsis")
         const newsURL = document.querySelector("#news--URL")
-        const newsDate = document.querySelector("#news--date")
+        const newsDate = new Date().toLocaleDateString()
         const newsUser = parseInt(sessionStorage.getItem("activeUser"))
         if (newsTitle.value != "" 
         && newsSynopsis.value != "" 
@@ -20,7 +20,7 @@ eventHub.addEventListener("click", clickEvent => {
             title: newsTitle.value,
             synopsis: newsSynopsis.value,
             url: newsURL.value,
-            date: newsDate.value,
+            date: newsDate,
             userId: newsUser
 
         }
@@ -42,12 +42,12 @@ const render = () => {
             <input type="text" id="news--title" placeholder ="" />
             <textarea id="news--synopsis" placeholder="Enter a Brief Synopsis"></textarea>
             <input id="news--URL" placeholder="Enter a URL"></input>
-            <label for="news--date">Today's Date</label>
-            <input type="date" id="news--date">
-            <button id="saveNews">Save News</button>
+            
+            <button id="saveNews">Save Article</button>
         </div>`
 }
 
 export const NewsForm = () => {
     render()
 }
+

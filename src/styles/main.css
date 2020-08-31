@@ -1,3 +1,6 @@
+/* author: Samantha Maas
+purpose: the main page for styling. includes the general fonts, the header and animation for the title */
+
 @import "./events.css";
 @import "./friends.css";
 @import "./news.css";
@@ -17,6 +20,17 @@ textarea,
      font-size: 1rem;
      line-height: 1.5;
 }
+
+.welcomeName{
+    font-size: xx-large;
+    border-bottom: double #fef2f2 1rem
+
+}
+.underHeader {
+    display: flex;
+    justify-content: center;
+}
+
 body{
      color: #d1a080;
      font-family: 'Lora', serif;
@@ -26,25 +40,23 @@ body{
 
  .dashboard--left {
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
-    /* border: 0.5em solid #e4c2c1; */
     width: 10%;
     float: left;
     height: 53rem;
     margin-left: 2rem;
     
+    
 }
 
 .dashboard--center{
-    display: flex;
     position: relative;
     flex-direction: column;
-    /* border: 0.5em solid #e4c2c1; */
     width: 75%;
     float: left;
     height: 53rem;
     width: fit-content;
-    /* overflow: scroll; */
     margin-right: 5rem;
     margin-left: 5rem;
     
@@ -52,8 +64,8 @@ body{
 
 .dashboard--right{
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
-    /* border: 0.5em solid #e4c2c1; */
     width: 15%;
     float: left;
     height: 53rem;

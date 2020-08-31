@@ -1,3 +1,5 @@
+// Created by Brett Derrington
+
 import messagesComponent from "./messageComponent.js"
 import messagesAPI from "./messageData.js"
 import messageList from "./messageRenderHTML.js"
@@ -95,9 +97,30 @@ const messageEventListener = () => {
         //editing click event
         else if (clickEvent.target.className == "message--SubmitButton") {
             const editCheck = document.querySelector(".message--Input")
+            let i = editCheck.value.search("@")
+            let found = false
+            let privateUserId = 0
+            let privateUser = ""
+          
+            if(i >= 0){
+                for(i++; found != true; i++){
+                    if(editCheck.value[i] != " " && editCheck.value[i] != undefined){
+                        privateUser = privateUser.concat(editCheck.value[i])
+                    }else{
+                        found = true
+                    }
+                }
+            }
+
+            const users = useUsers()
+            users.forEach(u => {
+                if (privateUser === u.username){
+                    privateUserId = u.id
+                }
+            })
             if (editCheck.value != "") {
                 const messageObjectID = document.querySelector("#hiddenIdValue").value
-                messagesAPI.updateEditMessage(messageObjectID, { "message": editCheck.value, "userID": userId, "username": username })
+                messagesAPI.updateEditMessage(messageObjectID, { "message": editCheck.value, "userID": userId, "username": username, "privateUserId": privateUserId })
                     .then(() => {
                         localStorage.setItem("event", "messageChanged")
                         messagesAPI.messagesGetData().then(() => {

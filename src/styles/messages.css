@@ -1,0 +1,8 @@
+/* Created by Brett Derrington */
+
+.privateMessage {
+    border: 2px solid #b6666f; 
+    border-radius: 6px;
+    padding-left: 6px;
+    padding-right: 2px;
+}

@@ -1,3 +1,4 @@
+// Created by Brett Derrington
 
 const messagesComponent = {
     HTMLComponent: (messageObject) => {
@@ -12,12 +13,20 @@ const messagesComponent = {
        <button id="message--DeleteButton--${messageObject.id}--${messageObject.userID}">Delete</button>
        </section>
       
-       </section>
-       <br>`
+       </section>`
 
             return messageHtmlString
         }
-        else if (messageObject.privateUserId === parseInt(userID) || messageObject.privateUserId === 0) {
+        else if (messageObject.privateUserId === parseInt(userID)) {
+            return `<section class="messageObject">
+       
+          <section id="messageObject--${messageObject.id}" class="messageObject privateMessage">
+          <span><span class="messages-title--${messageObject.userID}---${messageObject.username}-${messageObject.id} bold">${messageObject.username}</span>: ${messageObject.message}</span></span>
+          </section>
+         
+          </section>`
+        }
+        else if (messageObject.privateUserId === 0){
             return `<section class="messageObject">
        
           <section id="messageObject--${messageObject.id}" class="messageObject">
@@ -25,13 +34,14 @@ const messagesComponent = {
           </section>
          
           </section>`
-        }else{
+        }
+        else{
             return ''
         }
     },
     //populates a text box to submit a message
     messageInputComponent: () => {
-        const inputComponent = `<input class="message--Input" name="message__Input" type="text"><button class="message--SubmitButton">Submit</button>`
+        const inputComponent = `<textarea class="message--Input" name="message__Input" type="text"></textarea><button class="message--SubmitButton">Submit</button>`
         return inputComponent
     },
 

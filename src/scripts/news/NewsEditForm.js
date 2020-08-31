@@ -1,3 +1,7 @@
+//author: Red Tilson
+//purpose: This component renders an edit field and then sends the 
+//edit info to the DOM for re-render
+
 import { useNews, getNews, editNews } from "./NewsProvider.js"
 
 const eventHub = document.querySelector(".container")
@@ -32,7 +36,6 @@ const render = (id) => {
             const editedSynopsis = document.querySelector(`.news--synopsis--${eventId}`)
             const editedURL = document.querySelector(`.news--URL--${eventId}`)
             const editedDate = document.querySelector(`.news--date--${eventId}`)
-            console.log(editedTitle.value)
             const newsUser = parseInt(sessionStorage.getItem("activeUser"))
                 if (editedTitle.value != "" 
                 && editedSynopsis.value != "" 

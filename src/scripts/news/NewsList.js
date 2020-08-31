@@ -1,5 +1,10 @@
+//author: Red Tilson
+//purpose: This component accepts weather data and article data
+//then renders the information to the DOM. It does this upon loading
+//and when the API state changes. 
+
 import { getNews, useNews, deleteNews} from "./NewsProvider.js"
-import {getWeatherData } from "../weather/WeatherProvider.js"
+import {getWeatherData} from "../weather/WeatherProvider.js"
 import { NewsHTMLConverter } from "./NewsHTMLGenerator.js"
 import { getUserFriends, useUserFriends} from "../users/usersDataProvider.js"
 
@@ -24,10 +29,8 @@ eventHub.addEventListener("click", clickEvent => {
 export const NewsList = () => {
     let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
     getWeatherData()
-    .then(() => {
-    getNews()
-    .then(() => {
-    getUserFriends()
+    .then(getNews)
+    .then(getUserFriends)
         .then(() => {
         const allNews = useNews()
         const allFriends = useUserFriends()
@@ -62,9 +65,6 @@ export const NewsList = () => {
    
         render(sortedNews)
         })
-
-    })
-    })
     }     
 
     const render = (sortedNews) => {

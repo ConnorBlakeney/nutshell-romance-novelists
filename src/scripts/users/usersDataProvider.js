@@ -58,7 +58,12 @@ const dispatchUsersStateChangeEvent = () => {
     const userstateChangedEvent = new CustomEvent("usersStateChanged")
 
     eventHub.dispatchEvent(userstateChangedEvent)
+    eventHub.dispatchEvent(userFriendsStateChangedEvent)
+    localStorage.setItem("event", true)
+    localStorage.clear()
 }
+
+
 
 let userFriends = []
 
@@ -103,4 +108,25 @@ const dispatchUserFriendsStateChangeEvent = () => {
     const userFriendsStateChangedEvent = new CustomEvent("userFriendsStateChanged")
 
     eventHub.dispatchEvent(userFriendsStateChangedEvent)
+    
 }
+
+
+window.addEventListener("storage", () => {
+    const event = localStorage.getItem("event")
+    
+    if (event === "friendUserChanged"){
+        localStorage.clear()
+        getUserFriends()
+        .then(() => {
+    
+            dispatchUserFriendsStateChangeEvent()
+        })
+    }if(event === "usersChanged"){
+        localStorage.clear()
+        getUsers()
+        .then(() => {
+            dispatchUsersStateChangeEvent()
+        })
+    }
+})

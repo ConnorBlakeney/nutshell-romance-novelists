@@ -18,21 +18,8 @@ let tasks = []
 //     const taskContent = document.querySelector("#task--content")
 //     const taskDeadline = document.querySelector("#task--deadline")
 
-//     // const criminalId = parseInt(noteCriminal.value)
-
-//     if (taskId !== 0) {
-//       const newTask = {
-//       content: taskContent.value,
-//       deadline: taskDeadline.value,
-//       timestamp: Date.now(),
-//     //   userId: parseInt(noteCriminal.value)
-//     }
-
-//     // Change API state and application state
-//     saveTasks(newTask)
-//     } 
-// }
-// })
+    // Change API state and application state
+    
 
 eventHub.addEventListener("click", clickEvent => {
     let currentUserId = parseInt(sessionStorage.getItem("activeUser"))
@@ -51,6 +38,7 @@ eventHub.addEventListener("click", clickEvent => {
                     timestamp: Date.now(),
                 }
                 saveTasks(newTask)
+                localStorage.setItem("event", "tasksChanged")
                 render()
             } else {
                 const updatedTask = {
@@ -80,6 +68,8 @@ eventHub.addEventListener("click", clickEvent => {
                 }
                 saveTasks(newTask)
                 render()
+                localStorage.setItem("event", "tasksChanged")
+
             } else {
                 const updatedTask = {
                     content: taskContent.value,
@@ -91,6 +81,8 @@ eventHub.addEventListener("click", clickEvent => {
                 editTasks(updatedTask)
                 taskId.value = ""
                 render()
+                localStorage.setItem("event", "tasksChanged")
+
             }
         }
     }

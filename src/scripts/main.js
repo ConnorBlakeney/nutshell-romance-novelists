@@ -4,8 +4,9 @@ import messageEventListener from "./messages/messageEventListeners.js"
 
 
 
+
 const contentTarget = document.querySelector(".auth--login")
-const contentRegister = document.querySelector(".auth--login")
+const contentRegister = document.querySelector(".auth--register")
 const eventHub = document.querySelector(".container")
 
 /*
@@ -17,7 +18,7 @@ const eventHub = document.querySelector(".container")
 */
 
     
-if ("activeUser" in sessionStorage){
+if (sessionStorage.hasOwnProperty("activeUser")){
     contentTarget.innerHTML = ""
     contentRegister.innerHTML = ""
     Nutshell()

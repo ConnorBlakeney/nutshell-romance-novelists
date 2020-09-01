@@ -2,10 +2,10 @@
 //purpose: This module renders the form to the DOM that a user to can input new information about an event. This module also has an event listener that updates the database with the new event added. You can also see the edit eventlistener in this module as well.
 
 import { useEvents, saveEvent, editEvent } from "./EventsDataProvider.js"
-import {getOneDayWeatherData, useOneDayWeatherData} from "../weather/WeatherProvider.js"
+// import {getOneDayWeatherData, useOneDayWeatherData} from "../weather/WeatherProvider.js"
 
 const contentTarget = document.querySelector(".eventFormContainer")
-const weatherTarget = document.querySelector(".eventWeatherContainer")
+// const weatherTarget = document.querySelector(".eventWeatherContainer")
 const eventHub = document.querySelector(".container")
 
 //eventListener that is listening for the Edit Event Button to be clicked and then it is displaying the information from that event in the form for updating. 
@@ -31,33 +31,33 @@ eventHub.addEventListener("editEventButtonClicked", customEvent => {
     id.value = eventId
 })
 
-eventHub.addEventListener("showWeatherButtonClicked", customEvent => {
-    const eventId = event.detail.eventId
-    const allEvents = useEvents()
-    const eventObj = allEvents.find(event => event.id === eventId)
-    const eventZip = eventObj.zip
-    getOneDayWeatherData(eventZip).then(() => {
-       const eventWeather = useOneDayWeatherData()
-       renderWeather(eventWeather)
-       console.log(eventWeather)
-    })
+// eventHub.addEventListener("showWeatherButtonClicked", customEvent => {
+//     const eventId = event.detail.eventId
+//     const allEvents = useEvents()
+//     const eventObj = allEvents.find(event => event.id === eventId)
+//     const eventZip = eventObj.zip
+//     getOneDayWeatherData(eventZip).then(() => {
+//        const eventWeather = useOneDayWeatherData()
+//        renderWeather(eventWeather)
+//     })
 
-})
+// })
 
 //This function renders the HTML representation of the form to the DOM
 export const newEventForm = () => {
     render()
 }
 
-const renderWeather = (weather) => {
-    weatherTarget.innerHTML = `
-    <section class="eventWeatherForm">
-        <div>${weather.name}</div>
-        <div>${weather.weather[0].main}</div>
-        <div>${weather.main.temp_max}</div>
-    </section>
-    `
-}
+// const renderWeather = (weather) => {
+//     weatherTarget.innerHTML = `
+//     <dialog class="eventWeatherForm">
+//     <h3> Weather for this Event </h3>
+//         <div>${weather.name}</div>
+//         <div>${weather.weather[0].main}</div>
+//         <div>${weather.main.temp_max}&deg; F</div>
+//     </dialog>
+//     `
+// }
 
 const render = () => {
     contentTarget.innerHTML = `

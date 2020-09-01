@@ -21,3 +21,10 @@ purpose: styling for the current weather component */
     justify-content: center;
     align-items: center;
 }
+
+.eventWeatherForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -4,10 +4,12 @@
 import { deleteEvent, useEvents } from "./EventsDataProvider.js"
 import { useUsers } from "../users/usersDataProvider.js"
 import {closestDate} from "./EventsList.js"
+import {getOneDayWeatherData, useOneDayWeatherData} from "../weather/WeatherProvider.js"
 
 
 
 const eventHub = document.querySelector(".container")
+let weatherTarget = document.querySelector(".eventWeatherContainer")
 
 //eventListener listening for the Delete Button to be click and then invoking the deleteEvent function to update database
 eventHub.addEventListener("click", clickEvent => {
@@ -19,6 +21,30 @@ eventHub.addEventListener("click", clickEvent => {
 
     }
 })
+
+eventHub.addEventListener("showWeatherButtonClicked", customEvent => {
+    
+    const eventId = event.detail.eventId
+    const allEvents = useEvents()
+    const eventObj = allEvents.find(event => event.id === eventId)
+    const eventZip = eventObj.zip
+    getOneDayWeatherData(eventZip).then(() => {
+       const eventWeather = useOneDayWeatherData()
+       renderWeather(eventWeather)
+    })
+
+})
+
+const renderWeather = (weather) => {
+    weatherTarget.innerHTML = `
+    <dialog class="eventWeatherForm">
+    <h3> Weather for Chosen Event</h3>
+        <div>${weather.name}</div>
+        <div>${weather.weather[0].main}</div>
+        <div>${weather.main.temp_max}&deg; F</div>
+    </dialog>
+    `
+}
 
 //dispatching the click for the Event Edit button. Attaches the event Id to the event so the form can listen for that and know which event needs to be edited. 
 eventHub.addEventListener("click", clickEvent => {
@@ -65,8 +91,7 @@ export const eventHTML = (eventObj ) => {
                 <button class="button" id="weatherButton--${eventObj.id}"> Show Weather </button>
                 <button class="button" id="editEventButton--${eventObj.id}"> Edit </button>
                 <button class="button" id="deleteEventButton--${eventObj.id}"> Delete </button>
-                <br><br/>
-               
+                <br></br> 
             </section>`
         } else {
             return `
@@ -80,8 +105,8 @@ export const eventHTML = (eventObj ) => {
                 <button class="button" id="weatherButton--${eventObj.id}"> Show Weather </button>
                 <button class="button" id="editEventButton--${eventObj.id}"> Edit </button>
                 <button class="button" id="deleteEventButton--${eventObj.id}"> Delete </button>
-                <br><br/>
-               
+                <br></br>
+                
             </section>`
         }
 
@@ -98,6 +123,7 @@ export const eventHTML = (eventObj ) => {
     
             <button class="button" id="weatherButton--${eventObj.id}"> Show Weather </button>
             <br><br/>
+           
            
         </section>`
     }

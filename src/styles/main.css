@@ -13,6 +13,7 @@ purpose: the main page for styling. includes the general fonts, the header and a
 button,
 input,
 select,
+dialog,
 textarea,
 ::placeholder{
     color: #b6666f;

@@ -35,6 +35,13 @@ eventHub.addEventListener("showWeatherButtonClicked", customEvent => {
 
 })
 
+eventHub.addEventListener("click", clickEvent => {
+if(clickEvent.target.id === "closeWeatherButton"){
+
+    weatherTarget.innerHTML = ""
+}
+})
+
 const renderWeather = (weather) => {
     weatherTarget.innerHTML = `
     <dialog class="eventWeatherForm">
@@ -42,6 +49,7 @@ const renderWeather = (weather) => {
         <div>${weather.name}</div>
         <div>${weather.weather[0].main}</div>
         <div>${weather.main.temp_max}&deg; F</div>
+        <button id="closeWeatherButton">Close </button>
     </dialog>
     `
 }
